@@ -1,0 +1,589 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5E64DE862120F81300CFADAC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E64DE852120F81300CFADAC /* AppDelegate.swift */; };
+		5E64DE882120F81300CFADAC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E64DE872120F81300CFADAC /* ViewController.swift */; };
+		5E64DE8B2120F81300CFADAC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E64DE892120F81300CFADAC /* Main.storyboard */; };
+		5E64DE8D2120F81500CFADAC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E64DE8C2120F81500CFADAC /* Assets.xcassets */; };
+		5E64DE902120F81500CFADAC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E64DE8E2120F81500CFADAC /* LaunchScreen.storyboard */; };
+		5E64DE9B2120F81500CFADAC /* StegoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E64DE9A2120F81500CFADAC /* StegoTests.swift */; };
+		5E64DEA62120F81500CFADAC /* StegoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E64DEA52120F81500CFADAC /* StegoUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5E64DE972120F81500CFADAC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5E64DE7A2120F81300CFADAC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5E64DE812120F81300CFADAC;
+			remoteInfo = Stego;
+		};
+		5E64DEA22120F81500CFADAC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5E64DE7A2120F81300CFADAC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5E64DE812120F81300CFADAC;
+			remoteInfo = Stego;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		5E64DE822120F81300CFADAC /* Stego.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stego.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5E64DE852120F81300CFADAC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		5E64DE872120F81300CFADAC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		5E64DE8A2120F81300CFADAC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		5E64DE8C2120F81500CFADAC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5E64DE8F2120F81500CFADAC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		5E64DE912120F81500CFADAC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5E64DE962120F81500CFADAC /* StegoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StegoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5E64DE9A2120F81500CFADAC /* StegoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StegoTests.swift; sourceTree = "<group>"; };
+		5E64DE9C2120F81500CFADAC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5E64DEA12120F81500CFADAC /* StegoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StegoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5E64DEA52120F81500CFADAC /* StegoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StegoUITests.swift; sourceTree = "<group>"; };
+		5E64DEA72120F81500CFADAC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5E64DE7F2120F81300CFADAC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5E64DE932120F81500CFADAC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5E64DE9E2120F81500CFADAC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5E64DE792120F81300CFADAC = {
+			isa = PBXGroup;
+			children = (
+				5E64DE842120F81300CFADAC /* Stego */,
+				5E64DE992120F81500CFADAC /* StegoTests */,
+				5E64DEA42120F81500CFADAC /* StegoUITests */,
+				5E64DE832120F81300CFADAC /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		5E64DE832120F81300CFADAC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5E64DE822120F81300CFADAC /* Stego.app */,
+				5E64DE962120F81500CFADAC /* StegoTests.xctest */,
+				5E64DEA12120F81500CFADAC /* StegoUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5E64DE842120F81300CFADAC /* Stego */ = {
+			isa = PBXGroup;
+			children = (
+				5E64DE852120F81300CFADAC /* AppDelegate.swift */,
+				5E64DE872120F81300CFADAC /* ViewController.swift */,
+				5E64DE892120F81300CFADAC /* Main.storyboard */,
+				5E64DE8C2120F81500CFADAC /* Assets.xcassets */,
+				5E64DE8E2120F81500CFADAC /* LaunchScreen.storyboard */,
+				5E64DE912120F81500CFADAC /* Info.plist */,
+			);
+			path = Stego;
+			sourceTree = "<group>";
+		};
+		5E64DE992120F81500CFADAC /* StegoTests */ = {
+			isa = PBXGroup;
+			children = (
+				5E64DE9A2120F81500CFADAC /* StegoTests.swift */,
+				5E64DE9C2120F81500CFADAC /* Info.plist */,
+			);
+			path = StegoTests;
+			sourceTree = "<group>";
+		};
+		5E64DEA42120F81500CFADAC /* StegoUITests */ = {
+			isa = PBXGroup;
+			children = (
+				5E64DEA52120F81500CFADAC /* StegoUITests.swift */,
+				5E64DEA72120F81500CFADAC /* Info.plist */,
+			);
+			path = StegoUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5E64DE812120F81300CFADAC /* Stego */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5E64DEAA2120F81500CFADAC /* Build configuration list for PBXNativeTarget "Stego" */;
+			buildPhases = (
+				5E64DE7E2120F81300CFADAC /* Sources */,
+				5E64DE7F2120F81300CFADAC /* Frameworks */,
+				5E64DE802120F81300CFADAC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Stego;
+			productName = Stego;
+			productReference = 5E64DE822120F81300CFADAC /* Stego.app */;
+			productType = "com.apple.product-type.application";
+		};
+		5E64DE952120F81500CFADAC /* StegoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5E64DEAD2120F81500CFADAC /* Build configuration list for PBXNativeTarget "StegoTests" */;
+			buildPhases = (
+				5E64DE922120F81500CFADAC /* Sources */,
+				5E64DE932120F81500CFADAC /* Frameworks */,
+				5E64DE942120F81500CFADAC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5E64DE982120F81500CFADAC /* PBXTargetDependency */,
+			);
+			name = StegoTests;
+			productName = StegoTests;
+			productReference = 5E64DE962120F81500CFADAC /* StegoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		5E64DEA02120F81500CFADAC /* StegoUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5E64DEB02120F81500CFADAC /* Build configuration list for PBXNativeTarget "StegoUITests" */;
+			buildPhases = (
+				5E64DE9D2120F81500CFADAC /* Sources */,
+				5E64DE9E2120F81500CFADAC /* Frameworks */,
+				5E64DE9F2120F81500CFADAC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5E64DEA32120F81500CFADAC /* PBXTargetDependency */,
+			);
+			name = StegoUITests;
+			productName = StegoUITests;
+			productReference = 5E64DEA12120F81500CFADAC /* StegoUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5E64DE7A2120F81300CFADAC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0940;
+				LastUpgradeCheck = 0940;
+				ORGANIZATIONNAME = "George Sealy";
+				TargetAttributes = {
+					5E64DE812120F81300CFADAC = {
+						CreatedOnToolsVersion = 9.4.1;
+					};
+					5E64DE952120F81500CFADAC = {
+						CreatedOnToolsVersion = 9.4.1;
+						TestTargetID = 5E64DE812120F81300CFADAC;
+					};
+					5E64DEA02120F81500CFADAC = {
+						CreatedOnToolsVersion = 9.4.1;
+						TestTargetID = 5E64DE812120F81300CFADAC;
+					};
+				};
+			};
+			buildConfigurationList = 5E64DE7D2120F81300CFADAC /* Build configuration list for PBXProject "Stego" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 5E64DE792120F81300CFADAC;
+			productRefGroup = 5E64DE832120F81300CFADAC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5E64DE812120F81300CFADAC /* Stego */,
+				5E64DE952120F81500CFADAC /* StegoTests */,
+				5E64DEA02120F81500CFADAC /* StegoUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5E64DE802120F81300CFADAC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5E64DE902120F81500CFADAC /* LaunchScreen.storyboard in Resources */,
+				5E64DE8D2120F81500CFADAC /* Assets.xcassets in Resources */,
+				5E64DE8B2120F81300CFADAC /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5E64DE942120F81500CFADAC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5E64DE9F2120F81500CFADAC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5E64DE7E2120F81300CFADAC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5E64DE882120F81300CFADAC /* ViewController.swift in Sources */,
+				5E64DE862120F81300CFADAC /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5E64DE922120F81500CFADAC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5E64DE9B2120F81500CFADAC /* StegoTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5E64DE9D2120F81500CFADAC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5E64DEA62120F81500CFADAC /* StegoUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5E64DE982120F81500CFADAC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5E64DE812120F81300CFADAC /* Stego */;
+			targetProxy = 5E64DE972120F81500CFADAC /* PBXContainerItemProxy */;
+		};
+		5E64DEA32120F81500CFADAC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5E64DE812120F81300CFADAC /* Stego */;
+			targetProxy = 5E64DEA22120F81500CFADAC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		5E64DE892120F81300CFADAC /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5E64DE8A2120F81300CFADAC /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		5E64DE8E2120F81500CFADAC /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5E64DE8F2120F81500CFADAC /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		5E64DEA82120F81500CFADAC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		5E64DEA92120F81500CFADAC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5E64DEAB2120F81500CFADAC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = LY3YGZ4K4B;
+				INFOPLIST_FILE = Stego/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.sealy.george.Stego;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5E64DEAC2120F81500CFADAC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = LY3YGZ4K4B;
+				INFOPLIST_FILE = Stego/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.sealy.george.Stego;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		5E64DEAE2120F81500CFADAC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = LY3YGZ4K4B;
+				INFOPLIST_FILE = StegoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.sealy.george.StegoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Stego.app/Stego";
+			};
+			name = Debug;
+		};
+		5E64DEAF2120F81500CFADAC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = LY3YGZ4K4B;
+				INFOPLIST_FILE = StegoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.sealy.george.StegoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Stego.app/Stego";
+			};
+			name = Release;
+		};
+		5E64DEB12120F81500CFADAC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = LY3YGZ4K4B;
+				INFOPLIST_FILE = StegoUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.sealy.george.StegoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Stego;
+			};
+			name = Debug;
+		};
+		5E64DEB22120F81500CFADAC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = LY3YGZ4K4B;
+				INFOPLIST_FILE = StegoUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.sealy.george.StegoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Stego;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5E64DE7D2120F81300CFADAC /* Build configuration list for PBXProject "Stego" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5E64DEA82120F81500CFADAC /* Debug */,
+				5E64DEA92120F81500CFADAC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5E64DEAA2120F81500CFADAC /* Build configuration list for PBXNativeTarget "Stego" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5E64DEAB2120F81500CFADAC /* Debug */,
+				5E64DEAC2120F81500CFADAC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5E64DEAD2120F81500CFADAC /* Build configuration list for PBXNativeTarget "StegoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5E64DEAE2120F81500CFADAC /* Debug */,
+				5E64DEAF2120F81500CFADAC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5E64DEB02120F81500CFADAC /* Build configuration list for PBXNativeTarget "StegoUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5E64DEB12120F81500CFADAC /* Debug */,
+				5E64DEB22120F81500CFADAC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5E64DE7A2120F81300CFADAC /* Project object */;
+}
