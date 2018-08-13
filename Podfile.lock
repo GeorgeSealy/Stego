@@ -1,0 +1,25 @@
+PODS:
+  - Alamofire (4.7.3)
+  - AlamofireImage (3.3.1):
+    - Alamofire (~> 4.5)
+  - MastodonKit (1.0.10)
+
+DEPENDENCIES:
+  - Alamofire
+  - AlamofireImage
+  - MastodonKit
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - AlamofireImage
+    - MastodonKit
+
+SPEC CHECKSUMS:
+  Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
+  AlamofireImage: 3b35b586853abaf94ca1250f4e94cff3c21a4c0d
+  MastodonKit: 573c2b32491108599aef4d99addb0e13a154cd6a
+
+PODFILE CHECKSUM: 5d2c26df4669b8b92966725ff0a9070b2e496846
+
+COCOAPODS: 1.5.3

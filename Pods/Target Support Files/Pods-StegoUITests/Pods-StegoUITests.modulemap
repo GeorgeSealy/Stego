@@ -1,0 +1,6 @@
+framework module Pods_StegoUITests {
+  umbrella header "Pods-StegoUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

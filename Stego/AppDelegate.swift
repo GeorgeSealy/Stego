@@ -13,9 +13,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+
+        if let url: URL = launchOptions?[UIApplicationLaunchOptionsKey.url] as? URL {
+            _ = handleIncomingLink(url)
+        }
+        
         return true
     }
 
@@ -41,6 +45,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
+    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any?) -> Bool {
+        
+        if handleIncomingLink(url) {
+            return true
+        }
+        
+        return false
+        
+    }
+    
+    // MARK: - Handle links
+    
+    func handleIncomingLink(_ url: URL) -> Bool {
+        
+        print("\(type(of: self)) - \(#function): Handle incoming link: \(url)")
+        
+        if
+            url.scheme?.hasPrefix("stego") == true,
+            let code = url.queryItems["code"] {
 
+            Api.accessCode = code
+            Api.register()
+        }
+//        if url.scheme?.hasPrefix(deepLinkPrefix) == true {
+//            //        if (url.scheme?.hasPrefix(deepLinkPrefix))! {
+//            return AppController.sharedAppController.recievedDeepLink(url)
+//        } else if DeepLinkService.isValidDeeplink(url) {
+//            return AppController.sharedAppController.recievedDeepLink(url)
+//        }
+        
+        return false
+    }
 }
 
