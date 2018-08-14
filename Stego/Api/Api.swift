@@ -156,11 +156,11 @@ class Api {
 
     }
     
-    static func call<T: Decodable>(_ endpointInfo: RouteInfo, allowCancelCallback: Bool = false, completion: @escaping (Result<T>) -> Void) -> ApiRequest {
-        return ApiRequest(request: internalCall(endpointInfo, allowCancelCallback: allowCancelCallback, completion: completion))
-    }
+//    static func call<T: Decodable>(_ endpointInfo: RouteInfo, allowCancelCallback: Bool = false, completion: @escaping (Result<T>) -> Void) -> ApiRequest {
+//        return ApiRequest(request: internalCall(endpointInfo, allowCancelCallback: allowCancelCallback, completion: completion))
+//    }
     
-    fileprivate static func internalCall<T: Decodable>(_ endpointInfo: RouteInfo, allowCancelCallback: Bool = false, completion: @escaping (Result<T>) -> Void) -> Request {
+    static func call<T: Decodable>(_ endpointInfo: RouteInfo, allowCancelCallback: Bool = false, completion: @escaping (Result<T>) -> Void) -> ApiRequest {
         
         let fullPath = endpointInfo.isFullPath ? endpointInfo.path : String(format: "%@%@%@", basePath, endpointInfo.isApiCall ? "api/v1/" : "", endpointInfo.path)
         print("\(fullPath) [\(endpointInfo.method.rawValue)]")
@@ -174,7 +174,9 @@ class Api {
         let method = endpointInfo.method
         let encoding: ParameterEncoding = ([Alamofire.HTTPMethod.head, Alamofire.HTTPMethod.get, Alamofire.HTTPMethod.delete].contains(method) ? URLEncoding.default  : JSONEncoding.default)
         
-        let request = Alamofire.request(fullPath, method: method, parameters: parameters, encoding: encoding).validate().responseData { (response) in
+        let request = Alamofire.request(fullPath, method: method, parameters: parameters, encoding: encoding).validate().responseString { (responseString) in
+            print("Got response: \(responseString)")
+        }.responseData { (response) in
             
             do {
                 guard let data = response.data else {
@@ -188,25 +190,32 @@ class Api {
                     return
                 }
                 
-                print("RESPONSE: \(data)")
-                
-                print("RESPONSE: \(data as? [String: Any])")
-
                 let result: T = try data.decoded()
                 
                 self.handleResponse(fullPath: fullPath, allowCancelCallback: allowCancelCallback, completion: completion, result: .success(result))
             } catch let error {
+                
+                if
+                    let data = response.data,
+                    let apiError: ApiError = try? data.decoded() {
+                
+                    let userInfo: [String: Any] = [
+                        NSLocalizedDescriptionKey: "\(apiError.error): \(apiError.description)",
+                        ]
+                    
+                    let error = NSError(domain: "ApiErrorDomain", code: -1, userInfo: userInfo)
+                    self.handleResponse(fullPath: fullPath, allowCancelCallback: allowCancelCallback, completion: completion, result: .error(error))
+
+                    return
+                }
+
                 print("ERROR: \(error)")
-                print("Trying string")
-                return
-                //                self.handleResponse(fullPath: fullPath, allowCancelCallback: allowCancelCallback, completion: completion, result: .error(error as NSError))
+                self.handleResponse(fullPath: fullPath, allowCancelCallback: allowCancelCallback, completion: completion, result: .error(error as NSError))
             }
-            }.responseString { (response) in
-                print("Trying string: \(response)")
         }
         
  
-        return request
+        return ApiRequest(request: request)
     }
     
     private static func handleResponse<T>(fullPath: String, allowCancelCallback: Bool = false, completion: @escaping (Result<T>) -> Void, result: Result<T>) {

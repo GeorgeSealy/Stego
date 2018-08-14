@@ -8,26 +8,6 @@
 
 import Foundation
 
-struct EmptyModel: Decodable {
-    
-    enum CodingKey: String, Swift.CodingKey {
-        case error = "error"
-        case errorDescription = "error_description"
-    }
-    
-    public init(from decoder: Decoder) throws {
-        
-        let container = try decoder.container(keyedBy: CodingKey.self)
-
-        let err = try container.decode(String.self, forKey: .error)
-        let desc = try container.decode(String.self, forKey: .errorDescription)
-            
-        print("Hey: \(err)")
-        print("Hey: \(desc)")
-
-    }
-}
-
 struct AppModel: Decodable {
     let clientId: String
     let clientSecret: String
@@ -70,7 +50,6 @@ class Apps {
             "redirect_uris": "stego://auth",
             "scopes": "read write follow",
             "website": "https://zeen.com"
-//            "redirect_uris": "urn:ietf:wg:oauth:2.0:oob"
         ]
 
         let routeInfo = RouteInfo(method: .post, path: basePath, parameters: params)

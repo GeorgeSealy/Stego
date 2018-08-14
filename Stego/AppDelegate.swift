@@ -68,12 +68,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             Api.accessCode = code
             Api.register()
         }
-//        if url.scheme?.hasPrefix(deepLinkPrefix) == true {
-//            //        if (url.scheme?.hasPrefix(deepLinkPrefix))! {
-//            return AppController.sharedAppController.recievedDeepLink(url)
-//        } else if DeepLinkService.isValidDeeplink(url) {
-//            return AppController.sharedAppController.recievedDeepLink(url)
-//        }
         
         return false
     }
