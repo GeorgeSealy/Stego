@@ -32,6 +32,8 @@
 		5E93CD9E21223767002F3D0E /* Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E64DEB921210C1800CFADAC /* Decodable.swift */; };
 		5E93CDA121223830002F3D0E /* AccessModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E93CDA021223830002F3D0E /* AccessModel.swift */; };
 		5E93CDA221223850002F3D0E /* AccessModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E93CDA021223830002F3D0E /* AccessModel.swift */; };
+		5E93CDA5212280B0002F3D0E /* OauthApiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E93CDA4212280B0002F3D0E /* OauthApiTests.swift */; };
+		5E93CDAA212295D3002F3D0E /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E93CDA9212295D3002F3D0E /* AppModel.swift */; };
 		A0AA481753F95C4C5DBBAC5E /* Pods_StegoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFFCEF864242138EDBD716B3 /* Pods_StegoTests.framework */; };
 		A258301F4DC54DAC14FDAB31 /* Pods_StegoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0CA38C2405C63221052D3CC /* Pods_StegoUITests.framework */; };
 		FA39B94374A4C469167CB980 /* Pods_Stego.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DE28E31444603801FBD03F0 /* Pods_Stego.framework */; };
@@ -86,6 +88,8 @@
 		5E93CD9921223533002F3D0E /* AccessModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessModelTests.swift; sourceTree = "<group>"; };
 		5E93CD9C2122372B002F3D0E /* XCTExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTExtensions.swift; sourceTree = "<group>"; };
 		5E93CDA021223830002F3D0E /* AccessModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessModel.swift; sourceTree = "<group>"; };
+		5E93CDA4212280B0002F3D0E /* OauthApiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OauthApiTests.swift; sourceTree = "<group>"; };
+		5E93CDA9212295D3002F3D0E /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
 		689905337702E6E0696CFFFA /* Pods-StegoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StegoUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-StegoUITests/Pods-StegoUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		6DE28E31444603801FBD03F0 /* Pods_Stego.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Stego.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		86840EF3649A60F737BCB915 /* Pods-Stego.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stego.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Stego/Pods-Stego.debug.xcconfig"; sourceTree = "<group>"; };
@@ -163,6 +167,7 @@
 		5E64DE992120F81500CFADAC /* StegoTests */ = {
 			isa = PBXGroup;
 			children = (
+				5E93CDA321228069002F3D0E /* Api Tests */,
 				5E93CD9B21223538002F3D0E /* ModelTests */,
 				5E64DE9A2120F81500CFADAC /* StegoTests.swift */,
 				5E64DE9C2120F81500CFADAC /* Info.plist */,
@@ -183,11 +188,10 @@
 		5E64DEB32120FE4F00CFADAC /* Api */ = {
 			isa = PBXGroup;
 			children = (
+				5E93CDA6212280D3002F3D0E /* Api Endpoints */,
 				5E93CD9F21223817002F3D0E /* Models */,
 				5E64DEB621210BFD00CFADAC /* Api.swift */,
 				5E93CD9021222ECE002F3D0E /* ApiError.swift */,
-				5E64DEB42120FE9200CFADAC /* App.swift */,
-				5E64DEC62121354100CFADAC /* Oauth.swift */,
 				5E64DEC22121125800CFADAC /* Token.swift */,
 			);
 			path = Api;
@@ -220,8 +224,26 @@
 			children = (
 				5E93CD962122345D002F3D0E /* GenericModels.swift */,
 				5E93CDA021223830002F3D0E /* AccessModel.swift */,
+				5E93CDA9212295D3002F3D0E /* AppModel.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		5E93CDA321228069002F3D0E /* Api Tests */ = {
+			isa = PBXGroup;
+			children = (
+				5E93CDA4212280B0002F3D0E /* OauthApiTests.swift */,
+			);
+			path = "Api Tests";
+			sourceTree = "<group>";
+		};
+		5E93CDA6212280D3002F3D0E /* Api Endpoints */ = {
+			isa = PBXGroup;
+			children = (
+				5E64DEB42120FE9200CFADAC /* App.swift */,
+				5E64DEC62121354100CFADAC /* Oauth.swift */,
+			);
+			path = "Api Endpoints";
 			sourceTree = "<group>";
 		};
 		8F3505E0E2BC1901721CFA82 /* Frameworks */ = {
@@ -471,6 +493,7 @@
 				5E64DEC52121322F00CFADAC /* URL.swift in Sources */,
 				5E64DEBD21210C9B00CFADAC /* Array.swift in Sources */,
 				5E64DEBF21210CAB00CFADAC /* Result.swift in Sources */,
+				5E93CDAA212295D3002F3D0E /* AppModel.swift in Sources */,
 				5E64DEBA21210C1800CFADAC /* Decodable.swift in Sources */,
 				5E93CD9121222ECE002F3D0E /* ApiError.swift in Sources */,
 				5E64DEC72121354100CFADAC /* Oauth.swift in Sources */,
@@ -484,6 +507,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E93CDA5212280B0002F3D0E /* OauthApiTests.swift in Sources */,
 				5E93CD9A21223533002F3D0E /* AccessModelTests.swift in Sources */,
 				5E93CDA221223850002F3D0E /* AccessModel.swift in Sources */,
 				5E93CD9D2122372B002F3D0E /* XCTExtensions.swift in Sources */,

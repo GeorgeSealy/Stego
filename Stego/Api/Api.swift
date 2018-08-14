@@ -89,7 +89,7 @@ class Api {
         
         guard let app = Api.app else {
 
-            _ = Apps.get { (result) in
+            _ = Api.call(Apps.get.route) { (result: Result<AppModel>) in
                 
                 switch result {
                     
@@ -111,21 +111,22 @@ class Api {
         if let code = Api.accessCode {
             print("\(type(of: self)) - \(#function): Got refresh token: \(code)")
             
-            _ = Oauth.accessToken(clientId: app.clientId,
-                            clientSecret: app.clientSecret,
-                            code: code,
-                            redirectUri: app.redirectUri,
-                            completion: { (result) in
-                                
-                                switch result {
-                                    
-                                case .success:
-                                    print("\(type(of: self)) - \(#function): Success token")
-                                    
-                                case .error(let error) :
-                                    print("\(type(of: self)) - \(#function): Error: \(error)")
-                                    
-                                }
+            let endPoint = Oauth.accessToken(clientId: app.clientId,
+                              clientSecret: app.clientSecret,
+                              code: code,
+                              redirectUri: app.redirectUri)
+            
+            _ = Api.call(endPoint.route, completion: { (result: Result<EmptyModel>) in
+                
+                switch result {
+                    
+                case .success:
+                    print("\(type(of: self)) - \(#function): Success token")
+                    
+                case .error(let error) :
+                    print("\(type(of: self)) - \(#function): Error: \(error)")
+                    
+                }
             })
             
         } else if let accessToken = Api.accessToken {
@@ -155,10 +156,6 @@ class Api {
         }
 
     }
-    
-//    static func call<T: Decodable>(_ endpointInfo: RouteInfo, allowCancelCallback: Bool = false, completion: @escaping (Result<T>) -> Void) -> ApiRequest {
-//        return ApiRequest(request: internalCall(endpointInfo, allowCancelCallback: allowCancelCallback, completion: completion))
-//    }
     
     static func call<T: Decodable>(_ endpointInfo: RouteInfo, allowCancelCallback: Bool = false, completion: @escaping (Result<T>) -> Void) -> ApiRequest {
         
