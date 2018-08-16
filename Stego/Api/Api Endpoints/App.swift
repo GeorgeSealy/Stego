@@ -10,7 +10,7 @@ import Foundation
 
 // POST /api/v1/apps
 
-enum Apps {
+enum Apps: ApiEndpoint {
     
     case get
     
@@ -36,19 +36,11 @@ enum Apps {
         return result
     }
 
-//    static func get(_ completion: @escaping (_ apiResponse: Result<AppModel>) -> Void) -> ApiRequest {
-//
-//        let basePath = "apps"
-//
-//        let params: [String: Any] = [
-//            "client_name": "Stego Test",
-//            "redirect_uris": "stego://auth",
-//            "scopes": "read write follow",
-//            "website": "https://zeen.com"
-//        ]
-//
-//        let routeInfo = RouteInfo(method: .post, path: basePath, parameters: params)
-//        return Api.call(routeInfo, completion: completion)
-//
-//    }
+    var resultType: Decodable.Type {
+        
+        switch self {
+        case .get:
+            return AppModel.self
+        }
+    }
 }

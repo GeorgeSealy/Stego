@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum Oauth {
+enum Oauth: ApiEndpoint {
     
     case accessToken(clientId: String, clientSecret: String, code: String, redirectUri: String)
     
@@ -17,7 +17,6 @@ enum Oauth {
         let basePath = "oauth"
         
         var result: RouteInfo
-        
         switch self {
         case .accessToken(let clientId, let clientSecret, let code, let redirectUri):
             
@@ -36,5 +35,12 @@ enum Oauth {
         return result
     }
 
+    var resultType: Decodable.Type {
+        
+        switch self {
+        case .accessToken:
+            return AccessModel.self
+        }
+    }
 }
 

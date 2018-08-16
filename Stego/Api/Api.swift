@@ -9,7 +9,8 @@
 import Foundation
 import Alamofire
 
-struct ApiRequest {
+
+struct AfApiRequest: ApiRequest {
     fileprivate var request: Request
     
     func cancel() {
@@ -17,65 +18,7 @@ struct ApiRequest {
     }
 }
 
-struct RouteInfo {
-    let method: Alamofire.HTTPMethod
-    let path: String
-    let parameters: [String: Any]?
-    
-    init(
-        method: Alamofire.HTTPMethod,
-        path: String,
-        parameters: [String: Any]?) {
-        //        paginationParams: PaginationRequest? = nil) {
-        
-        self.method = method
-        self.path = path
-        
-        var theParams: [String: Any] = [:]
-        if let defParams = parameters {
-            theParams = defParams
-        }
-        
-        //        // TODO: (George) REPLACE WITH MASTODON SCHEME?
-        //        if let pagination = paginationParams {
-        //
-        //            if let anchor = pagination.anchor {
-        //                if pagination.isRefresh {
-        //                    theParams["recent_anchor"] = anchor
-        //                } else {
-        //                    theParams["anchor"] = anchor
-        //                }
-        //            }
-        //
-        //            theParams["limit"] = pagination.limit
-        //
-        //        }
-        
-        self.parameters = theParams
-        
-    }
-    
-    // Allow full api path to be sent through...
-    fileprivate var fullPath = false
-    var isFullPath: Bool {
-        set(isFull) {
-            self.fullPath = isFull
-        }
-        get {
-            return self.fullPath
-        }
-    }
-    
-    fileprivate var isApi = true
-    var isApiCall: Bool {
-        set(value) {
-            self.isApi = value
-        }
-        get {
-            return self.isApi
-        }
-    }
-}
+// Handling Oauth, this has been very handy: https://github.com/spaceottercode/Mastodon-OAuth-Documentation
 
 class Api {
     
@@ -88,91 +31,173 @@ class Api {
     static func register() {
         
         guard let app = Api.app else {
-
-            _ = Api.call(Apps.get.route) { (result: Result<AppModel>) in
-                
-                switch result {
-                    
-                case .success(let app):
-                    print("\(type(of: self)) - \(#function): Success: \(app)")
-                    
-                    Api.app = app
-                    register()
-                    
-                case .error(let error) :
-                    print("\(type(of: self)) - \(#function): Error: \(error)")
-                    
-                }
-            }
             
+            registerApp()
             return
         }
         
         if let code = Api.accessCode {
-            print("\(type(of: self)) - \(#function): Got refresh token: \(code)")
             
-            let endPoint = Oauth.accessToken(clientId: app.clientId,
-                              clientSecret: app.clientSecret,
-                              code: code,
-                              redirectUri: app.redirectUri)
-            
-            _ = Api.call(endPoint.route, completion: { (result: Result<EmptyModel>) in
-                
-                switch result {
-                    
-                case .success:
-                    print("\(type(of: self)) - \(#function): Success token")
-                    
-                case .error(let error) :
-                    print("\(type(of: self)) - \(#function): Error: \(error)")
-                    
-                }
-            })
+            registerAccessCode(code, app: app)
             
         } else if let accessToken = Api.accessToken {
-            print("\(type(of: self)) - \(#function): Got access token: \(accessToken)")
+            
+            verifyCredentials(accessToken: accessToken)
+            
         } else {
             
-            var path = Api.basePath + "oauth/authorize"
-            
-            path = path + "?response_type=code"
-            path = path + "&scope=read+write+follow"
-            path = path + "&redirect_uri=\(app.redirectUri)"
-            path = path + "&client_id=\(app.clientId)"
-            
-            guard let url = URL(string: path) else {
-                print("ERROR WITH PATH: \(path)")
-                return
-            }
-            
-            let options: [String: Any] = [:]
-            
-            print("Redirecting to : \(url.absoluteString)")
-            UIApplication.shared.open(url, options: options, completionHandler: { (success) in
-                print("Redirected \(success)")
-            })
-            
-            return
+            authorizeApp(app)
+
         }
 
     }
     
-    static func call<T: Decodable>(_ endpointInfo: RouteInfo, allowCancelCallback: Bool = false, completion: @escaping (Result<T>) -> Void) -> ApiRequest {
+    static private func registerApp() {
+        Api.call(Apps.get) { (result: Result<AppModel>) in
+            
+            switch result {
+                
+            case .success(let app):
+                Log("\(type(of: self)) - \(#function): APP REGISTERED: \(app)")
+                
+                Api.app = app
+                register()
+                
+            case .error(let error) :
+                Log("\(type(of: self)) - \(#function): Error: \(error)")
+                
+                // TODO: (George) Try again?
+            }
+        }
+    }
+    
+    static private func authorizeApp(_ app: AppModel) {
         
-        let fullPath = endpointInfo.isFullPath ? endpointInfo.path : String(format: "%@%@%@", basePath, endpointInfo.isApiCall ? "api/v1/" : "", endpointInfo.path)
-        print("\(fullPath) [\(endpointInfo.method.rawValue)]")
+        var path = Api.basePath + "oauth/authorize"
         
-        var parameters = [String: Any]()
-        if let params = endpointInfo.parameters {
-            parameters = params
+        path = path + "?response_type=code"
+        path = path + "&scope=read+write+follow"
+        path = path + "&redirect_uri=\(app.redirectUri)"
+        path = path + "&client_id=\(app.clientId)"
+        
+        guard let url = URL(string: path) else {
+            Log("\(type(of: self)) - \(#function): ERROR WITH PATH: \(path)")
+            return
         }
         
-        print("\(type(of: self)) - \(#function): Params: \(parameters)")
-        let method = endpointInfo.method
+        let options: [String: Any] = [:]
+        
+        Log("\(type(of: self)) - \(#function): Redirecting to : \(url.absoluteString)")
+        
+        UIApplication.shared.open(url, options: options, completionHandler: { (success) in
+        })
+    }
+    
+    static private func registerAccessCode(_ code: String, app: AppModel) {
+        
+        let endPoint = Oauth.accessToken(clientId: app.clientId,
+                                         clientSecret: app.clientSecret,
+                                         code: code,
+                                         redirectUri: app.redirectUri)
+
+        // Clear this, as it can't be used again
+        Api.accessCode = nil
+        
+        Api.call(endPoint, completion: { (result: Result<AccessModel>) in
+            
+            switch result {
+                
+            case .success(let accessModel):
+                Log("\(type(of: self)) - \(#function): Access token returned")
+                Api.accessToken = accessModel.accessToken
+                
+                register()
+                
+            case .error(let error) :
+                Log("\(type(of: self)) - \(#function): Error: \(error)")
+                // TODO: (George) Try again?
+            }
+        })
+        
+    }
+    
+    static private func verifyCredentials(accessToken: String) {
+        
+        Api.call(Accounts.verifyCredentials) { (result: Result<AccountModel>) in
+            switch result {
+                
+            case .success(let account):
+                Log("\(type(of: self)) - \(#function): Verify credentials: \(account.displayName)")
+                
+                getHomeTimeline()
+                
+            case .error(let error) :
+                Log("\(type(of: self)) - \(#function): Error: \(error)")
+                
+                Api.accessCode = nil
+                Api.accessToken = nil
+                
+                // TODO: (George) potential loop here!
+                register()
+            }
+        }
+    }
+    
+    static private func getHomeTimeline() {
+        
+        Api.call(Timelines.home) { (result: Result<[StatusModel]>) in
+            switch result {
+                
+            case .success(let statuses):
+                Log("\(type(of: self)) - \(#function): Statuses: ")
+                
+                for status in statuses {
+                    Log("\(type(of: self)) - \(#function):   ")
+                    Log("\(type(of: self)) - \(#function):   \(status.id)")
+                    Log("\(type(of: self)) - \(#function):   \(status.account?.displayName)")
+                    Log("\(type(of: self)) - \(#function):   \(status.content)")
+                }
+
+                
+            case .error(let error) :
+                Log("\(type(of: self)) - \(#function): Error: \(error)")
+               
+            }
+        }
+    }
+    // MARK: - making Api calls
+    
+    @discardableResult
+    static func call<T: Decodable>(_ endpoint: ApiEndpoint, allowCancelCallback: Bool = false, completion: @escaping (Result<T>) -> Void) -> ApiRequest? {
+
+        guard type(of: T.self) == type(of: endpoint.resultType) else {
+            assertionFailure("Endpoint \(type(of: endpoint.resultType)) and closure \(type(of: T.self)) return types do not match")
+            return nil
+        }
+        
+        let route = endpoint.route
+        let fullPath = route.isFullPath ? route.path : String(format: "%@%@%@", basePath, route.isApiCall ? "api/v1/" : "", route.path)
+        
+        Log("\(fullPath) [\(route.method.rawValue)]")
+        
+        let parameters = route.parameters
+        
+//        print("\(type(of: self)) - \(#function): Params: \(parameters)")
+        let method = route.method
         let encoding: ParameterEncoding = ([Alamofire.HTTPMethod.head, Alamofire.HTTPMethod.get, Alamofire.HTTPMethod.delete].contains(method) ? URLEncoding.default  : JSONEncoding.default)
         
-        let request = Alamofire.request(fullPath, method: method, parameters: parameters, encoding: encoding).validate().responseString { (responseString) in
-            print("Got response: \(responseString)")
+        // Authorization: Bearer <access_token>
+        var headers: [String: String] = [:]
+        
+        if let accessToken = Api.accessToken {
+            headers["Authorization"] = "Bearer " + accessToken
+        }
+//        let headers = ["Authorization": "Basic \(base64Credentials)"]
+//
+//        Alamofire.request(.GET, "https://httpbin.org/basic-auth/user/password", headers: headers)
+
+        let request = Alamofire.request(fullPath, method: method, parameters: parameters, encoding: encoding, headers: headers).validate().responseString { (responseString) in
+//            print("Got response: \(responseString)")
         }.responseData { (response) in
             
             do {
@@ -206,13 +231,13 @@ class Api {
                     return
                 }
 
-                print("ERROR: \(error)")
+                Log("\(type(of: self)) - \(#function): ERROR: \(error)")
                 self.handleResponse(fullPath: fullPath, allowCancelCallback: allowCancelCallback, completion: completion, result: .error(error as NSError))
             }
         }
         
  
-        return ApiRequest(request: request)
+        return AfApiRequest(request: request)
     }
     
     private static func handleResponse<T>(fullPath: String, allowCancelCallback: Bool = false, completion: @escaping (Result<T>) -> Void, result: Result<T>) {

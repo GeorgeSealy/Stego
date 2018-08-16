@@ -34,6 +34,23 @@
 		5E93CDA221223850002F3D0E /* AccessModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E93CDA021223830002F3D0E /* AccessModel.swift */; };
 		5E93CDA5212280B0002F3D0E /* OauthApiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E93CDA4212280B0002F3D0E /* OauthApiTests.swift */; };
 		5E93CDAA212295D3002F3D0E /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E93CDA9212295D3002F3D0E /* AppModel.swift */; };
+		5EEB8DD121239765009070DE /* Oauth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E64DEC62121354100CFADAC /* Oauth.swift */; };
+		5EEB8DD3212397E1009070DE /* ApiEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEB8DD2212397E1009070DE /* ApiEndpoint.swift */; };
+		5EEB8DD421239826009070DE /* ApiEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEB8DD2212397E1009070DE /* ApiEndpoint.swift */; };
+		5EEB8DD521239FA9009070DE /* GenericModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E93CD962122345D002F3D0E /* GenericModels.swift */; };
+		5EEB8DD621239FB0009070DE /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E93CDA9212295D3002F3D0E /* AppModel.swift */; };
+		5EEB8DD82123B41B009070DE /* AccountApiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEB8DD72123B41B009070DE /* AccountApiTests.swift */; };
+		5EEB8DDA2123B5D6009070DE /* Accounts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEB8DD92123B5D6009070DE /* Accounts.swift */; };
+		5EEB8DDB2123B69E009070DE /* Accounts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEB8DD92123B5D6009070DE /* Accounts.swift */; };
+		5EEB8DDD2123BC39009070DE /* AccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEB8DDC2123BC39009070DE /* AccountModel.swift */; };
+		5EEB8DDE2123BC39009070DE /* AccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEB8DDC2123BC39009070DE /* AccountModel.swift */; };
+		5EEB8DE02123BD5A009070DE /* AccountModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEB8DDF2123BD5A009070DE /* AccountModelTests.swift */; };
+		5EEB8DE22124F1CC009070DE /* StatusModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEB8DE12124F1CC009070DE /* StatusModelTests.swift */; };
+		5EEB8DE42124F301009070DE /* StatusModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEB8DE32124F301009070DE /* StatusModel.swift */; };
+		5EEB8DE52124F301009070DE /* StatusModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEB8DE32124F301009070DE /* StatusModel.swift */; };
+		5EEB8DE72124F3E8009070DE /* Timelines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEB8DE62124F3E8009070DE /* Timelines.swift */; };
+		5EEB8DE82124F3E8009070DE /* Timelines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEB8DE62124F3E8009070DE /* Timelines.swift */; };
+		5EEB8DEA2124F584009070DE /* TimelinesApiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEB8DE92124F584009070DE /* TimelinesApiTests.swift */; };
 		A0AA481753F95C4C5DBBAC5E /* Pods_StegoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFFCEF864242138EDBD716B3 /* Pods_StegoTests.framework */; };
 		A258301F4DC54DAC14FDAB31 /* Pods_StegoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0CA38C2405C63221052D3CC /* Pods_StegoUITests.framework */; };
 		FA39B94374A4C469167CB980 /* Pods_Stego.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DE28E31444603801FBD03F0 /* Pods_Stego.framework */; };
@@ -90,6 +107,15 @@
 		5E93CDA021223830002F3D0E /* AccessModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessModel.swift; sourceTree = "<group>"; };
 		5E93CDA4212280B0002F3D0E /* OauthApiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OauthApiTests.swift; sourceTree = "<group>"; };
 		5E93CDA9212295D3002F3D0E /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
+		5EEB8DD2212397E1009070DE /* ApiEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiEndpoint.swift; sourceTree = "<group>"; };
+		5EEB8DD72123B41B009070DE /* AccountApiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountApiTests.swift; sourceTree = "<group>"; };
+		5EEB8DD92123B5D6009070DE /* Accounts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Accounts.swift; sourceTree = "<group>"; };
+		5EEB8DDC2123BC39009070DE /* AccountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountModel.swift; sourceTree = "<group>"; };
+		5EEB8DDF2123BD5A009070DE /* AccountModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountModelTests.swift; sourceTree = "<group>"; };
+		5EEB8DE12124F1CC009070DE /* StatusModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusModelTests.swift; sourceTree = "<group>"; };
+		5EEB8DE32124F301009070DE /* StatusModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusModel.swift; sourceTree = "<group>"; };
+		5EEB8DE62124F3E8009070DE /* Timelines.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timelines.swift; sourceTree = "<group>"; };
+		5EEB8DE92124F584009070DE /* TimelinesApiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelinesApiTests.swift; sourceTree = "<group>"; };
 		689905337702E6E0696CFFFA /* Pods-StegoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StegoUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-StegoUITests/Pods-StegoUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		6DE28E31444603801FBD03F0 /* Pods_Stego.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Stego.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		86840EF3649A60F737BCB915 /* Pods-Stego.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stego.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Stego/Pods-Stego.debug.xcconfig"; sourceTree = "<group>"; };
@@ -167,8 +193,9 @@
 		5E64DE992120F81500CFADAC /* StegoTests */ = {
 			isa = PBXGroup;
 			children = (
+				5EEB8DEB21250E29009070DE /* Utility Tests */,
 				5E93CDA321228069002F3D0E /* Api Tests */,
-				5E93CD9B21223538002F3D0E /* ModelTests */,
+				5E93CD9B21223538002F3D0E /* Model Tests */,
 				5E64DE9A2120F81500CFADAC /* StegoTests.swift */,
 				5E64DE9C2120F81500CFADAC /* Info.plist */,
 				5E93CD9C2122372B002F3D0E /* XCTExtensions.swift */,
@@ -191,6 +218,7 @@
 				5E93CDA6212280D3002F3D0E /* Api Endpoints */,
 				5E93CD9F21223817002F3D0E /* Models */,
 				5E64DEB621210BFD00CFADAC /* Api.swift */,
+				5EEB8DD2212397E1009070DE /* ApiEndpoint.swift */,
 				5E93CD9021222ECE002F3D0E /* ApiError.swift */,
 				5E64DEC22121125800CFADAC /* Token.swift */,
 			);
@@ -211,12 +239,14 @@
 			path = Utiities;
 			sourceTree = "<group>";
 		};
-		5E93CD9B21223538002F3D0E /* ModelTests */ = {
+		5E93CD9B21223538002F3D0E /* Model Tests */ = {
 			isa = PBXGroup;
 			children = (
 				5E93CD9921223533002F3D0E /* AccessModelTests.swift */,
+				5EEB8DDF2123BD5A009070DE /* AccountModelTests.swift */,
+				5EEB8DE12124F1CC009070DE /* StatusModelTests.swift */,
 			);
-			path = ModelTests;
+			path = "Model Tests";
 			sourceTree = "<group>";
 		};
 		5E93CD9F21223817002F3D0E /* Models */ = {
@@ -225,6 +255,8 @@
 				5E93CD962122345D002F3D0E /* GenericModels.swift */,
 				5E93CDA021223830002F3D0E /* AccessModel.swift */,
 				5E93CDA9212295D3002F3D0E /* AppModel.swift */,
+				5EEB8DDC2123BC39009070DE /* AccountModel.swift */,
+				5EEB8DE32124F301009070DE /* StatusModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -233,6 +265,8 @@
 			isa = PBXGroup;
 			children = (
 				5E93CDA4212280B0002F3D0E /* OauthApiTests.swift */,
+				5EEB8DD72123B41B009070DE /* AccountApiTests.swift */,
+				5EEB8DE92124F584009070DE /* TimelinesApiTests.swift */,
 			);
 			path = "Api Tests";
 			sourceTree = "<group>";
@@ -242,8 +276,17 @@
 			children = (
 				5E64DEB42120FE9200CFADAC /* App.swift */,
 				5E64DEC62121354100CFADAC /* Oauth.swift */,
+				5EEB8DD92123B5D6009070DE /* Accounts.swift */,
+				5EEB8DE62124F3E8009070DE /* Timelines.swift */,
 			);
 			path = "Api Endpoints";
+			sourceTree = "<group>";
+		};
+		5EEB8DEB21250E29009070DE /* Utility Tests */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Utility Tests";
 			sourceTree = "<group>";
 		};
 		8F3505E0E2BC1901721CFA82 /* Frameworks */ = {
@@ -483,22 +526,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5EEB8DE72124F3E8009070DE /* Timelines.swift in Sources */,
 				5E64DEC32121125800CFADAC /* Token.swift in Sources */,
 				5E64DE882120F81300CFADAC /* ViewController.swift in Sources */,
 				5E93CD93212233A5002F3D0E /* Log.swift in Sources */,
+				5EEB8DE42124F301009070DE /* StatusModel.swift in Sources */,
 				5E64DEB52120FE9200CFADAC /* App.swift in Sources */,
 				5E64DEC121210CBB00CFADAC /* Enum.swift in Sources */,
+				5EEB8DDD2123BC39009070DE /* AccountModel.swift in Sources */,
 				5E93CD95212233EC002F3D0E /* Assert.swift in Sources */,
 				5E64DEB721210BFD00CFADAC /* Api.swift in Sources */,
 				5E64DEC52121322F00CFADAC /* URL.swift in Sources */,
 				5E64DEBD21210C9B00CFADAC /* Array.swift in Sources */,
 				5E64DEBF21210CAB00CFADAC /* Result.swift in Sources */,
+				5EEB8DD3212397E1009070DE /* ApiEndpoint.swift in Sources */,
 				5E93CDAA212295D3002F3D0E /* AppModel.swift in Sources */,
 				5E64DEBA21210C1800CFADAC /* Decodable.swift in Sources */,
 				5E93CD9121222ECE002F3D0E /* ApiError.swift in Sources */,
 				5E64DEC72121354100CFADAC /* Oauth.swift in Sources */,
 				5E64DE862120F81300CFADAC /* AppDelegate.swift in Sources */,
 				5E93CD972122345D002F3D0E /* GenericModels.swift in Sources */,
+				5EEB8DDA2123B5D6009070DE /* Accounts.swift in Sources */,
 				5E93CDA121223830002F3D0E /* AccessModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -508,11 +556,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				5E93CDA5212280B0002F3D0E /* OauthApiTests.swift in Sources */,
+				5EEB8DE52124F301009070DE /* StatusModel.swift in Sources */,
+				5EEB8DE02123BD5A009070DE /* AccountModelTests.swift in Sources */,
 				5E93CD9A21223533002F3D0E /* AccessModelTests.swift in Sources */,
 				5E93CDA221223850002F3D0E /* AccessModel.swift in Sources */,
+				5EEB8DD621239FB0009070DE /* AppModel.swift in Sources */,
+				5EEB8DD82123B41B009070DE /* AccountApiTests.swift in Sources */,
+				5EEB8DDB2123B69E009070DE /* Accounts.swift in Sources */,
+				5EEB8DD121239765009070DE /* Oauth.swift in Sources */,
 				5E93CD9D2122372B002F3D0E /* XCTExtensions.swift in Sources */,
 				5E64DE9B2120F81500CFADAC /* StegoTests.swift in Sources */,
 				5E93CD9E21223767002F3D0E /* Decodable.swift in Sources */,
+				5EEB8DDE2123BC39009070DE /* AccountModel.swift in Sources */,
+				5EEB8DD421239826009070DE /* ApiEndpoint.swift in Sources */,
+				5EEB8DE22124F1CC009070DE /* StatusModelTests.swift in Sources */,
+				5EEB8DEA2124F584009070DE /* TimelinesApiTests.swift in Sources */,
+				5EEB8DE82124F3E8009070DE /* Timelines.swift in Sources */,
+				5EEB8DD521239FA9009070DE /* GenericModels.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,14 +1,14 @@
 //
-//  OauthApiTests.swift
+//  TimelinesApiTests.swift
 //  StegoTests
 //
-//  Created by George Sealy on 14/08/18.
+//  Created by George Sealy on 16/08/18.
 //  Copyright © 2018 George Sealy. All rights reserved.
 //
 
 import XCTest
 
-class OauthApiTests: XCTestCase {
+class TimelinesApiTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
@@ -20,8 +20,15 @@ class OauthApiTests: XCTestCase {
         super.tearDown()
     }
     
-    func testReturnTypes() {
-        XCTAssert(Oauth.accessToken(clientId: "A", clientSecret: "B", code: "C", redirectUri: "D").resultType == AccessModel.self)
+    func testVerifyCredentialsRoute() {
+        
+        let endPoint = Timelines.home
+        
+        XCTAssertEqual(endPoint.route.method, .get)
+        XCTAssertEqual(endPoint.route.path, "timelines/home")
+        XCTAssert(endPoint.route.parameters.isEmpty)
+        XCTAssert(endPoint.resultType == [StatusModel].self)
+
     }
     
 }

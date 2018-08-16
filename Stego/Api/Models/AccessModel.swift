@@ -13,11 +13,11 @@ import Foundation
 //"scope":"read write follow",
 //"created_at":1534196895
 
-public enum DecodingError: Error {
-
-    case jsonDecodingFailed
-
-}
+//public enum DecodingError: Error {
+//
+//    case jsonDecodingFailed
+//
+//}
 
 struct AccessModel: Decodable {
     
