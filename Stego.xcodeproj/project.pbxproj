@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		5E64DE862120F81300CFADAC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E64DE852120F81300CFADAC /* AppDelegate.swift */; };
-		5E64DE882120F81300CFADAC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E64DE872120F81300CFADAC /* ViewController.swift */; };
-		5E64DE8B2120F81300CFADAC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E64DE892120F81300CFADAC /* Main.storyboard */; };
 		5E64DE8D2120F81500CFADAC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E64DE8C2120F81500CFADAC /* Assets.xcassets */; };
 		5E64DE902120F81500CFADAC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E64DE8E2120F81500CFADAC /* LaunchScreen.storyboard */; };
 		5E64DE9B2120F81500CFADAC /* StegoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E64DE9A2120F81500CFADAC /* StegoTests.swift */; };
@@ -51,6 +49,11 @@
 		5EEB8DE72124F3E8009070DE /* Timelines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEB8DE62124F3E8009070DE /* Timelines.swift */; };
 		5EEB8DE82124F3E8009070DE /* Timelines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEB8DE62124F3E8009070DE /* Timelines.swift */; };
 		5EEB8DEA2124F584009070DE /* TimelinesApiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEB8DE92124F584009070DE /* TimelinesApiTests.swift */; };
+		5EEB8DED21250EA2009070DE /* HtmlToAttributedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEB8DEC21250EA2009070DE /* HtmlToAttributedTests.swift */; };
+		5EEB8DEF21250F9B009070DE /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEB8DEE21250F9B009070DE /* String.swift */; };
+		5EEB8DF021250F9B009070DE /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEB8DEE21250F9B009070DE /* String.swift */; };
+		5EEB8DF3212517EC009070DE /* Registration.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5EEB8DF2212517EC009070DE /* Registration.storyboard */; };
+		5EEB8DF521251835009070DE /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEB8DF421251835009070DE /* RegistrationViewController.swift */; };
 		A0AA481753F95C4C5DBBAC5E /* Pods_StegoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFFCEF864242138EDBD716B3 /* Pods_StegoTests.framework */; };
 		A258301F4DC54DAC14FDAB31 /* Pods_StegoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0CA38C2405C63221052D3CC /* Pods_StegoUITests.framework */; };
 		FA39B94374A4C469167CB980 /* Pods_Stego.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DE28E31444603801FBD03F0 /* Pods_Stego.framework */; };
@@ -78,8 +81,6 @@
 		411DA289233FB167A59459EE /* Pods-StegoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StegoUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-StegoUITests/Pods-StegoUITests.release.xcconfig"; sourceTree = "<group>"; };
 		5E64DE822120F81300CFADAC /* Stego.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stego.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E64DE852120F81300CFADAC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		5E64DE872120F81300CFADAC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		5E64DE8A2120F81300CFADAC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5E64DE8C2120F81500CFADAC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5E64DE8F2120F81500CFADAC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5E64DE912120F81500CFADAC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -116,6 +117,10 @@
 		5EEB8DE32124F301009070DE /* StatusModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusModel.swift; sourceTree = "<group>"; };
 		5EEB8DE62124F3E8009070DE /* Timelines.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timelines.swift; sourceTree = "<group>"; };
 		5EEB8DE92124F584009070DE /* TimelinesApiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelinesApiTests.swift; sourceTree = "<group>"; };
+		5EEB8DEC21250EA2009070DE /* HtmlToAttributedTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HtmlToAttributedTests.swift; sourceTree = "<group>"; };
+		5EEB8DEE21250F9B009070DE /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		5EEB8DF2212517EC009070DE /* Registration.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Registration.storyboard; sourceTree = "<group>"; };
+		5EEB8DF421251835009070DE /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		689905337702E6E0696CFFFA /* Pods-StegoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StegoUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-StegoUITests/Pods-StegoUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		6DE28E31444603801FBD03F0 /* Pods_Stego.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Stego.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		86840EF3649A60F737BCB915 /* Pods-Stego.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stego.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Stego/Pods-Stego.debug.xcconfig"; sourceTree = "<group>"; };
@@ -178,11 +183,10 @@
 		5E64DE842120F81300CFADAC /* Stego */ = {
 			isa = PBXGroup;
 			children = (
+				5EEB8DF1212517AC009070DE /* Registration */,
 				5E64DEB821210C0400CFADAC /* Utiities */,
 				5E64DEB32120FE4F00CFADAC /* Api */,
 				5E64DE852120F81300CFADAC /* AppDelegate.swift */,
-				5E64DE872120F81300CFADAC /* ViewController.swift */,
-				5E64DE892120F81300CFADAC /* Main.storyboard */,
 				5E64DE8C2120F81500CFADAC /* Assets.xcassets */,
 				5E64DE8E2120F81500CFADAC /* LaunchScreen.storyboard */,
 				5E64DE912120F81500CFADAC /* Info.plist */,
@@ -235,6 +239,7 @@
 				5E93CD92212233A5002F3D0E /* Log.swift */,
 				5E64DEBE21210CAB00CFADAC /* Result.swift */,
 				5E64DEC42121322F00CFADAC /* URL.swift */,
+				5EEB8DEE21250F9B009070DE /* String.swift */,
 			);
 			path = Utiities;
 			sourceTree = "<group>";
@@ -285,8 +290,18 @@
 		5EEB8DEB21250E29009070DE /* Utility Tests */ = {
 			isa = PBXGroup;
 			children = (
+				5EEB8DEC21250EA2009070DE /* HtmlToAttributedTests.swift */,
 			);
 			path = "Utility Tests";
+			sourceTree = "<group>";
+		};
+		5EEB8DF1212517AC009070DE /* Registration */ = {
+			isa = PBXGroup;
+			children = (
+				5EEB8DF2212517EC009070DE /* Registration.storyboard */,
+				5EEB8DF421251835009070DE /* RegistrationViewController.swift */,
+			);
+			path = Registration;
 			sourceTree = "<group>";
 		};
 		8F3505E0E2BC1901721CFA82 /* Frameworks */ = {
@@ -421,8 +436,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				5E64DE902120F81500CFADAC /* LaunchScreen.storyboard in Resources */,
+				5EEB8DF3212517EC009070DE /* Registration.storyboard in Resources */,
 				5E64DE8D2120F81500CFADAC /* Assets.xcassets in Resources */,
-				5E64DE8B2120F81300CFADAC /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -528,7 +543,7 @@
 			files = (
 				5EEB8DE72124F3E8009070DE /* Timelines.swift in Sources */,
 				5E64DEC32121125800CFADAC /* Token.swift in Sources */,
-				5E64DE882120F81300CFADAC /* ViewController.swift in Sources */,
+				5EEB8DEF21250F9B009070DE /* String.swift in Sources */,
 				5E93CD93212233A5002F3D0E /* Log.swift in Sources */,
 				5EEB8DE42124F301009070DE /* StatusModel.swift in Sources */,
 				5E64DEB52120FE9200CFADAC /* App.swift in Sources */,
@@ -543,6 +558,7 @@
 				5E93CDAA212295D3002F3D0E /* AppModel.swift in Sources */,
 				5E64DEBA21210C1800CFADAC /* Decodable.swift in Sources */,
 				5E93CD9121222ECE002F3D0E /* ApiError.swift in Sources */,
+				5EEB8DF521251835009070DE /* RegistrationViewController.swift in Sources */,
 				5E64DEC72121354100CFADAC /* Oauth.swift in Sources */,
 				5E64DE862120F81300CFADAC /* AppDelegate.swift in Sources */,
 				5E93CD972122345D002F3D0E /* GenericModels.swift in Sources */,
@@ -557,6 +573,7 @@
 			files = (
 				5E93CDA5212280B0002F3D0E /* OauthApiTests.swift in Sources */,
 				5EEB8DE52124F301009070DE /* StatusModel.swift in Sources */,
+				5EEB8DF021250F9B009070DE /* String.swift in Sources */,
 				5EEB8DE02123BD5A009070DE /* AccountModelTests.swift in Sources */,
 				5E93CD9A21223533002F3D0E /* AccessModelTests.swift in Sources */,
 				5E93CDA221223850002F3D0E /* AccessModel.swift in Sources */,
@@ -573,6 +590,7 @@
 				5EEB8DEA2124F584009070DE /* TimelinesApiTests.swift in Sources */,
 				5EEB8DE82124F3E8009070DE /* Timelines.swift in Sources */,
 				5EEB8DD521239FA9009070DE /* GenericModels.swift in Sources */,
+				5EEB8DED21250EA2009070DE /* HtmlToAttributedTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -600,14 +618,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		5E64DE892120F81300CFADAC /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				5E64DE8A2120F81300CFADAC /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		5E64DE8E2120F81500CFADAC /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
