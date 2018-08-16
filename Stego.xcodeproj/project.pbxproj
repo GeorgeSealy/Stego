@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5E0BC61B21251BD300BE1AD2 /* Timeline.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E0BC61A21251BD300BE1AD2 /* Timeline.storyboard */; };
+		5E0BC61D21251BFD00BE1AD2 /* TimelineTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0BC61C21251BFD00BE1AD2 /* TimelineTableViewController.swift */; };
+		5E0BC61F21251CD100BE1AD2 /* TimelineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0BC61E21251CD100BE1AD2 /* TimelineTableViewCell.swift */; };
 		5E64DE862120F81300CFADAC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E64DE852120F81300CFADAC /* AppDelegate.swift */; };
 		5E64DE8D2120F81500CFADAC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E64DE8C2120F81500CFADAC /* Assets.xcassets */; };
 		5E64DE902120F81500CFADAC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E64DE8E2120F81500CFADAC /* LaunchScreen.storyboard */; };
@@ -79,6 +82,9 @@
 /* Begin PBXFileReference section */
 		1C887BBE403EA9F7C0F451F1 /* Pods-StegoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StegoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-StegoTests/Pods-StegoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		411DA289233FB167A59459EE /* Pods-StegoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StegoUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-StegoUITests/Pods-StegoUITests.release.xcconfig"; sourceTree = "<group>"; };
+		5E0BC61A21251BD300BE1AD2 /* Timeline.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Timeline.storyboard; sourceTree = "<group>"; };
+		5E0BC61C21251BFD00BE1AD2 /* TimelineTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineTableViewController.swift; sourceTree = "<group>"; };
+		5E0BC61E21251CD100BE1AD2 /* TimelineTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineTableViewCell.swift; sourceTree = "<group>"; };
 		5E64DE822120F81300CFADAC /* Stego.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stego.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E64DE852120F81300CFADAC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5E64DE8C2120F81500CFADAC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -158,6 +164,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5E0BC61921251BBD00BE1AD2 /* Timeline */ = {
+			isa = PBXGroup;
+			children = (
+				5E0BC61A21251BD300BE1AD2 /* Timeline.storyboard */,
+				5E0BC61C21251BFD00BE1AD2 /* TimelineTableViewController.swift */,
+				5E0BC61E21251CD100BE1AD2 /* TimelineTableViewCell.swift */,
+			);
+			path = Timeline;
+			sourceTree = "<group>";
+		};
 		5E64DE792120F81300CFADAC = {
 			isa = PBXGroup;
 			children = (
@@ -183,7 +199,7 @@
 		5E64DE842120F81300CFADAC /* Stego */ = {
 			isa = PBXGroup;
 			children = (
-				5EEB8DF1212517AC009070DE /* Registration */,
+				5EEB8DF821251B66009070DE /* Views */,
 				5E64DEB821210C0400CFADAC /* Utiities */,
 				5E64DEB32120FE4F00CFADAC /* Api */,
 				5E64DE852120F81300CFADAC /* AppDelegate.swift */,
@@ -302,6 +318,15 @@
 				5EEB8DF421251835009070DE /* RegistrationViewController.swift */,
 			);
 			path = Registration;
+			sourceTree = "<group>";
+		};
+		5EEB8DF821251B66009070DE /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5E0BC61921251BBD00BE1AD2 /* Timeline */,
+				5EEB8DF1212517AC009070DE /* Registration */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		8F3505E0E2BC1901721CFA82 /* Frameworks */ = {
@@ -436,6 +461,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5E64DE902120F81500CFADAC /* LaunchScreen.storyboard in Resources */,
+				5E0BC61B21251BD300BE1AD2 /* Timeline.storyboard in Resources */,
 				5EEB8DF3212517EC009070DE /* Registration.storyboard in Resources */,
 				5E64DE8D2120F81500CFADAC /* Assets.xcassets in Resources */,
 			);
@@ -543,6 +569,7 @@
 			files = (
 				5EEB8DE72124F3E8009070DE /* Timelines.swift in Sources */,
 				5E64DEC32121125800CFADAC /* Token.swift in Sources */,
+				5E0BC61F21251CD100BE1AD2 /* TimelineTableViewCell.swift in Sources */,
 				5EEB8DEF21250F9B009070DE /* String.swift in Sources */,
 				5E93CD93212233A5002F3D0E /* Log.swift in Sources */,
 				5EEB8DE42124F301009070DE /* StatusModel.swift in Sources */,
@@ -563,6 +590,7 @@
 				5E64DE862120F81300CFADAC /* AppDelegate.swift in Sources */,
 				5E93CD972122345D002F3D0E /* GenericModels.swift in Sources */,
 				5EEB8DDA2123B5D6009070DE /* Accounts.swift in Sources */,
+				5E0BC61D21251BFD00BE1AD2 /* TimelineTableViewController.swift in Sources */,
 				5E93CDA121223830002F3D0E /* AccessModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

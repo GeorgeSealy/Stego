@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="808-WS-rnH">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Timeline Table View Controller-->
+        <scene sceneID="M1f-Hx-vhu">
+            <objects>
+                <tableViewController id="808-WS-rnH" customClass="TimelineTableViewController" customModule="Stego" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" id="cmw-r6-ZBr">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="83k-kB-f7l" customClass="TimelineTableViewCell" customModule="Stego" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="83k-kB-f7l" id="5Nc-aZ-Adh">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6gs-QQ-flZ">
+                                            <rect key="frame" x="16" y="11" width="44" height="21"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                            <color key="textColor" name="ForegroundActive"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yPJ-O2-OJR">
+                                            <rect key="frame" x="16" y="-49" width="343" height="118"/>
+                                            <string key="text">Bacon ipsum dolor amet short loin short ribs flank meatloaf, ham hock tenderloin doner. Pork corned beef cow, landjaeger ribeye flank ham hock hamburger frankfurter tenderloin. Flank shank ground round swine rump. Brisket pork strip steak spare ribs ball tip.</string>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                            <color key="textColor" name="ForegroundActive"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="6gs-QQ-flZ" firstAttribute="top" secondItem="yPJ-O2-OJR" secondAttribute="bottom" constant="4" id="HDU-Z7-Zhj"/>
+                                        <constraint firstItem="yPJ-O2-OJR" firstAttribute="leading" secondItem="6gs-QQ-flZ" secondAttribute="leading" id="SPT-rI-1Le"/>
+                                        <constraint firstItem="6gs-QQ-flZ" firstAttribute="leading" secondItem="5Nc-aZ-Adh" secondAttribute="leadingMargin" id="XxA-7W-fGv"/>
+                                        <constraint firstItem="6gs-QQ-flZ" firstAttribute="top" secondItem="5Nc-aZ-Adh" secondAttribute="topMargin" id="Zou-LW-MD2"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="yPJ-O2-OJR" secondAttribute="trailing" id="icI-qL-84x"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="yPJ-O2-OJR" secondAttribute="bottom" id="oBr-Nb-5l4"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" name="Background"/>
+                                <connections>
+                                    <outlet property="contentLabel" destination="yPJ-O2-OJR" id="aHe-ct-oEc"/>
+                                    <outlet property="userLabel" destination="6gs-QQ-flZ" id="6nx-uK-p07"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="808-WS-rnH" id="pnj-Ht-hjC"/>
+                            <outlet property="delegate" destination="808-WS-rnH" id="XCE-Cu-cf4"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ox4-1b-EYu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="95" y="204"/>
+        </scene>
+    </scenes>
+    <resources>
+        <namedColor name="Background">
+            <color red="0.26499998569488525" green="0.35499998927116394" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="ForegroundActive">
+            <color red="0.97299998998641968" green="1" blue="0.74099999666213989" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
