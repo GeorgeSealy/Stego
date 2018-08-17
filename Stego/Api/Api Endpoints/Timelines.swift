@@ -42,7 +42,7 @@ enum Timelines: ApiEndpoint {
         
         switch self {
         case .home:
-            return [StatusModel].self
+            return [Status].self
         }
     }
 }

@@ -145,7 +145,8 @@ class Api {
     
     static private func getHomeTimeline() {
         
-        Api.call(Timelines.home) { (result: Result<[StatusModel]>) in
+//        Api.call(Timelines.home) { (result: Result<[StatusModel]>) in
+        Api.call(Timelines.home) { (result: Result<[Status]>) in
             switch result {
                 
             case .success(let statuses):
@@ -154,7 +155,7 @@ class Api {
                 for status in statuses {
                     Log("\(type(of: self)) - \(#function):   ")
                     Log("\(type(of: self)) - \(#function):   \(status.id)")
-                    Log("\(type(of: self)) - \(#function):   \(status.account?.displayName)")
+//                    Log("\(type(of: self)) - \(#function):   \(status.account?.displayName)")
                     Log("\(type(of: self)) - \(#function):   \(status.content)")
                 }
 

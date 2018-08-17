@@ -35,6 +35,7 @@
 		5E93CDA221223850002F3D0E /* AccessModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E93CDA021223830002F3D0E /* AccessModel.swift */; };
 		5E93CDA5212280B0002F3D0E /* OauthApiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E93CDA4212280B0002F3D0E /* OauthApiTests.swift */; };
 		5E93CDAA212295D3002F3D0E /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E93CDA9212295D3002F3D0E /* AppModel.swift */; };
+		5EA0A1672126607900C04C1E /* DataModels.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5EA0A1652126607900C04C1E /* DataModels.xcdatamodeld */; };
 		5EEB8DD121239765009070DE /* Oauth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E64DEC62121354100CFADAC /* Oauth.swift */; };
 		5EEB8DD3212397E1009070DE /* ApiEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEB8DD2212397E1009070DE /* ApiEndpoint.swift */; };
 		5EEB8DD421239826009070DE /* ApiEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEB8DD2212397E1009070DE /* ApiEndpoint.swift */; };
@@ -114,6 +115,9 @@
 		5E93CDA021223830002F3D0E /* AccessModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessModel.swift; sourceTree = "<group>"; };
 		5E93CDA4212280B0002F3D0E /* OauthApiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OauthApiTests.swift; sourceTree = "<group>"; };
 		5E93CDA9212295D3002F3D0E /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
+		5EA0A1662126607900C04C1E /* DataModels.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModels.xcdatamodel; sourceTree = "<group>"; };
+		5EA0A16D212666B900C04C1E /* Status+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Status+CoreDataClass.swift"; sourceTree = "<group>"; };
+		5EA0A16E212666B900C04C1E /* Status+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Status+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		5EEB8DD2212397E1009070DE /* ApiEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiEndpoint.swift; sourceTree = "<group>"; };
 		5EEB8DD72123B41B009070DE /* AccountApiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountApiTests.swift; sourceTree = "<group>"; };
 		5EEB8DD92123B5D6009070DE /* Accounts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Accounts.swift; sourceTree = "<group>"; };
@@ -199,6 +203,7 @@
 		5E64DE842120F81300CFADAC /* Stego */ = {
 			isa = PBXGroup;
 			children = (
+				5EA0A1682126628D00C04C1E /* DataModels */,
 				5EEB8DF821251B66009070DE /* Views */,
 				5E64DEB821210C0400CFADAC /* Utiities */,
 				5E64DEB32120FE4F00CFADAC /* Api */,
@@ -301,6 +306,16 @@
 				5EEB8DE62124F3E8009070DE /* Timelines.swift */,
 			);
 			path = "Api Endpoints";
+			sourceTree = "<group>";
+		};
+		5EA0A1682126628D00C04C1E /* DataModels */ = {
+			isa = PBXGroup;
+			children = (
+				5EA0A16D212666B900C04C1E /* Status+CoreDataClass.swift */,
+				5EA0A16E212666B900C04C1E /* Status+CoreDataProperties.swift */,
+				5EA0A1652126607900C04C1E /* DataModels.xcdatamodeld */,
+			);
+			path = DataModels;
 			sourceTree = "<group>";
 		};
 		5EEB8DEB21250E29009070DE /* Utility Tests */ = {
@@ -592,6 +607,7 @@
 				5EEB8DDA2123B5D6009070DE /* Accounts.swift in Sources */,
 				5E0BC61D21251BFD00BE1AD2 /* TimelineTableViewController.swift in Sources */,
 				5E93CDA121223830002F3D0E /* AccessModel.swift in Sources */,
+				5EA0A1672126607900C04C1E /* DataModels.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -935,6 +951,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		5EA0A1652126607900C04C1E /* DataModels.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				5EA0A1662126607900C04C1E /* DataModels.xcdatamodel */,
+			);
+			currentVersion = 5EA0A1662126607900C04C1E /* DataModels.xcdatamodel */;
+			path = DataModels.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 5E64DE7A2120F81300CFADAC /* Project object */;
 }
