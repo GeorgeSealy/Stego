@@ -9,11 +9,14 @@
 import Foundation
 import CoreData
 
-@objc(Status)
-public class Status: NSManagedObject {
+public extension CodingUserInfoKey {
+    // Helper property to retrieve the context
+    static let managedObjectContext = CodingUserInfoKey(rawValue: "managedObjectContext")
 }
 
-public extension Status: Decodable {
+@objc(Status)
+public class Status: NSManagedObject, Codable {
+
     private enum CodingKey: String, Swift.CodingKey {
         case id
         case createdAt = "created_at"
@@ -22,17 +25,29 @@ public extension Status: Decodable {
         case content
     }
     
-    public init(from decoder: Decoder) throws {
+    required convenience public init(from decoder: Decoder) throws {
+        
+        guard let codingUserInfoKeyManagedObjectContext = CodingUserInfoKey.managedObjectContext,
+            let managedObjectContext = decoder.userInfo[codingUserInfoKeyManagedObjectContext] as? NSManagedObjectContext,
+            let entity = NSEntityDescription.entity(forEntityName: "User", in: managedObjectContext) else {
+                
+                fatalError("No managed object context")
+                
+        }
+        
+        self.init(entity: entity, insertInto: managedObjectContext)
+
         let container = try decoder.container(keyedBy: CodingKey.self)
         
-        id = try container.decode(String.self, forKey: .id)
+        id = try container.decodeIfPresent(String.self, forKey: .id)
         
-        let createdAtTimestamp = try container.decode(Int.self, forKey: .createdAt)
-        createdAt = Date(timeIntervalSince1970: TimeInterval(createdAtTimestamp))
+        if let createdAtTimestamp = try container.decodeIfPresent(Int.self, forKey: .createdAt) {
+            createdAt = NSDate(timeIntervalSince1970: TimeInterval(createdAtTimestamp))
+        }
         
-        url = try container.decode(URL.self, forKey: .content)
+        url = try container.decodeIfPresent(URL.self, forKey: .content)
         //        account = try? container.decode(AccountModel.self, forKey: .account)
-        content = try container.decode(String.self, forKey: .content)
+        content = try container.decodeIfPresent(String.self, forKey: .content)
     }
 
 }

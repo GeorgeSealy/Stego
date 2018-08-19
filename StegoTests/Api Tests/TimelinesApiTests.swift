@@ -27,7 +27,7 @@ class TimelinesApiTests: XCTestCase {
         XCTAssertEqual(endPoint.route.method, .get)
         XCTAssertEqual(endPoint.route.path, "timelines/home")
         XCTAssert(endPoint.route.parameters.isEmpty)
-        XCTAssert(endPoint.resultType == [StatusModel].self)
+        XCTAssert(endPoint.resultType == [Status].self)
 
     }
     

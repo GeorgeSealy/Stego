@@ -35,7 +35,12 @@
 		5E93CDA221223850002F3D0E /* AccessModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E93CDA021223830002F3D0E /* AccessModel.swift */; };
 		5E93CDA5212280B0002F3D0E /* OauthApiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E93CDA4212280B0002F3D0E /* OauthApiTests.swift */; };
 		5E93CDAA212295D3002F3D0E /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E93CDA9212295D3002F3D0E /* AppModel.swift */; };
-		5EA0A1672126607900C04C1E /* DataModels.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5EA0A1652126607900C04C1E /* DataModels.xcdatamodeld */; };
+		5E992B0E212680DF0010D6C4 /* DataModels.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5EA0A1652126607900C04C1E /* DataModels.xcdatamodeld */; };
+		5E992B0F212680DF0010D6C4 /* DataModels.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5EA0A1652126607900C04C1E /* DataModels.xcdatamodeld */; };
+		5EA0A16F21267B8200C04C1E /* Status+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA0A16E212666B900C04C1E /* Status+CoreDataProperties.swift */; };
+		5EA0A17021267B8300C04C1E /* Status+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA0A16E212666B900C04C1E /* Status+CoreDataProperties.swift */; };
+		5EA0A17121267BA000C04C1E /* Status+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA0A16D212666B900C04C1E /* Status+CoreDataClass.swift */; };
+		5EA0A17221267BA100C04C1E /* Status+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA0A16D212666B900C04C1E /* Status+CoreDataClass.swift */; };
 		5EEB8DD121239765009070DE /* Oauth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E64DEC62121354100CFADAC /* Oauth.swift */; };
 		5EEB8DD3212397E1009070DE /* ApiEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEB8DD2212397E1009070DE /* ApiEndpoint.swift */; };
 		5EEB8DD421239826009070DE /* ApiEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEB8DD2212397E1009070DE /* ApiEndpoint.swift */; };
@@ -48,8 +53,6 @@
 		5EEB8DDE2123BC39009070DE /* AccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEB8DDC2123BC39009070DE /* AccountModel.swift */; };
 		5EEB8DE02123BD5A009070DE /* AccountModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEB8DDF2123BD5A009070DE /* AccountModelTests.swift */; };
 		5EEB8DE22124F1CC009070DE /* StatusModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEB8DE12124F1CC009070DE /* StatusModelTests.swift */; };
-		5EEB8DE42124F301009070DE /* StatusModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEB8DE32124F301009070DE /* StatusModel.swift */; };
-		5EEB8DE52124F301009070DE /* StatusModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEB8DE32124F301009070DE /* StatusModel.swift */; };
 		5EEB8DE72124F3E8009070DE /* Timelines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEB8DE62124F3E8009070DE /* Timelines.swift */; };
 		5EEB8DE82124F3E8009070DE /* Timelines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEB8DE62124F3E8009070DE /* Timelines.swift */; };
 		5EEB8DEA2124F584009070DE /* TimelinesApiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEB8DE92124F584009070DE /* TimelinesApiTests.swift */; };
@@ -587,8 +590,8 @@
 				5E0BC61F21251CD100BE1AD2 /* TimelineTableViewCell.swift in Sources */,
 				5EEB8DEF21250F9B009070DE /* String.swift in Sources */,
 				5E93CD93212233A5002F3D0E /* Log.swift in Sources */,
-				5EEB8DE42124F301009070DE /* StatusModel.swift in Sources */,
 				5E64DEB52120FE9200CFADAC /* App.swift in Sources */,
+				5EA0A16F21267B8200C04C1E /* Status+CoreDataProperties.swift in Sources */,
 				5E64DEC121210CBB00CFADAC /* Enum.swift in Sources */,
 				5EEB8DDD2123BC39009070DE /* AccountModel.swift in Sources */,
 				5E93CD95212233EC002F3D0E /* Assert.swift in Sources */,
@@ -602,12 +605,13 @@
 				5E93CD9121222ECE002F3D0E /* ApiError.swift in Sources */,
 				5EEB8DF521251835009070DE /* RegistrationViewController.swift in Sources */,
 				5E64DEC72121354100CFADAC /* Oauth.swift in Sources */,
+				5E992B0E212680DF0010D6C4 /* DataModels.xcdatamodeld in Sources */,
 				5E64DE862120F81300CFADAC /* AppDelegate.swift in Sources */,
 				5E93CD972122345D002F3D0E /* GenericModels.swift in Sources */,
 				5EEB8DDA2123B5D6009070DE /* Accounts.swift in Sources */,
 				5E0BC61D21251BFD00BE1AD2 /* TimelineTableViewController.swift in Sources */,
+				5EA0A17121267BA000C04C1E /* Status+CoreDataClass.swift in Sources */,
 				5E93CDA121223830002F3D0E /* AccessModel.swift in Sources */,
-				5EA0A1672126607900C04C1E /* DataModels.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -616,17 +620,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				5E93CDA5212280B0002F3D0E /* OauthApiTests.swift in Sources */,
-				5EEB8DE52124F301009070DE /* StatusModel.swift in Sources */,
 				5EEB8DF021250F9B009070DE /* String.swift in Sources */,
 				5EEB8DE02123BD5A009070DE /* AccountModelTests.swift in Sources */,
 				5E93CD9A21223533002F3D0E /* AccessModelTests.swift in Sources */,
+				5E992B0F212680DF0010D6C4 /* DataModels.xcdatamodeld in Sources */,
 				5E93CDA221223850002F3D0E /* AccessModel.swift in Sources */,
 				5EEB8DD621239FB0009070DE /* AppModel.swift in Sources */,
 				5EEB8DD82123B41B009070DE /* AccountApiTests.swift in Sources */,
 				5EEB8DDB2123B69E009070DE /* Accounts.swift in Sources */,
+				5EA0A17221267BA100C04C1E /* Status+CoreDataClass.swift in Sources */,
 				5EEB8DD121239765009070DE /* Oauth.swift in Sources */,
 				5E93CD9D2122372B002F3D0E /* XCTExtensions.swift in Sources */,
 				5E64DE9B2120F81500CFADAC /* StegoTests.swift in Sources */,
+				5EA0A17021267B8300C04C1E /* Status+CoreDataProperties.swift in Sources */,
 				5E93CD9E21223767002F3D0E /* Decodable.swift in Sources */,
 				5EEB8DDE2123BC39009070DE /* AccountModel.swift in Sources */,
 				5EEB8DD421239826009070DE /* ApiEndpoint.swift in Sources */,
