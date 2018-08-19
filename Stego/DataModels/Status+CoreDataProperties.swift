@@ -2,7 +2,7 @@
 //  Status+CoreDataProperties.swift
 //  
 //
-//  Created by George Sealy on 17/08/18.
+//  Created by George Sealy on 20/08/18.
 //
 //
 
@@ -16,9 +16,9 @@ extension Status {
         return NSFetchRequest<Status>(entityName: "Status")
     }
 
-    @NSManaged public var id: String?
     @NSManaged public var content: String?
     @NSManaged public var createdAt: NSDate?
+    @NSManaged public var id: String?
     @NSManaged public var url: URL?
 
 }

@@ -10,6 +10,8 @@
 		5E0BC61B21251BD300BE1AD2 /* Timeline.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E0BC61A21251BD300BE1AD2 /* Timeline.storyboard */; };
 		5E0BC61D21251BFD00BE1AD2 /* TimelineTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0BC61C21251BFD00BE1AD2 /* TimelineTableViewController.swift */; };
 		5E0BC61F21251CD100BE1AD2 /* TimelineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0BC61E21251CD100BE1AD2 /* TimelineTableViewCell.swift */; };
+		5E1566B1212A2C880086E427 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1566B0212A2C880086E427 /* Database.swift */; };
+		5E1566B2212A305A0086E427 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1566B0212A2C880086E427 /* Database.swift */; };
 		5E64DE862120F81300CFADAC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E64DE852120F81300CFADAC /* AppDelegate.swift */; };
 		5E64DE8D2120F81500CFADAC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E64DE8C2120F81500CFADAC /* Assets.xcassets */; };
 		5E64DE902120F81500CFADAC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E64DE8E2120F81500CFADAC /* LaunchScreen.storyboard */; };
@@ -89,6 +91,7 @@
 		5E0BC61A21251BD300BE1AD2 /* Timeline.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Timeline.storyboard; sourceTree = "<group>"; };
 		5E0BC61C21251BFD00BE1AD2 /* TimelineTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineTableViewController.swift; sourceTree = "<group>"; };
 		5E0BC61E21251CD100BE1AD2 /* TimelineTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineTableViewCell.swift; sourceTree = "<group>"; };
+		5E1566B0212A2C880086E427 /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		5E64DE822120F81300CFADAC /* Stego.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stego.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E64DE852120F81300CFADAC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5E64DE8C2120F81500CFADAC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -249,6 +252,7 @@
 				5EEB8DD2212397E1009070DE /* ApiEndpoint.swift */,
 				5E93CD9021222ECE002F3D0E /* ApiError.swift */,
 				5E64DEC22121125800CFADAC /* Token.swift */,
+				5E1566B0212A2C880086E427 /* Database.swift */,
 			);
 			path = Api;
 			sourceTree = "<group>";
@@ -611,6 +615,7 @@
 				5EEB8DDA2123B5D6009070DE /* Accounts.swift in Sources */,
 				5E0BC61D21251BFD00BE1AD2 /* TimelineTableViewController.swift in Sources */,
 				5EA0A17121267BA000C04C1E /* Status+CoreDataClass.swift in Sources */,
+				5E1566B1212A2C880086E427 /* Database.swift in Sources */,
 				5E93CDA121223830002F3D0E /* AccessModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -641,6 +646,7 @@
 				5EEB8DE82124F3E8009070DE /* Timelines.swift in Sources */,
 				5EEB8DD521239FA9009070DE /* GenericModels.swift in Sources */,
 				5EEB8DED21250EA2009070DE /* HtmlToAttributedTests.swift in Sources */,
+				5E1566B2212A305A0086E427 /* Database.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,18 +7,50 @@
 //
 
 import XCTest
+import CoreData
 
 class StatusModelTests: XCTestCase {
     
+    var decoder: AnyDecoder?
+    
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
 
+        let database = CoreDataDatabase()
+        
+        guard let databaseKey = CodingUserInfoKey.databaseKey else {
+            fatalError("Failed to retrieve managed object context")
+        }
+
+        let jsonDecoder = JSONDecoder()
+        jsonDecoder.userInfo[databaseKey] = database
+
+        decoder = jsonDecoder
     }
     
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
+    }
+
+    private func setUpInMemoryManagedObjectContext() -> NSManagedObjectContext {
+        
+        guard let managedObjectModel = NSManagedObjectModel.mergedModel(from: [Bundle.main]) else {
+            fatalError("Unable to load data models")
+        }
+        
+        let persistentStoreCoordinator = NSPersistentStoreCoordinator(managedObjectModel: managedObjectModel)
+        
+        do {
+            try persistentStoreCoordinator.addPersistentStore(ofType: NSInMemoryStoreType, configurationName: nil, at: nil, options: nil)
+        } catch {
+            print("Adding in-memory persistent store failed")
+        }
+        
+        let managedObjectContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
+        managedObjectContext.persistentStoreCoordinator = persistentStoreCoordinator
+        
+        return managedObjectContext
     }
     
     private func makeJsonData() -> Data {
@@ -63,9 +95,20 @@ class StatusModelTests: XCTestCase {
     
     func testStatusModel() {
         
+        guard let decoder = self.decoder else {
+            fatalError("No decoder")
+        }
         let jsonData = makeJsonData()
         
-        XCTAssertNoThrow(try jsonData.decoded()) { (model: Status) in
+//        let jsonDecoder = JSONDecoder()
+//        jsonDecoder.userInfo[codingUserInfoKeyManagedObjectContext] = managedObjectContext
+        
+//        let result: T = try data.decoded(using: jsonDecoder)
+//
+//        try managedObjectContext.save()
+
+        
+        XCTAssertNoThrow(try jsonData.decoded(using: decoder)) { (model: Status) in
             XCTAssertEqual(model.id, "123")
             XCTAssertEqual(model.content, "html")
 //            XCTAssertEqual(model.acct, "B")

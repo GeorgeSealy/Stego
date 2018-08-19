@@ -107,7 +107,7 @@ extension String {
 
         processed = processed.stringByDecodingHTMLEntities
         
-        var result = NSMutableAttributedString(string: processed)
+        let result = NSMutableAttributedString(string: processed)
         
         return result
     }

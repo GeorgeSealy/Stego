@@ -8,7 +8,7 @@
 
 import Foundation
 import Alamofire
-
+import CoreData
 
 struct AfApiRequest: ApiRequest {
     fileprivate var request: Request
@@ -27,6 +27,18 @@ class Api {
     static var app: AppModel?
     static var accessCode: String?
     static var accessToken: String?
+    
+    static let database = CoreDataDatabase()
+    
+//    static private(set) var managedObjectContext: NSManagedObjectContext?
+//
+//    static func initialize(managedObjectContext: NSManagedObjectContext? = setUpInMemoryManagedObjectContext()) {
+//        Api.managedObjectContext = managedObjectContext
+//    }
+
+    static func initialize() {
+        // TODO: (George) Can remove?
+    }
 
     static func register() {
         
@@ -176,6 +188,10 @@ class Api {
             return nil
         }
         
+//        guard let managedObjectContext = Api.managedObjectContext else {
+//            fatalError("Cannot call the api before it has been initialized.")
+//        }
+
         let route = endpoint.route
         let fullPath = route.isFullPath ? route.path : String(format: "%@%@%@", basePath, route.isApiCall ? "api/v1/" : "", route.path)
         
@@ -213,7 +229,17 @@ class Api {
                     return
                 }
                 
-                let result: T = try data.decoded()
+                guard let databaseKey = CodingUserInfoKey.databaseKey else {
+                    fatalError("Failed to retrieve managed object context")
+                }
+                
+                let jsonDecoder = JSONDecoder()
+//                jsonDecoder.userInfo[codingUserInfoKeyManagedObjectContext] = managedObjectContext
+                jsonDecoder.userInfo[databaseKey] = database
+
+                let result: T = try data.decoded(using: jsonDecoder)
+                
+                try database.save()
                 
                 self.handleResponse(fullPath: fullPath, allowCancelCallback: allowCancelCallback, completion: completion, result: .success(result))
             } catch let error {

@@ -11,7 +11,7 @@ import CoreData
 
 public extension CodingUserInfoKey {
     // Helper property to retrieve the context
-    static let managedObjectContext = CodingUserInfoKey(rawValue: "managedObjectContext")
+    static let databaseKey = CodingUserInfoKey(rawValue: "databaseKey")
 }
 
 @objc(Status)
@@ -27,9 +27,9 @@ public class Status: NSManagedObject, Codable {
     
     required convenience public init(from decoder: Decoder) throws {
         
-        guard let codingUserInfoKeyManagedObjectContext = CodingUserInfoKey.managedObjectContext,
-            let managedObjectContext = decoder.userInfo[codingUserInfoKeyManagedObjectContext] as? NSManagedObjectContext,
-            let entity = NSEntityDescription.entity(forEntityName: "User", in: managedObjectContext) else {
+        guard let databaseKey = CodingUserInfoKey.databaseKey,
+            let managedObjectContext = (decoder.userInfo[databaseKey] as? Database)?.context as? NSManagedObjectContext,
+            let entity = NSEntityDescription.entity(forEntityName: "Status", in: managedObjectContext) else {
                 
                 fatalError("No managed object context")
                 
@@ -41,8 +41,12 @@ public class Status: NSManagedObject, Codable {
         
         id = try container.decodeIfPresent(String.self, forKey: .id)
         
-        if let createdAtTimestamp = try container.decodeIfPresent(Int.self, forKey: .createdAt) {
-            createdAt = NSDate(timeIntervalSince1970: TimeInterval(createdAtTimestamp))
+//        if let createdAtString = try container.decodeIfPresent(String.self, forKey: .createdAt),
+//            let createdAtTimestamp = Int(createdAtString) {
+        if
+            let createdAtTimestamp = try container.decodeIfPresent(String.self, forKey: .createdAt),
+            let timestamp = TimeInterval(createdAtTimestamp) {
+            createdAt = NSDate(timeIntervalSince1970: timestamp)
         }
         
         url = try container.decodeIfPresent(URL.self, forKey: .content)
