@@ -36,6 +36,11 @@ extension Status {
     @NSManaged public var uri: URL?
     @NSManaged public var account: Account?
     @NSManaged public var mediaAttachments: NSSet?
+    @NSManaged public var reblog: Status?
+    @NSManaged public var reblogs: NSSet?
+    @NSManaged public var emoji: NSSet?
+    @NSManaged public var mentions: NSSet?
+    @NSManaged public var tags: NSSet?
 
 }
 
@@ -53,5 +58,73 @@ extension Status {
 
     @objc(removeMediaAttachments:)
     @NSManaged public func removeFromMediaAttachments(_ values: NSSet)
+
+}
+
+// MARK: Generated accessors for reblogs
+extension Status {
+
+    @objc(addReblogsObject:)
+    @NSManaged public func addToReblogs(_ value: Status)
+
+    @objc(removeReblogsObject:)
+    @NSManaged public func removeFromReblogs(_ value: Status)
+
+    @objc(addReblogs:)
+    @NSManaged public func addToReblogs(_ values: NSSet)
+
+    @objc(removeReblogs:)
+    @NSManaged public func removeFromReblogs(_ values: NSSet)
+
+}
+
+// MARK: Generated accessors for emoji
+extension Status {
+
+    @objc(addEmojiObject:)
+    @NSManaged public func addToEmoji(_ value: Emoji)
+
+    @objc(removeEmojiObject:)
+    @NSManaged public func removeFromEmoji(_ value: Emoji)
+
+    @objc(addEmoji:)
+    @NSManaged public func addToEmoji(_ values: NSSet)
+
+    @objc(removeEmoji:)
+    @NSManaged public func removeFromEmoji(_ values: NSSet)
+
+}
+
+// MARK: Generated accessors for mentions
+extension Status {
+
+    @objc(addMentionsObject:)
+    @NSManaged public func addToMentions(_ value: Mention)
+
+    @objc(removeMentionsObject:)
+    @NSManaged public func removeFromMentions(_ value: Mention)
+
+    @objc(addMentions:)
+    @NSManaged public func addToMentions(_ values: NSSet)
+
+    @objc(removeMentions:)
+    @NSManaged public func removeFromMentions(_ values: NSSet)
+
+}
+
+// MARK: Generated accessors for tags
+extension Status {
+
+    @objc(addTagsObject:)
+    @NSManaged public func addToTags(_ value: Tag)
+
+    @objc(removeTagsObject:)
+    @NSManaged public func removeFromTags(_ value: Tag)
+
+    @objc(addTags:)
+    @NSManaged public func addToTags(_ values: NSSet)
+
+    @objc(removeTags:)
+    @NSManaged public func removeFromTags(_ values: NSSet)
 
 }

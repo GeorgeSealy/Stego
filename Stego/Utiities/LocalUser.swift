@@ -41,7 +41,7 @@ struct LocalUser {
         let defaults = UserDefaults.standard
         let result = defaults.string(forKey: key.rawValue)
         
-        Log("\(type(of: self)) - \(#function): Got user string \(key.rawValue) of: \(String(describing: result))")
+//        Log("\(type(of: self)) - \(#function): Got user string \(key.rawValue) of: \(String(describing: result))")
         
         return result
     }

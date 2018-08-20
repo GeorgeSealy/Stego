@@ -30,6 +30,20 @@
         <attribute name="url" optional="YES" attributeType="Transformable" customClassName="URL" syncable="YES"/>
         <relationship name="status" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Status" inverseName="mediaAttachments" inverseEntity="Status" syncable="YES"/>
     </entity>
+    <entity name="Emoji" representedClassName="Emoji" syncable="YES">
+        <attribute name="shortCode" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="staticUrl" optional="YES" attributeType="URI" syncable="YES"/>
+        <attribute name="url" optional="YES" attributeType="URI" syncable="YES"/>
+        <attribute name="visibleInPicker" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="statuses" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Status" inverseName="emoji" inverseEntity="Status" syncable="YES"/>
+    </entity>
+    <entity name="Mention" representedClassName="Mention" syncable="YES">
+        <attribute name="acct" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="url" optional="YES" attributeType="URI" syncable="YES"/>
+        <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="status" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Status" inverseName="mentions" inverseEntity="Status" syncable="YES"/>
+    </entity>
     <entity name="Status" representedClassName="Status" syncable="YES">
         <attribute name="content" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
@@ -50,11 +64,24 @@
         <attribute name="url" optional="YES" attributeType="Transformable" customClassName="URL" syncable="YES"/>
         <attribute name="visibility" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="account" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Account" inverseName="statuses" inverseEntity="Account" syncable="YES"/>
+        <relationship name="emoji" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Emoji" inverseName="statuses" inverseEntity="Emoji" syncable="YES"/>
         <relationship name="mediaAttachments" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Attachment" inverseName="status" inverseEntity="Attachment" syncable="YES"/>
+        <relationship name="mentions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Mention" inverseName="status" inverseEntity="Mention" syncable="YES"/>
+        <relationship name="reblog" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Status" inverseName="reblogs" inverseEntity="Status" syncable="YES"/>
+        <relationship name="reblogs" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Status" inverseName="reblog" inverseEntity="Status" syncable="YES"/>
+        <relationship name="tags" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tag" inverseName="statuses" inverseEntity="Tag" syncable="YES"/>
+    </entity>
+    <entity name="Tag" representedClassName="Tag" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="url" optional="YES" attributeType="URI" syncable="YES"/>
+        <relationship name="statuses" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Status" inverseName="tags" inverseEntity="Status" syncable="YES"/>
     </entity>
     <elements>
         <element name="Account" positionX="-63" positionY="9" width="128" height="315"/>
-        <element name="Status" positionX="-63" positionY="-18" width="128" height="345"/>
+        <element name="Status" positionX="-63" positionY="-18" width="128" height="420"/>
         <element name="Attachment" positionX="-45" positionY="144" width="128" height="165"/>
+        <element name="Emoji" positionX="-36" positionY="153" width="128" height="120"/>
+        <element name="Tag" positionX="-18" positionY="162" width="128" height="90"/>
+        <element name="Mention" positionX="0" positionY="171" width="128" height="120"/>
     </elements>
 </model>

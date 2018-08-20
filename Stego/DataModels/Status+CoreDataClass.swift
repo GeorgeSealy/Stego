@@ -38,6 +38,10 @@ public class Status: NSManagedObject, Codable {
         case inReplyToAccountId = "in_reply_to_account_id"
         case uri
         case mediaAttachments = "media_attachments"
+        case reblog
+        case emojis
+        case mentions
+        case tags
     }
     
     required convenience public init(from decoder: Decoder) throws {
@@ -81,19 +85,56 @@ public class Status: NSManagedObject, Codable {
         inReplyToAccountId = try container.decodeIfPresent(String.self, forKey: .inReplyToAccountId)
         uri = try container.decodeIfPresent(URL.self, forKey: .uri)
         
-        if let attachments = try container.decodeIfPresent([Attachment].self, forKey: .mediaAttachments) {
-            mediaAttachments = NSSet(array: attachments)
+        reblog = try? container.decode(Status.self, forKey: .reblog)
+
+        if let attachmentArray = try container.decodeIfPresent([Attachment].self, forKey: .mediaAttachments) {
+            mediaAttachments = NSSet(array: attachmentArray)
         }
         
-        if let count = mediaAttachments?.count, count > 0 {
-            dump("STATUS WITH ATTACHMENTS")
+        if let emojiArray = try container.decodeIfPresent([Emoji].self, forKey: .emojis) {
+            emoji = NSSet(array: emojiArray)
         }
+        
+        if let mentionsArray = try container.decodeIfPresent([Mention].self, forKey: .mentions) {
+            mentions = NSSet(array: mentionsArray)
+        }
+        
+        if let tagsArray = try container.decodeIfPresent([Tag].self, forKey: .tags) {
+            tags = NSSet(array: tagsArray)
+        }
+        
+//        let hasAttachments = (mediaAttachments?.count ?? 0) > 0
+//        let hasMentions = (mentions?.count ?? 0) > 0
+//        let hasEmoji = (emoji?.count ?? 0) > 0
+//        let hasTags = (tags?.count ?? 0) > 0
+//        let hasReblog = reblog != nil
+        
+//        if hasAttachments || hasMentions || hasEmoji || hasTags || hasReblog {
+//
+//            var things = ""
+//
+//            things += hasAttachments ? "Attachments: " : ""
+//            things += hasMentions ? "Mentions: " : ""
+//            things += hasEmoji ? "Emoji: " : ""
+//            things += hasTags ? "Tags: " : ""
+//            things += hasReblog ? "Reblog: " : ""
+//
+//            dump("STATUS WITH \(things)")
+//        }
     }
     
     func dump(_ why: String) {
-        Log("\(type(of: self)) - \(#function): \(why): ")
+        Log("\(type(of: self)) - \(#function): \(why) ")
         Log("\(type(of: self)) - \(#function):   From: \(account?.displayName ?? "UNKNOWN")")
         Log("\(type(of: self)) - \(#function):   Content: \(content ?? "NO CONTENT")")
+        
+        Log("\(type(of: self)) - \(#function):   Reblog:")
+        
+        if let r = reblog {
+            Log("\(type(of: self)) - \(#function):     From: \(r.account?.displayName ?? "UNKNOWN")")
+            Log("\(type(of: self)) - \(#function):     Content: \(r.content ?? "NO CONTENT")")
+        }
+
         Log("\(type(of: self)) - \(#function):   Attachments:")
         
         if let attachments = mediaAttachments {
@@ -105,12 +146,40 @@ public class Status: NSManagedObject, Codable {
                 Log("\(type(of: self)) - \(#function):     url: \(String(describing: a.url))")
             }
         }
+        
+        Log("\(type(of: self)) - \(#function):   Mentions:")
+        
+        if let mentions = mentions {
+            for mention in mentions {
+                
+                guard let m = mention as? Mention else { continue }
+                
+                Log("\(type(of: self)) - \(#function):     user: \(m.username ?? "NO USER")")
+            }
+        }
+        
+        Log("\(type(of: self)) - \(#function):   Emoji:")
+        
+        if let emoji = emoji {
+            for singleEmoji in emoji {
+                
+                guard let e = singleEmoji as? Emoji else { continue }
+                
+                Log("\(type(of: self)) - \(#function):     code: \(e.shortCode ?? "NO SHORT CODE")")
+            }
+        }
+        
+        Log("\(type(of: self)) - \(#function):   Tags:")
+        
+        if let tags = tags {
+            for tag in tags {
+                
+                guard let t = tag as? Tag else { continue }
+                
+                Log("\(type(of: self)) - \(#function):     tag: \(t.name ?? "NO NAME")")
+            }
+        }
     }
 
-//    reblog     null or the reblogged Status     yes
-//    emojis     An array of Emoji     no
-//    media_attachments     An array of Attachments     no
-//    mentions     An array of Mentions     no
-//    tags     An array of Tags     no
 //    application     Application from which the status was posted     yes
 }
