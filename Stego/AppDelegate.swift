@@ -18,6 +18,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         Api.initialize()
         
+        let navigationController = UINavigationController()
+        
+        window = UIWindow.init(frame: UIScreen.main.bounds)
+
+        let storyboard = UIStoryboard.init(name: "Registration", bundle: nil)
+//        if let rootVC = storyboard.instantiateInitialViewController() {
+        let rootVC = storyboard.instantiateViewController(withIdentifier: "Registration")
+        
+        navigationController.setViewControllers([rootVC], animated: false)
+//        }
+        
+        window?.rootViewController = navigationController
+        window?.makeKeyAndVisible()
+        
         if let url: URL = launchOptions?[UIApplicationLaunchOptionsKey.url] as? URL {
             _ = handleIncomingLink(url)
         }

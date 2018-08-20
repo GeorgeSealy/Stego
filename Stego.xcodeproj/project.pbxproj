@@ -19,6 +19,8 @@
 		5E1566BD212A4BB70086E427 /* MockDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1566BC212A4BB70086E427 /* MockDatabase.swift */; };
 		5E1566BF212A51EB0086E427 /* CoreDataDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1566BE212A51EB0086E427 /* CoreDataDatabase.swift */; };
 		5E1566C0212A51EB0086E427 /* CoreDataDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1566BE212A51EB0086E427 /* CoreDataDatabase.swift */; };
+		5E1566C2212A54FB0086E427 /* Stego.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1566C1212A54FB0086E427 /* Stego.swift */; };
+		5E1566C3212A54FB0086E427 /* Stego.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1566C1212A54FB0086E427 /* Stego.swift */; };
 		5E64DE862120F81300CFADAC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E64DE852120F81300CFADAC /* AppDelegate.swift */; };
 		5E64DE8D2120F81500CFADAC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E64DE8C2120F81500CFADAC /* Assets.xcassets */; };
 		5E64DE902120F81500CFADAC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E64DE8E2120F81500CFADAC /* LaunchScreen.storyboard */; };
@@ -101,6 +103,7 @@
 		5E1566B4212A4B060086E427 /* Account+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Account+CoreDataProperties.swift"; path = "/Users/george/Work/Stego/Stego/DataModels/Account+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
 		5E1566BC212A4BB70086E427 /* MockDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDatabase.swift; sourceTree = "<group>"; };
 		5E1566BE212A51EB0086E427 /* CoreDataDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataDatabase.swift; sourceTree = "<group>"; };
+		5E1566C1212A54FB0086E427 /* Stego.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stego.swift; sourceTree = "<group>"; };
 		5E64DE822120F81300CFADAC /* Stego.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stego.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E64DE852120F81300CFADAC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5E64DE8C2120F81500CFADAC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -226,6 +229,7 @@
 				5E64DE8C2120F81500CFADAC /* Assets.xcassets */,
 				5E64DE8E2120F81500CFADAC /* LaunchScreen.storyboard */,
 				5E64DE912120F81500CFADAC /* Info.plist */,
+				5E1566C1212A54FB0086E427 /* Stego.swift */,
 			);
 			path = Stego;
 			sourceTree = "<group>";
@@ -624,6 +628,7 @@
 				5E1566BF212A51EB0086E427 /* CoreDataDatabase.swift in Sources */,
 				5EEB8DF521251835009070DE /* RegistrationViewController.swift in Sources */,
 				5E64DEC72121354100CFADAC /* Oauth.swift in Sources */,
+				5E1566C2212A54FB0086E427 /* Stego.swift in Sources */,
 				5E992B0E212680DF0010D6C4 /* DataModels.xcdatamodeld in Sources */,
 				5E64DE862120F81300CFADAC /* AppDelegate.swift in Sources */,
 				5E93CD972122345D002F3D0E /* GenericModels.swift in Sources */,
@@ -658,6 +663,7 @@
 				5E64DE9B2120F81500CFADAC /* StegoTests.swift in Sources */,
 				5EA0A17021267B8300C04C1E /* Status+CoreDataProperties.swift in Sources */,
 				5E93CD9E21223767002F3D0E /* Decodable.swift in Sources */,
+				5E1566C3212A54FB0086E427 /* Stego.swift in Sources */,
 				5EEB8DD421239826009070DE /* ApiEndpoint.swift in Sources */,
 				5EEB8DE22124F1CC009070DE /* StatusModelTests.swift in Sources */,
 				5EEB8DEA2124F584009070DE /* TimelinesApiTests.swift in Sources */,

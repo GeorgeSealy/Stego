@@ -135,7 +135,9 @@ class Api {
             case .success(let account):
                 Log("\(type(of: self)) - \(#function): Verify credentials: \(String(describing: account.displayName))")
                 
-                getHomeTimeline()
+                NotificationCenter.default.post(name: stego.userUpdated, object: nil, userInfo: nil)
+
+//                getHomeTimeline()
                 
             case .error(let error) :
                 Log("\(type(of: self)) - \(#function): Error: \(error)")

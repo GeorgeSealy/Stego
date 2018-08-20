@@ -27,6 +27,29 @@ class CoreDataDatabase: Database {
     //
     //    }
     
+    func load() {
+        
+//        persistentContainer.loadPersistentStores { (persistentStoreDescription, error) in
+//            if let error = error {
+//                print("Unable to Load Persistent Store")
+//                print("\(error), \(error.localizedDescription)")
+//
+//            } else {
+//                self.setupView()
+//
+//                do {
+//                    try self.fetchedResultsController.performFetch()
+//                } catch {
+//                    let fetchError = error as NSError
+//                    print("Unable to Perform Fetch Request")
+//                    print("\(fetchError), \(fetchError.localizedDescription)")
+//                }
+//
+//                self.updateView()
+//            }
+//        }
+    }
+    
     func save() throws {
         guard let context = self.context as? NSManagedObjectContext else {
             fatalError("No context")

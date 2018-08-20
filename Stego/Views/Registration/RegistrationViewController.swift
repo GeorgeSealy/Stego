@@ -15,6 +15,9 @@ class RegistrationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        NotificationCenter.default.addObserver(self, selector: #selector(currentUserUpdated), name: stego.userUpdated, object: nil)
+
+        Log("\(type(of: self)) - \(#function): REGISTER")
         Api.register()
     }
 
@@ -34,4 +37,14 @@ class RegistrationViewController: UIViewController {
     }
     */
 
+    @objc func currentUserUpdated() {
+        
+        Log("\(type(of: self)) - \(#function): GOT LOGGED IN USER")
+
+        let storyboard = UIStoryboard.init(name: "Timeline", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "Timeline")
+
+        navigationController?.pushViewController(vc, animated: true)
+        
+    }
 }
