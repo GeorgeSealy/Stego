@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "C2FBA1B1149C1FCD8F03B133932C123E"
+               BlueprintIdentifier = "8BE59851A988E60140C1B8B09005E332"
                BuildableName = "Pods_Stego.framework"
                BlueprintName = "Pods-Stego"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "C2FBA1B1149C1FCD8F03B133932C123E"
+            BlueprintIdentifier = "8BE59851A988E60140C1B8B09005E332"
             BuildableName = "Pods_Stego.framework"
             BlueprintName = "Pods-Stego"
             ReferencedContainer = "container:Pods.xcodeproj">

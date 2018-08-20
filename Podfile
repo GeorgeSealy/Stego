@@ -10,7 +10,8 @@ target 'Stego' do
   pod 'MastodonKit'
   pod 'Alamofire'
   pod 'AlamofireImage'
-
+  pod 'SwiftSoup'
+  
   target 'StegoTests' do
     inherit! :search_paths
     # Pods for testing

@@ -3,23 +3,27 @@ PODS:
   - AlamofireImage (3.3.1):
     - Alamofire (~> 4.5)
   - MastodonKit (1.0.10)
+  - SwiftSoup (1.7.2)
 
 DEPENDENCIES:
   - Alamofire
   - AlamofireImage
   - MastodonKit
+  - SwiftSoup
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
     - AlamofireImage
     - MastodonKit
+    - SwiftSoup
 
 SPEC CHECKSUMS:
   Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
   AlamofireImage: 3b35b586853abaf94ca1250f4e94cff3c21a4c0d
   MastodonKit: 573c2b32491108599aef4d99addb0e13a154cd6a
+  SwiftSoup: e5f61d37e3d802a4b5db81b4945de3da9bfdf115
 
-PODFILE CHECKSUM: 84af6f2ae19ac2abaa4dc8c94bd2e6c424415c2a
+PODFILE CHECKSUM: dbda3b13a30b2bca57fc452f714c8cd06a630261
 
 COCOAPODS: 1.5.3
