@@ -39,19 +39,29 @@
                                             <color key="textColor" name="ForegroundActive"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Date Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tbK-Qx-iLS">
+                                            <rect key="frame" x="317" y="11" width="33" height="16"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                                            <color key="textColor" name="ForegroundActive"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="yPJ-O2-OJR" firstAttribute="top" secondItem="6gs-QQ-flZ" secondAttribute="bottom" constant="4" id="0ax-MN-W4A"/>
+                                        <constraint firstItem="tbK-Qx-iLS" firstAttribute="firstBaseline" secondItem="6gs-QQ-flZ" secondAttribute="firstBaseline" id="9Mg-kG-w6x"/>
+                                        <constraint firstItem="tbK-Qx-iLS" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6gs-QQ-flZ" secondAttribute="trailing" constant="8" symbolic="YES" id="CI1-yb-6Mm"/>
                                         <constraint firstItem="yPJ-O2-OJR" firstAttribute="leading" secondItem="6gs-QQ-flZ" secondAttribute="leading" id="SPT-rI-1Le"/>
                                         <constraint firstItem="6gs-QQ-flZ" firstAttribute="leading" secondItem="5Nc-aZ-Adh" secondAttribute="leadingMargin" id="XxA-7W-fGv"/>
                                         <constraint firstItem="6gs-QQ-flZ" firstAttribute="top" secondItem="5Nc-aZ-Adh" secondAttribute="topMargin" id="Zou-LW-MD2"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="yPJ-O2-OJR" secondAttribute="trailing" id="icI-qL-84x"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="yPJ-O2-OJR" secondAttribute="bottom" id="oBr-Nb-5l4"/>
+                                        <constraint firstAttribute="trailing" secondItem="tbK-Qx-iLS" secondAttribute="trailing" constant="20" symbolic="YES" id="t3E-Sd-wwH"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" name="Background"/>
                                 <connections>
                                     <outlet property="contentLabel" destination="yPJ-O2-OJR" id="aHe-ct-oEc"/>
+                                    <outlet property="dateLabel" destination="tbK-Qx-iLS" id="o3T-Rv-gHA"/>
                                     <outlet property="userLabel" destination="6gs-QQ-flZ" id="6nx-uK-p07"/>
                                 </connections>
                             </tableViewCell>

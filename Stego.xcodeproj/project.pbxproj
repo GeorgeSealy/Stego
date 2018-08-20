@@ -23,6 +23,8 @@
 		5E1566C3212A54FB0086E427 /* Stego.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1566C1212A54FB0086E427 /* Stego.swift */; };
 		5E1566C5212A73280086E427 /* LocalUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1566C4212A73280086E427 /* LocalUser.swift */; };
 		5E1566C6212A73280086E427 /* LocalUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1566C4212A73280086E427 /* LocalUser.swift */; };
+		5E1566C7212A78510086E427 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E93CD92212233A5002F3D0E /* Log.swift */; };
+		5E1566C8212A795E0086E427 /* Assert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E93CD94212233EC002F3D0E /* Assert.swift */; };
 		5E64DE862120F81300CFADAC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E64DE852120F81300CFADAC /* AppDelegate.swift */; };
 		5E64DE8D2120F81500CFADAC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E64DE8C2120F81500CFADAC /* Assets.xcassets */; };
 		5E64DE902120F81500CFADAC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E64DE8E2120F81500CFADAC /* LaunchScreen.storyboard */; };
@@ -668,11 +670,13 @@
 				5E1566C3212A54FB0086E427 /* Stego.swift in Sources */,
 				5EEB8DD421239826009070DE /* ApiEndpoint.swift in Sources */,
 				5EEB8DE22124F1CC009070DE /* StatusModelTests.swift in Sources */,
+				5E1566C8212A795E0086E427 /* Assert.swift in Sources */,
 				5EEB8DEA2124F584009070DE /* TimelinesApiTests.swift in Sources */,
 				5EEB8DE82124F3E8009070DE /* Timelines.swift in Sources */,
 				5EEB8DD521239FA9009070DE /* GenericModels.swift in Sources */,
 				5EEB8DED21250EA2009070DE /* HtmlToAttributedTests.swift in Sources */,
 				5E1566B2212A305A0086E427 /* Database.swift in Sources */,
+				5E1566C7212A78510086E427 /* Log.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

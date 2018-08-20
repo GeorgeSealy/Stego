@@ -141,13 +141,24 @@ class Api {
             switch result {
                 
             case .success(let account):
-                Log("\(type(of: self)) - \(#function): Verify credentials: \(String(describing: account.displayName))")
-                
+                Log("\(type(of: self)) - \(#function): Verify credentials:)")
+                Log("\(type(of: self)) - \(#function):   User name: \(String(describing: account.username))")
+                Log("\(type(of: self)) - \(#function):   Display name: \(String(describing: account.displayName))")
+                Log("\(type(of: self)) - \(#function):   Avatar: \(String(describing: account.avatar))")
+                Log("\(type(of: self)) - \(#function):   Static avatar: \(String(describing: account.avatarStatic))")
+                Log("\(type(of: self)) - \(#function):   Header: \(String(describing: account.header))")
+                Log("\(type(of: self)) - \(#function):   Note: \(String(describing: account.note))")
+                Log("\(type(of: self)) - \(#function):   Bot: \(String(describing: account.bot))")
+                Log("\(type(of: self)) - \(#function):   Locked: \(String(describing: account.locked))")
+                Log("\(type(of: self)) - \(#function):   Followers: \(String(describing: account.followersCount))")
+                Log("\(type(of: self)) - \(#function):   Following: \(String(describing: account.followingCount))")
+                Log("\(type(of: self)) - \(#function):   Status count: \(String(describing: account.statusesCount))")
+                Log("\(type(of: self)) - \(#function):   Status count: \(String(describing: account.statuses?.count))")
+
                 NotificationCenter.default.post(name: stego.userUpdated, object: nil, userInfo: nil)
 
                 // TODO: (George) Save local user, somewhere
-                
-//                getHomeTimeline()
+
                 
             case .error(let error) :
                 Log("\(type(of: self)) - \(#function): Error: \(error)")
@@ -162,29 +173,6 @@ class Api {
         }
     }
     
-//    static private func getHomeTimeline() {
-//
-////        Api.call(Timelines.home) { (result: Result<[StatusModel]>) in
-//        Api.call(Timelines.home) { (result: Result<[Status]>) in
-//            switch result {
-//
-//            case .success(let statuses):
-//                Log("\(type(of: self)) - \(#function): Statuses: ")
-//
-//                for status in statuses {
-//                    Log("\(type(of: self)) - \(#function):   ")
-//                    Log("\(type(of: self)) - \(#function):   \(String(describing: status.id))")
-////                    Log("\(type(of: self)) - \(#function):   \(status.account?.displayName)")
-//                    Log("\(type(of: self)) - \(#function):   \(String(describing: status.content))")
-//                }
-//
-//
-//            case .error(let error) :
-//                Log("\(type(of: self)) - \(#function): Error: \(error)")
-//
-//            }
-//        }
-//    }
     // MARK: - making Api calls
     
     @discardableResult

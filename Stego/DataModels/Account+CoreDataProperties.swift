@@ -20,6 +20,19 @@ extension Account {
     @NSManaged public var username: String?
     @NSManaged public var acct: String?
     @NSManaged public var displayName: String?
+    @NSManaged public var locked: Bool
+    @NSManaged public var createdAt: NSDate?
+    @NSManaged public var followersCount: Int64
+    @NSManaged public var followingCount: Int64
+    @NSManaged public var statusesCount: Int64
+    @NSManaged public var note: String?
+    @NSManaged public var url: URL?
+    @NSManaged public var avatar: URL?
+    @NSManaged public var avatarStatic: URL?
+    @NSManaged public var header: URL?
+    @NSManaged public var headerStatic: URL?
+    @NSManaged public var moved: Bool
+    @NSManaged public var bot: Bool
     @NSManaged public var statuses: NSOrderedSet?
 
 }

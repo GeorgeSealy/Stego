@@ -84,7 +84,13 @@ class TimelineTableViewController: UITableViewController {
         
         cell.userLabel.text = status.account?.displayName
         cell.contentLabel.text = status.content
-
+        
+        if let created = status.createdAt {
+            cell.dateLabel.text = TimelineTableViewCell.dateFormatter.string(from: created as Date)
+        } else {
+            cell.dateLabel.text = nil
+        }
+        
         return cell
     }
 

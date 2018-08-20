@@ -2,8 +2,21 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14315.12.1" systemVersion="17E199" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Account" representedClassName="Account" syncable="YES">
         <attribute name="acct" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="avatar" optional="YES" attributeType="Transformable" customClassName="URL" syncable="YES"/>
+        <attribute name="avatarStatic" optional="YES" attributeType="Transformable" customClassName="URL" syncable="YES"/>
+        <attribute name="bot" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="displayName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="followersCount" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="followingCount" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="header" optional="YES" attributeType="Transformable" customClassName="URL" syncable="YES"/>
+        <attribute name="headerStatic" optional="YES" attributeType="Transformable" customClassName="URL" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="locked" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="moved" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="note" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="statusesCount" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="url" optional="YES" attributeType="Transformable" customClassName="URL" syncable="YES"/>
         <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="statuses" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Status" inverseName="account" inverseEntity="Status" syncable="YES"/>
     </entity>
@@ -16,6 +29,6 @@
     </entity>
     <elements>
         <element name="Status" positionX="-63" positionY="-18" width="128" height="120"/>
-        <element name="Account" positionX="-63" positionY="9" width="128" height="120"/>
+        <element name="Account" positionX="-63" positionY="9" width="128" height="315"/>
     </elements>
 </model>
