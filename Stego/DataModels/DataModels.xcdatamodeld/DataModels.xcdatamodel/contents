@@ -20,15 +20,41 @@
         <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="statuses" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Status" inverseName="account" inverseEntity="Status" syncable="YES"/>
     </entity>
+    <entity name="Attachment" representedClassName="Attachment" syncable="YES">
+        <attribute name="attachmentDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="previewUrl" optional="YES" attributeType="Transformable" customClassName="URL" syncable="YES"/>
+        <attribute name="remoteUrl" optional="YES" attributeType="Transformable" customClassName="URL" syncable="YES"/>
+        <attribute name="textUrl" optional="YES" attributeType="Transformable" customClassName="URL" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="url" optional="YES" attributeType="Transformable" customClassName="URL" syncable="YES"/>
+        <relationship name="status" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Status" inverseName="mediaAttachments" inverseEntity="Status" syncable="YES"/>
+    </entity>
     <entity name="Status" representedClassName="Status" syncable="YES">
         <attribute name="content" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="favourited" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="favouritesCount" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="inReplyToAccountId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="inReplyToId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="language" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="muted" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="pinned" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="reblogged" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="reblogsCount" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="repliesCount" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="sensitive" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="spoilerText" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="uri" optional="YES" attributeType="URI" syncable="YES"/>
         <attribute name="url" optional="YES" attributeType="Transformable" customClassName="URL" syncable="YES"/>
+        <attribute name="visibility" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="account" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Account" inverseName="statuses" inverseEntity="Account" syncable="YES"/>
+        <relationship name="mediaAttachments" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Attachment" inverseName="status" inverseEntity="Attachment" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Status" positionX="-63" positionY="-18" width="128" height="120"/>
         <element name="Account" positionX="-63" positionY="9" width="128" height="315"/>
+        <element name="Status" positionX="-63" positionY="-18" width="128" height="345"/>
+        <element name="Attachment" positionX="-45" positionY="144" width="128" height="165"/>
     </elements>
 </model>
