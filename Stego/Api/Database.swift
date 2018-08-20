@@ -9,9 +9,16 @@
 import Foundation
 import CoreData
 
+enum DatabaseStorageType {
+    case memoryBased
+    case fileBased
+}
+
 protocol Database {
     
     var context: Any? { get }
+    
+//    func createEntity<T: Codable & NSManagedObject>(entityName: String) throws -> T
     
     func save() throws
 }
@@ -19,6 +26,20 @@ protocol Database {
 class CoreDataDatabase: Database {
     
     var context: Any?
+
+//    func createEntity<T: Codable & NSManagedObject>(entityName: String) throws -> T {
+//
+//        guard
+//            let managedObjectContext = self.context,
+//            let entity = NSEntityDescription.entity(forEntityName: entityName, in: managedObjectContext) else {
+//
+//                fatalError("No managed object context")
+//
+//        }
+//
+//        return T.init(entity: entity, insertInto: managedObjectContext)
+//
+//    }
 
     func save() throws {
         guard let context = self.context as? NSManagedObjectContext else {
@@ -28,12 +49,16 @@ class CoreDataDatabase: Database {
         try context.save()
     }
 
-    init() {
-        // TODO: (George) option for kind of database (file vs in memory vs null bucket?)
-        self.context = CoreDataDatabase.setUpInMemoryManagedObjectContext()
+    init(storageType: DatabaseStorageType) {
+        self.context = CoreDataDatabase.setUpManagedObjectContext(storageType)
     }
     
-    static func setUpInMemoryManagedObjectContext() -> NSManagedObjectContext {
+    static var applicationDocumentsDirectory: URL? = {
+        let urls = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        return urls.last
+    }()
+
+    static func setUpManagedObjectContext(_ storageType: DatabaseStorageType) -> NSManagedObjectContext {
         
         guard let managedObjectModel = NSManagedObjectModel.mergedModel(from: [Bundle.main]) else {
             fatalError("Unable to load data models")
@@ -42,7 +67,15 @@ class CoreDataDatabase: Database {
         let persistentStoreCoordinator = NSPersistentStoreCoordinator(managedObjectModel: managedObjectModel)
         
         do {
-            try persistentStoreCoordinator.addPersistentStore(ofType: NSInMemoryStoreType, configurationName: nil, at: nil, options: nil)
+            switch storageType {
+            case .memoryBased:
+                try persistentStoreCoordinator.addPersistentStore(ofType: NSInMemoryStoreType, configurationName: nil, at: nil, options: nil)
+                
+            case .fileBased:
+                let url = self.applicationDocumentsDirectory?.appendingPathComponent("coreData.sqlite")
+
+                try persistentStoreCoordinator.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: url, options: nil)
+            }
         } catch {
             print("Adding in-memory persistent store failed")
         }

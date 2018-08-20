@@ -16,7 +16,7 @@ class StatusModelTests: XCTestCase {
     override func setUp() {
         super.setUp()
 
-        let database = CoreDataDatabase()
+        let database = CoreDataDatabase(storageType: .memoryBased)
         
         guard let databaseKey = CodingUserInfoKey.databaseKey else {
             fatalError("Failed to retrieve managed object context")
@@ -33,25 +33,25 @@ class StatusModelTests: XCTestCase {
         super.tearDown()
     }
 
-    private func setUpInMemoryManagedObjectContext() -> NSManagedObjectContext {
-        
-        guard let managedObjectModel = NSManagedObjectModel.mergedModel(from: [Bundle.main]) else {
-            fatalError("Unable to load data models")
-        }
-        
-        let persistentStoreCoordinator = NSPersistentStoreCoordinator(managedObjectModel: managedObjectModel)
-        
-        do {
-            try persistentStoreCoordinator.addPersistentStore(ofType: NSInMemoryStoreType, configurationName: nil, at: nil, options: nil)
-        } catch {
-            print("Adding in-memory persistent store failed")
-        }
-        
-        let managedObjectContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
-        managedObjectContext.persistentStoreCoordinator = persistentStoreCoordinator
-        
-        return managedObjectContext
-    }
+//    private func setUpInMemoryManagedObjectContext() -> NSManagedObjectContext {
+//
+//        guard let managedObjectModel = NSManagedObjectModel.mergedModel(from: [Bundle.main]) else {
+//            fatalError("Unable to load data models")
+//        }
+//
+//        let persistentStoreCoordinator = NSPersistentStoreCoordinator(managedObjectModel: managedObjectModel)
+//
+//        do {
+//            try persistentStoreCoordinator.addPersistentStore(ofType: NSInMemoryStoreType, configurationName: nil, at: nil, options: nil)
+//        } catch {
+//            print("Adding in-memory persistent store failed")
+//        }
+//
+//        let managedObjectContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
+//        managedObjectContext.persistentStoreCoordinator = persistentStoreCoordinator
+//
+//        return managedObjectContext
+//    }
     
     private func makeJsonData() -> Data {
         var jsonString = ""

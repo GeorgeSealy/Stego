@@ -12,6 +12,11 @@
 		5E0BC61F21251CD100BE1AD2 /* TimelineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0BC61E21251CD100BE1AD2 /* TimelineTableViewCell.swift */; };
 		5E1566B1212A2C880086E427 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1566B0212A2C880086E427 /* Database.swift */; };
 		5E1566B2212A305A0086E427 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1566B0212A2C880086E427 /* Database.swift */; };
+		5E1566B6212A4B070086E427 /* Account+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1566B3212A4B060086E427 /* Account+CoreDataClass.swift */; };
+		5E1566B7212A4B070086E427 /* Account+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1566B3212A4B060086E427 /* Account+CoreDataClass.swift */; };
+		5E1566B8212A4B070086E427 /* Account+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1566B4212A4B060086E427 /* Account+CoreDataProperties.swift */; };
+		5E1566B9212A4B070086E427 /* Account+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1566B4212A4B060086E427 /* Account+CoreDataProperties.swift */; };
+		5E1566BD212A4BB70086E427 /* MockDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1566BC212A4BB70086E427 /* MockDatabase.swift */; };
 		5E64DE862120F81300CFADAC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E64DE852120F81300CFADAC /* AppDelegate.swift */; };
 		5E64DE8D2120F81500CFADAC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E64DE8C2120F81500CFADAC /* Assets.xcassets */; };
 		5E64DE902120F81500CFADAC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E64DE8E2120F81500CFADAC /* LaunchScreen.storyboard */; };
@@ -51,8 +56,6 @@
 		5EEB8DD82123B41B009070DE /* AccountApiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEB8DD72123B41B009070DE /* AccountApiTests.swift */; };
 		5EEB8DDA2123B5D6009070DE /* Accounts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEB8DD92123B5D6009070DE /* Accounts.swift */; };
 		5EEB8DDB2123B69E009070DE /* Accounts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEB8DD92123B5D6009070DE /* Accounts.swift */; };
-		5EEB8DDD2123BC39009070DE /* AccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEB8DDC2123BC39009070DE /* AccountModel.swift */; };
-		5EEB8DDE2123BC39009070DE /* AccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEB8DDC2123BC39009070DE /* AccountModel.swift */; };
 		5EEB8DE02123BD5A009070DE /* AccountModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEB8DDF2123BD5A009070DE /* AccountModelTests.swift */; };
 		5EEB8DE22124F1CC009070DE /* StatusModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEB8DE12124F1CC009070DE /* StatusModelTests.swift */; };
 		5EEB8DE72124F3E8009070DE /* Timelines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEB8DE62124F3E8009070DE /* Timelines.swift */; };
@@ -92,6 +95,9 @@
 		5E0BC61C21251BFD00BE1AD2 /* TimelineTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineTableViewController.swift; sourceTree = "<group>"; };
 		5E0BC61E21251CD100BE1AD2 /* TimelineTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineTableViewCell.swift; sourceTree = "<group>"; };
 		5E1566B0212A2C880086E427 /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
+		5E1566B3212A4B060086E427 /* Account+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Account+CoreDataClass.swift"; path = "/Users/george/Work/Stego/Stego/DataModels/Account+CoreDataClass.swift"; sourceTree = "<absolute>"; };
+		5E1566B4212A4B060086E427 /* Account+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Account+CoreDataProperties.swift"; path = "/Users/george/Work/Stego/Stego/DataModels/Account+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
+		5E1566BC212A4BB70086E427 /* MockDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDatabase.swift; sourceTree = "<group>"; };
 		5E64DE822120F81300CFADAC /* Stego.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stego.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E64DE852120F81300CFADAC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5E64DE8C2120F81500CFADAC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -230,6 +236,7 @@
 				5E64DE9A2120F81500CFADAC /* StegoTests.swift */,
 				5E64DE9C2120F81500CFADAC /* Info.plist */,
 				5E93CD9C2122372B002F3D0E /* XCTExtensions.swift */,
+				5E1566BC212A4BB70086E427 /* MockDatabase.swift */,
 			);
 			path = StegoTests;
 			sourceTree = "<group>";
@@ -318,6 +325,8 @@
 		5EA0A1682126628D00C04C1E /* DataModels */ = {
 			isa = PBXGroup;
 			children = (
+				5E1566B3212A4B060086E427 /* Account+CoreDataClass.swift */,
+				5E1566B4212A4B060086E427 /* Account+CoreDataProperties.swift */,
 				5EA0A16D212666B900C04C1E /* Status+CoreDataClass.swift */,
 				5EA0A16E212666B900C04C1E /* Status+CoreDataProperties.swift */,
 				5EA0A1652126607900C04C1E /* DataModels.xcdatamodeld */,
@@ -590,6 +599,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5EEB8DE72124F3E8009070DE /* Timelines.swift in Sources */,
+				5E1566B6212A4B070086E427 /* Account+CoreDataClass.swift in Sources */,
 				5E64DEC32121125800CFADAC /* Token.swift in Sources */,
 				5E0BC61F21251CD100BE1AD2 /* TimelineTableViewCell.swift in Sources */,
 				5EEB8DEF21250F9B009070DE /* String.swift in Sources */,
@@ -597,9 +607,9 @@
 				5E64DEB52120FE9200CFADAC /* App.swift in Sources */,
 				5EA0A16F21267B8200C04C1E /* Status+CoreDataProperties.swift in Sources */,
 				5E64DEC121210CBB00CFADAC /* Enum.swift in Sources */,
-				5EEB8DDD2123BC39009070DE /* AccountModel.swift in Sources */,
 				5E93CD95212233EC002F3D0E /* Assert.swift in Sources */,
 				5E64DEB721210BFD00CFADAC /* Api.swift in Sources */,
+				5E1566B8212A4B070086E427 /* Account+CoreDataProperties.swift in Sources */,
 				5E64DEC52121322F00CFADAC /* URL.swift in Sources */,
 				5E64DEBD21210C9B00CFADAC /* Array.swift in Sources */,
 				5E64DEBF21210CAB00CFADAC /* Result.swift in Sources */,
@@ -626,11 +636,14 @@
 			files = (
 				5E93CDA5212280B0002F3D0E /* OauthApiTests.swift in Sources */,
 				5EEB8DF021250F9B009070DE /* String.swift in Sources */,
+				5E1566B9212A4B070086E427 /* Account+CoreDataProperties.swift in Sources */,
 				5EEB8DE02123BD5A009070DE /* AccountModelTests.swift in Sources */,
 				5E93CD9A21223533002F3D0E /* AccessModelTests.swift in Sources */,
 				5E992B0F212680DF0010D6C4 /* DataModels.xcdatamodeld in Sources */,
+				5E1566BD212A4BB70086E427 /* MockDatabase.swift in Sources */,
 				5E93CDA221223850002F3D0E /* AccessModel.swift in Sources */,
 				5EEB8DD621239FB0009070DE /* AppModel.swift in Sources */,
+				5E1566B7212A4B070086E427 /* Account+CoreDataClass.swift in Sources */,
 				5EEB8DD82123B41B009070DE /* AccountApiTests.swift in Sources */,
 				5EEB8DDB2123B69E009070DE /* Accounts.swift in Sources */,
 				5EA0A17221267BA100C04C1E /* Status+CoreDataClass.swift in Sources */,
@@ -639,7 +652,6 @@
 				5E64DE9B2120F81500CFADAC /* StegoTests.swift in Sources */,
 				5EA0A17021267B8300C04C1E /* Status+CoreDataProperties.swift in Sources */,
 				5E93CD9E21223767002F3D0E /* Decodable.swift in Sources */,
-				5EEB8DDE2123BC39009070DE /* AccountModel.swift in Sources */,
 				5EEB8DD421239826009070DE /* ApiEndpoint.swift in Sources */,
 				5EEB8DE22124F1CC009070DE /* StatusModelTests.swift in Sources */,
 				5EEB8DEA2124F584009070DE /* TimelinesApiTests.swift in Sources */,

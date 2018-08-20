@@ -20,5 +20,6 @@ extension Status {
     @NSManaged public var createdAt: NSDate?
     @NSManaged public var id: String?
     @NSManaged public var url: URL?
+    @NSManaged public var account: Account?
 
 }

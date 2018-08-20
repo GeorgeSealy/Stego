@@ -35,7 +35,7 @@ enum Accounts: ApiEndpoint {
         
         switch self {
         case .verifyCredentials:
-            return AccountModel.self
+            return Account.self
         }
     }
 }

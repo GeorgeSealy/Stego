@@ -28,13 +28,7 @@ class Api {
     static var accessCode: String?
     static var accessToken: String?
     
-    static let database = CoreDataDatabase()
-    
-//    static private(set) var managedObjectContext: NSManagedObjectContext?
-//
-//    static func initialize(managedObjectContext: NSManagedObjectContext? = setUpInMemoryManagedObjectContext()) {
-//        Api.managedObjectContext = managedObjectContext
-//    }
+    static let database = CoreDataDatabase(storageType: .fileBased)
 
     static func initialize() {
         // TODO: (George) Can remove?
@@ -135,7 +129,7 @@ class Api {
     
     static private func verifyCredentials(accessToken: String) {
         
-        Api.call(Accounts.verifyCredentials) { (result: Result<AccountModel>) in
+        Api.call(Accounts.verifyCredentials) { (result: Result<Account>) in
             switch result {
                 
             case .success(let account):
@@ -248,6 +242,7 @@ class Api {
                     let data = response.data,
                     let apiError: ApiError = try? data.decoded() {
                 
+                    print("Response data was: \(String(describing: String(data: data, encoding: .utf8)))")
                     let userInfo: [String: Any] = [
                         NSLocalizedDescriptionKey: "\(apiError.error): \(apiError.description)",
                         ]

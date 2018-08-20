@@ -28,7 +28,7 @@ class AccountApiTests: XCTestCase {
         XCTAssertEqual(endPoint.route.method, .get)
         XCTAssertEqual(endPoint.route.path, "accounts/verify_credentials")
         XCTAssert(endPoint.route.parameters.isEmpty)
-        XCTAssert(endPoint.resultType == AccountModel.self)
+        XCTAssert(endPoint.resultType == Account.self)
 
 //        GET /api/v1/accounts/verify_credentials
 //

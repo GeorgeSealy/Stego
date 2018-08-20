@@ -10,9 +10,22 @@ import XCTest
 
 class AccountModelTests: XCTestCase {
  
+    var decoder: AnyDecoder?
+    
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+
+        let database = CoreDataDatabase(storageType: .memoryBased)
+        
+        guard let databaseKey = CodingUserInfoKey.databaseKey else {
+            fatalError("Failed to retrieve managed object context")
+        }
+        
+        let jsonDecoder = JSONDecoder()
+        jsonDecoder.userInfo[databaseKey] = database
+        
+        decoder = jsonDecoder
+        
     }
     
     override func tearDown() {
@@ -63,9 +76,13 @@ class AccountModelTests: XCTestCase {
 
     func testAccountModel() {
         
+        guard let decoder = self.decoder else {
+            fatalError("No decoder")
+        }
+        
         let jsonData = makeJsonData()
         
-        XCTAssertNoThrow(try jsonData.decoded()) { (model: AccountModel) in
+        XCTAssertNoThrow(try jsonData.decoded(using: decoder)) { (model: Account) in
             XCTAssertEqual(model.id, "123")
             XCTAssertEqual(model.username, "A")
             XCTAssertEqual(model.acct, "B")

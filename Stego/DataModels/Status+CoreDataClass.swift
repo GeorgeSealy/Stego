@@ -41,15 +41,13 @@ public class Status: NSManagedObject, Codable {
         
         id = try container.decodeIfPresent(String.self, forKey: .id)
         
-//        if let createdAtString = try container.decodeIfPresent(String.self, forKey: .createdAt),
-//            let createdAtTimestamp = Int(createdAtString) {
         if
             let createdAtTimestamp = try container.decodeIfPresent(String.self, forKey: .createdAt),
             let timestamp = TimeInterval(createdAtTimestamp) {
             createdAt = NSDate(timeIntervalSince1970: timestamp)
         }
         
-        url = try container.decodeIfPresent(URL.self, forKey: .content)
+        url = try container.decodeIfPresent(URL.self, forKey: .url)
         //        account = try? container.decode(AccountModel.self, forKey: .account)
         content = try container.decodeIfPresent(String.self, forKey: .content)
     }
