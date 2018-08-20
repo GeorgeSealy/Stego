@@ -21,6 +21,8 @@
 		5E1566C0212A51EB0086E427 /* CoreDataDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1566BE212A51EB0086E427 /* CoreDataDatabase.swift */; };
 		5E1566C2212A54FB0086E427 /* Stego.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1566C1212A54FB0086E427 /* Stego.swift */; };
 		5E1566C3212A54FB0086E427 /* Stego.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1566C1212A54FB0086E427 /* Stego.swift */; };
+		5E1566C5212A73280086E427 /* LocalUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1566C4212A73280086E427 /* LocalUser.swift */; };
+		5E1566C6212A73280086E427 /* LocalUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1566C4212A73280086E427 /* LocalUser.swift */; };
 		5E64DE862120F81300CFADAC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E64DE852120F81300CFADAC /* AppDelegate.swift */; };
 		5E64DE8D2120F81500CFADAC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E64DE8C2120F81500CFADAC /* Assets.xcassets */; };
 		5E64DE902120F81500CFADAC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E64DE8E2120F81500CFADAC /* LaunchScreen.storyboard */; };
@@ -104,6 +106,7 @@
 		5E1566BC212A4BB70086E427 /* MockDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDatabase.swift; sourceTree = "<group>"; };
 		5E1566BE212A51EB0086E427 /* CoreDataDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataDatabase.swift; sourceTree = "<group>"; };
 		5E1566C1212A54FB0086E427 /* Stego.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stego.swift; sourceTree = "<group>"; };
+		5E1566C4212A73280086E427 /* LocalUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalUser.swift; sourceTree = "<group>"; };
 		5E64DE822120F81300CFADAC /* Stego.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stego.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E64DE852120F81300CFADAC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5E64DE8C2120F81500CFADAC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -139,10 +142,8 @@
 		5EEB8DD2212397E1009070DE /* ApiEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiEndpoint.swift; sourceTree = "<group>"; };
 		5EEB8DD72123B41B009070DE /* AccountApiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountApiTests.swift; sourceTree = "<group>"; };
 		5EEB8DD92123B5D6009070DE /* Accounts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Accounts.swift; sourceTree = "<group>"; };
-		5EEB8DDC2123BC39009070DE /* AccountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountModel.swift; sourceTree = "<group>"; };
 		5EEB8DDF2123BD5A009070DE /* AccountModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountModelTests.swift; sourceTree = "<group>"; };
 		5EEB8DE12124F1CC009070DE /* StatusModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusModelTests.swift; sourceTree = "<group>"; };
-		5EEB8DE32124F301009070DE /* StatusModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusModel.swift; sourceTree = "<group>"; };
 		5EEB8DE62124F3E8009070DE /* Timelines.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timelines.swift; sourceTree = "<group>"; };
 		5EEB8DE92124F584009070DE /* TimelinesApiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelinesApiTests.swift; sourceTree = "<group>"; };
 		5EEB8DEC21250EA2009070DE /* HtmlToAttributedTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HtmlToAttributedTests.swift; sourceTree = "<group>"; };
@@ -283,6 +284,7 @@
 				5E64DEBE21210CAB00CFADAC /* Result.swift */,
 				5E64DEC42121322F00CFADAC /* URL.swift */,
 				5EEB8DEE21250F9B009070DE /* String.swift */,
+				5E1566C4212A73280086E427 /* LocalUser.swift */,
 			);
 			path = Utiities;
 			sourceTree = "<group>";
@@ -303,8 +305,6 @@
 				5E93CD962122345D002F3D0E /* GenericModels.swift */,
 				5E93CDA021223830002F3D0E /* AccessModel.swift */,
 				5E93CDA9212295D3002F3D0E /* AppModel.swift */,
-				5EEB8DDC2123BC39009070DE /* AccountModel.swift */,
-				5EEB8DE32124F301009070DE /* StatusModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -626,6 +626,7 @@
 				5E64DEBA21210C1800CFADAC /* Decodable.swift in Sources */,
 				5E93CD9121222ECE002F3D0E /* ApiError.swift in Sources */,
 				5E1566BF212A51EB0086E427 /* CoreDataDatabase.swift in Sources */,
+				5E1566C5212A73280086E427 /* LocalUser.swift in Sources */,
 				5EEB8DF521251835009070DE /* RegistrationViewController.swift in Sources */,
 				5E64DEC72121354100CFADAC /* Oauth.swift in Sources */,
 				5E1566C2212A54FB0086E427 /* Stego.swift in Sources */,
@@ -648,6 +649,7 @@
 				5EEB8DF021250F9B009070DE /* String.swift in Sources */,
 				5E1566B9212A4B070086E427 /* Account+CoreDataProperties.swift in Sources */,
 				5EEB8DE02123BD5A009070DE /* AccountModelTests.swift in Sources */,
+				5E1566C6212A73280086E427 /* LocalUser.swift in Sources */,
 				5E93CD9A21223533002F3D0E /* AccessModelTests.swift in Sources */,
 				5E992B0F212680DF0010D6C4 /* DataModels.xcdatamodeld in Sources */,
 				5E1566BD212A4BB70086E427 /* MockDatabase.swift in Sources */,

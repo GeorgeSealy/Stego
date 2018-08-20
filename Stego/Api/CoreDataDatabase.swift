@@ -12,7 +12,9 @@ import CoreData
 class CoreDataDatabase: Database {
     
     var context: Any?
-    
+
+    private let persistentContainer = NSPersistentContainer(name: "DataModels")
+
     //    func createEntity<T: Codable & NSManagedObject>(entityName: String) throws -> T {
     //
     //        guard
@@ -27,27 +29,20 @@ class CoreDataDatabase: Database {
     //
     //    }
     
-    func load() {
+    func load(_ completion: @escaping (_: Error?) -> Void) {
         
-//        persistentContainer.loadPersistentStores { (persistentStoreDescription, error) in
-//            if let error = error {
-//                print("Unable to Load Persistent Store")
-//                print("\(error), \(error.localizedDescription)")
-//
-//            } else {
-//                self.setupView()
-//
-//                do {
-//                    try self.fetchedResultsController.performFetch()
-//                } catch {
-//                    let fetchError = error as NSError
-//                    print("Unable to Perform Fetch Request")
-//                    print("\(fetchError), \(fetchError.localizedDescription)")
-//                }
-//
-//                self.updateView()
-//            }
-//        }
+        persistentContainer.loadPersistentStores { (persistentStoreDescription, error) in
+            
+            if let error = error {
+                
+                Log("Unable to Load Persistent Store")
+                Log("\(error), \(error.localizedDescription)")
+                
+            }
+            
+            completion(error)
+        }
+
     }
     
     func save() throws {

@@ -24,9 +24,9 @@ class Api {
     
     static let basePath = "https://mastodon.social/"
     
-    static var app: AppModel?
+//    static var app: AppModel?
     static var accessCode: String?
-    static var accessToken: String?
+//    static var accessToken: String?
     
     static let database = CoreDataDatabase(storageType: .fileBased)
 
@@ -36,23 +36,27 @@ class Api {
 
     static func register() {
         
-        guard let app = Api.app else {
-            
+//        guard let app = Api.app else {
+        guard
+            let clientId = LocalUser.getString(.appClientId),
+            let clientSecret = LocalUser.getString(.appClientSecret),
+            let clientRedirectUri = LocalUser.getString(.appClientRedirectUri) else {
+
             registerApp()
             return
         }
         
         if let code = Api.accessCode {
             
-            registerAccessCode(code, app: app)
+            registerAccessCode(code, clientId: clientId, clientSecret: clientSecret, redirectUri: clientRedirectUri)
             
-        } else if let accessToken = Api.accessToken {
+        } else if let accessToken = LocalUser.getString(.accessToken) {
             
             verifyCredentials(accessToken: accessToken)
             
         } else {
             
-            authorizeApp(app)
+            authorizeApp(clientId: clientId, redirectUri: clientRedirectUri)
 
         }
 
@@ -66,7 +70,10 @@ class Api {
             case .success(let app):
                 Log("\(type(of: self)) - \(#function): APP REGISTERED: \(app)")
                 
-                Api.app = app
+                LocalUser.saveString(.appClientId, value: app.clientId)
+                LocalUser.saveString(.appClientSecret, value: app.clientSecret)
+                LocalUser.saveString(.appClientRedirectUri, value: app.redirectUri)
+//                Api.app = app
                 register()
                 
             case .error(let error) :
@@ -77,14 +84,14 @@ class Api {
         }
     }
     
-    static private func authorizeApp(_ app: AppModel) {
+    static private func authorizeApp(clientId: String, redirectUri: String) {
         
         var path = Api.basePath + "oauth/authorize"
         
         path = path + "?response_type=code"
         path = path + "&scope=read+write+follow"
-        path = path + "&redirect_uri=\(app.redirectUri)"
-        path = path + "&client_id=\(app.clientId)"
+        path = path + "&redirect_uri=\(redirectUri)"
+        path = path + "&client_id=\(clientId)"
         
         guard let url = URL(string: path) else {
             Log("\(type(of: self)) - \(#function): ERROR WITH PATH: \(path)")
@@ -99,12 +106,12 @@ class Api {
         })
     }
     
-    static private func registerAccessCode(_ code: String, app: AppModel) {
+    static private func registerAccessCode(_ code: String, clientId: String, clientSecret: String, redirectUri: String) {
         
-        let endPoint = Oauth.accessToken(clientId: app.clientId,
-                                         clientSecret: app.clientSecret,
+        let endPoint = Oauth.accessToken(clientId: clientId,
+                                         clientSecret: clientSecret,
                                          code: code,
-                                         redirectUri: app.redirectUri)
+                                         redirectUri: redirectUri)
 
         // Clear this, as it can't be used again
         Api.accessCode = nil
@@ -115,7 +122,8 @@ class Api {
                 
             case .success(let accessModel):
                 Log("\(type(of: self)) - \(#function): Access token returned")
-                Api.accessToken = accessModel.accessToken
+                LocalUser.saveString(.accessToken, value: accessModel.accessToken)
+//                Api.accessToken = accessModel.accessToken
                 
                 register()
                 
@@ -137,13 +145,16 @@ class Api {
                 
                 NotificationCenter.default.post(name: stego.userUpdated, object: nil, userInfo: nil)
 
+                // TODO: (George) Save local user, somewhere
+                
 //                getHomeTimeline()
                 
             case .error(let error) :
                 Log("\(type(of: self)) - \(#function): Error: \(error)")
                 
                 Api.accessCode = nil
-                Api.accessToken = nil
+//                Api.accessToken = nil
+                LocalUser.saveString(.accessToken, value: nil)
                 
                 // TODO: (George) potential loop here!
                 register()
@@ -151,29 +162,29 @@ class Api {
         }
     }
     
-    static private func getHomeTimeline() {
-        
-//        Api.call(Timelines.home) { (result: Result<[StatusModel]>) in
-        Api.call(Timelines.home) { (result: Result<[Status]>) in
-            switch result {
-                
-            case .success(let statuses):
-                Log("\(type(of: self)) - \(#function): Statuses: ")
-                
-                for status in statuses {
-                    Log("\(type(of: self)) - \(#function):   ")
-                    Log("\(type(of: self)) - \(#function):   \(String(describing: status.id))")
-//                    Log("\(type(of: self)) - \(#function):   \(status.account?.displayName)")
-                    Log("\(type(of: self)) - \(#function):   \(String(describing: status.content))")
-                }
-
-                
-            case .error(let error) :
-                Log("\(type(of: self)) - \(#function): Error: \(error)")
-               
-            }
-        }
-    }
+//    static private func getHomeTimeline() {
+//
+////        Api.call(Timelines.home) { (result: Result<[StatusModel]>) in
+//        Api.call(Timelines.home) { (result: Result<[Status]>) in
+//            switch result {
+//
+//            case .success(let statuses):
+//                Log("\(type(of: self)) - \(#function): Statuses: ")
+//
+//                for status in statuses {
+//                    Log("\(type(of: self)) - \(#function):   ")
+//                    Log("\(type(of: self)) - \(#function):   \(String(describing: status.id))")
+////                    Log("\(type(of: self)) - \(#function):   \(status.account?.displayName)")
+//                    Log("\(type(of: self)) - \(#function):   \(String(describing: status.content))")
+//                }
+//
+//
+//            case .error(let error) :
+//                Log("\(type(of: self)) - \(#function): Error: \(error)")
+//
+//            }
+//        }
+//    }
     // MARK: - making Api calls
     
     @discardableResult
@@ -198,7 +209,7 @@ class Api {
         // Authorization: Bearer <access_token>
         var headers: [String: String] = [:]
         
-        if let accessToken = Api.accessToken {
+        if let accessToken = LocalUser.getString(.accessToken) {
             headers["Authorization"] = "Bearer " + accessToken
         }
 

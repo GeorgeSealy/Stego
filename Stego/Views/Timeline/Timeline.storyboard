@@ -14,26 +14,26 @@
         <scene sceneID="M1f-Hx-vhu">
             <objects>
                 <tableViewController storyboardIdentifier="Timeline" id="808-WS-rnH" customClass="TimelineTableViewController" customModule="Stego" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" estimatedRowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" id="cmw-r6-ZBr">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="cmw-r6-ZBr">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TimelineTableViewCell" rowHeight="100" id="83k-kB-f7l" customClass="TimelineTableViewCell" customModule="Stego" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="100"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TimelineTableViewCell" rowHeight="220" id="83k-kB-f7l" customClass="TimelineTableViewCell" customModule="Stego" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="220"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="83k-kB-f7l" id="5Nc-aZ-Adh">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="83k-kB-f7l" id="5Nc-aZ-Adh">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="219.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6gs-QQ-flZ">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6gs-QQ-flZ">
                                             <rect key="frame" x="16" y="11" width="44" height="21"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                             <color key="textColor" name="ForegroundActive"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yPJ-O2-OJR">
-                                            <rect key="frame" x="16" y="-111" width="343" height="118"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yPJ-O2-OJR">
+                                            <rect key="frame" x="16" y="91" width="343" height="118"/>
                                             <string key="text">Bacon ipsum dolor amet short loin short ribs flank meatloaf, ham hock tenderloin doner. Pork corned beef cow, landjaeger ribeye flank ham hock hamburger frankfurter tenderloin. Flank shank ground round swine rump. Brisket pork strip steak spare ribs ball tip.</string>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                             <color key="textColor" name="ForegroundActive"/>
@@ -41,7 +41,7 @@
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="6gs-QQ-flZ" firstAttribute="top" secondItem="yPJ-O2-OJR" secondAttribute="bottom" constant="4" id="HDU-Z7-Zhj"/>
+                                        <constraint firstItem="yPJ-O2-OJR" firstAttribute="top" secondItem="6gs-QQ-flZ" secondAttribute="bottom" constant="4" id="0ax-MN-W4A"/>
                                         <constraint firstItem="yPJ-O2-OJR" firstAttribute="leading" secondItem="6gs-QQ-flZ" secondAttribute="leading" id="SPT-rI-1Le"/>
                                         <constraint firstItem="6gs-QQ-flZ" firstAttribute="leading" secondItem="5Nc-aZ-Adh" secondAttribute="leadingMargin" id="XxA-7W-fGv"/>
                                         <constraint firstItem="6gs-QQ-flZ" firstAttribute="top" secondItem="5Nc-aZ-Adh" secondAttribute="topMargin" id="Zou-LW-MD2"/>
@@ -64,7 +64,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ox4-1b-EYu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="95" y="204"/>
+            <point key="canvasLocation" x="93.599999999999994" y="203.74812593703149"/>
         </scene>
     </scenes>
     <resources>
