@@ -133,7 +133,7 @@ class Api {
             switch result {
                 
             case .success(let account):
-                Log("\(type(of: self)) - \(#function): Verify credentials: \(account.displayName)")
+                Log("\(type(of: self)) - \(#function): Verify credentials: \(String(describing: account.displayName))")
                 
                 getHomeTimeline()
                 
@@ -160,9 +160,9 @@ class Api {
                 
                 for status in statuses {
                     Log("\(type(of: self)) - \(#function):   ")
-                    Log("\(type(of: self)) - \(#function):   \(status.id)")
+                    Log("\(type(of: self)) - \(#function):   \(String(describing: status.id))")
 //                    Log("\(type(of: self)) - \(#function):   \(status.account?.displayName)")
-                    Log("\(type(of: self)) - \(#function):   \(status.content)")
+                    Log("\(type(of: self)) - \(#function):   \(String(describing: status.content))")
                 }
 
                 
@@ -182,10 +182,6 @@ class Api {
             return nil
         }
         
-//        guard let managedObjectContext = Api.managedObjectContext else {
-//            fatalError("Cannot call the api before it has been initialized.")
-//        }
-
         let route = endpoint.route
         let fullPath = route.isFullPath ? route.path : String(format: "%@%@%@", basePath, route.isApiCall ? "api/v1/" : "", route.path)
         
@@ -203,9 +199,6 @@ class Api {
         if let accessToken = Api.accessToken {
             headers["Authorization"] = "Bearer " + accessToken
         }
-//        let headers = ["Authorization": "Basic \(base64Credentials)"]
-//
-//        Alamofire.request(.GET, "https://httpbin.org/basic-auth/user/password", headers: headers)
 
         let request = Alamofire.request(fullPath, method: method, parameters: parameters, encoding: encoding, headers: headers).validate().responseString { (responseString) in
 //            print("Got response: \(responseString)")
@@ -228,7 +221,6 @@ class Api {
                 }
                 
                 let jsonDecoder = JSONDecoder()
-//                jsonDecoder.userInfo[codingUserInfoKeyManagedObjectContext] = managedObjectContext
                 jsonDecoder.userInfo[databaseKey] = database
 
                 let result: T = try data.decoded(using: jsonDecoder)
