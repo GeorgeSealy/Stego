@@ -16,13 +16,13 @@ extension Attachment {
         return NSFetchRequest<Attachment>(entityName: "Attachment")
     }
 
+    @NSManaged public var attachmentDescription: String?
     @NSManaged public var id: String?
+    @NSManaged public var previewUrl: URL?
+    @NSManaged public var remoteUrl: URL?
+    @NSManaged public var textUrl: URL?
     @NSManaged public var type: String?
     @NSManaged public var url: URL?
-    @NSManaged public var remoteUrl: URL?
-    @NSManaged public var previewUrl: URL?
-    @NSManaged public var textUrl: URL?
-    @NSManaged public var attachmentDescription: String?
     @NSManaged public var status: Status?
 
 }

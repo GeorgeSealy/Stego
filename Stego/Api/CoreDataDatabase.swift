@@ -85,6 +85,7 @@ class CoreDataDatabase: Database {
         }
         
         let managedObjectContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
+        managedObjectContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
         managedObjectContext.persistentStoreCoordinator = persistentStoreCoordinator
         
         return managedObjectContext

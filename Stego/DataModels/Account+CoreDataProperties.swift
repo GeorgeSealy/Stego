@@ -2,7 +2,7 @@
 //  Account+CoreDataProperties.swift
 //  
 //
-//  Created by George Sealy on 20/08/18.
+//  Created by George Sealy on 21/08/18.
 //
 //
 
@@ -16,23 +16,23 @@ extension Account {
         return NSFetchRequest<Account>(entityName: "Account")
     }
 
-    @NSManaged public var id: String?
-    @NSManaged public var username: String?
     @NSManaged public var acct: String?
-    @NSManaged public var displayName: String?
-    @NSManaged public var locked: Bool
-    @NSManaged public var createdAt: NSDate?
-    @NSManaged public var followersCount: Int64
-    @NSManaged public var followingCount: Int64
-    @NSManaged public var statusesCount: Int64
-    @NSManaged public var note: String?
-    @NSManaged public var url: URL?
     @NSManaged public var avatar: URL?
     @NSManaged public var avatarStatic: URL?
+    @NSManaged public var bot: Bool
+    @NSManaged public var createdAt: NSDate?
+    @NSManaged public var displayName: String?
+    @NSManaged public var followersCount: Int64
+    @NSManaged public var followingCount: Int64
     @NSManaged public var header: URL?
     @NSManaged public var headerStatic: URL?
+    @NSManaged public var id: String?
+    @NSManaged public var locked: Bool
     @NSManaged public var moved: Bool
-    @NSManaged public var bot: Bool
+    @NSManaged public var note: String?
+    @NSManaged public var statusesCount: Int64
+    @NSManaged public var url: URL?
+    @NSManaged public var username: String?
     @NSManaged public var statuses: NSOrderedSet?
 
 }

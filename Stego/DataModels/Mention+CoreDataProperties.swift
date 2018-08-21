@@ -16,10 +16,10 @@ extension Mention {
         return NSFetchRequest<Mention>(entityName: "Mention")
     }
 
-    @NSManaged public var url: URL?
-    @NSManaged public var username: String?
     @NSManaged public var acct: String?
     @NSManaged public var id: String?
+    @NSManaged public var url: URL?
+    @NSManaged public var username: String?
     @NSManaged public var status: Status?
 
 }

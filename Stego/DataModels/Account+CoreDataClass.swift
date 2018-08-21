@@ -9,6 +9,17 @@
 import Foundation
 import CoreData
 
+//extension DateFormatter {
+//    func date(fromSwapiString dateString: String) -> Date? {
+//        // SWAPI dates look like: "2014-12-10T16:44:31.486000Z"
+//        self.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SZ"
+//        self.timeZone = TimeZone(abbreviation: "UTC")
+//        self.locale = Locale(identifier: "en_US_POSIX")
+//        return self.date(from: dateString)
+//    }
+//}
+
+
 @objc(Account)
 public class Account: NSManagedObject, Codable {
     
@@ -47,12 +58,18 @@ public class Account: NSManagedObject, Codable {
         
         let container = try decoder.container(keyedBy: CodingKey.self)
         
-        id = try container.decodeIfPresent(String.self, forKey: .id)
+        id = try container.decode(String.self, forKey: .id)
+        
+
+//        Log("\(type(of: self)) - \(#function): TIMESTAMP \(String(describing: try? container.decodeIfPresent(String.self, forKey: .createdAt)))")
         
         if
             let createdAtTimestamp = try container.decodeIfPresent(String.self, forKey: .createdAt),
-            let timestamp = TimeInterval(createdAtTimestamp) {
-            createdAt = NSDate(timeIntervalSince1970: timestamp)
+            let date = Api.dateFormatter.date(from: createdAtTimestamp) {
+            createdAt = date as NSDate
+        } else {
+            createdAt = NSDate(timeIntervalSince1970: 0)
+            Log("\(type(of: self)) - \(#function): BAD, BAD timestamp")
         }
         
         username = try container.decodeIfPresent(String.self, forKey: .username)

@@ -28,11 +28,19 @@ class Api {
     static var accessCode: String?
 //    static var accessToken: String?
     
-    static let database = CoreDataDatabase(storageType: .fileBased)
+//    static let database = CoreDataDatabase(storageType: .fileBased)
+    static let database = CoreDataDatabase(storageType: .memoryBased)
 
-    static func initialize() {
-        // TODO: (George) Can remove?
-    }
+    static let dateFormatter: DateFormatter = {
+        let result = DateFormatter()
+        
+        // SWAPI dates look like: "2014-12-10T16:44:31.486000Z"
+        result.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SZ"
+        result.timeZone = TimeZone(abbreviation: "UTC")
+        result.locale = Locale(identifier: "en_US_POSIX")
+        
+        return result
+    }()
 
     static func register() {
         
@@ -141,19 +149,19 @@ class Api {
             switch result {
                 
             case .success(let account):
-                Log("\(type(of: self)) - \(#function): Verify credentials:)")
-                Log("\(type(of: self)) - \(#function):   User name: \(String(describing: account.username))")
-                Log("\(type(of: self)) - \(#function):   Display name: \(String(describing: account.displayName))")
-                Log("\(type(of: self)) - \(#function):   Avatar: \(String(describing: account.avatar))")
-                Log("\(type(of: self)) - \(#function):   Static avatar: \(String(describing: account.avatarStatic))")
-                Log("\(type(of: self)) - \(#function):   Header: \(String(describing: account.header))")
-                Log("\(type(of: self)) - \(#function):   Note: \(String(describing: account.note))")
-                Log("\(type(of: self)) - \(#function):   Bot: \(String(describing: account.bot))")
-                Log("\(type(of: self)) - \(#function):   Locked: \(String(describing: account.locked))")
-                Log("\(type(of: self)) - \(#function):   Followers: \(String(describing: account.followersCount))")
-                Log("\(type(of: self)) - \(#function):   Following: \(String(describing: account.followingCount))")
-                Log("\(type(of: self)) - \(#function):   Status count: \(String(describing: account.statusesCount))")
-                Log("\(type(of: self)) - \(#function):   Status count: \(String(describing: account.statuses?.count))")
+//                Log("\(type(of: self)) - \(#function): Verify credentials:)")
+//                Log("\(type(of: self)) - \(#function):   User name: \(String(describing: account.username))")
+//                Log("\(type(of: self)) - \(#function):   Display name: \(String(describing: account.displayName))")
+//                Log("\(type(of: self)) - \(#function):   Avatar: \(String(describing: account.avatar))")
+//                Log("\(type(of: self)) - \(#function):   Static avatar: \(String(describing: account.avatarStatic))")
+//                Log("\(type(of: self)) - \(#function):   Header: \(String(describing: account.header))")
+//                Log("\(type(of: self)) - \(#function):   Note: \(String(describing: account.note))")
+//                Log("\(type(of: self)) - \(#function):   Bot: \(String(describing: account.bot))")
+//                Log("\(type(of: self)) - \(#function):   Locked: \(String(describing: account.locked))")
+//                Log("\(type(of: self)) - \(#function):   Followers: \(String(describing: account.followersCount))")
+//                Log("\(type(of: self)) - \(#function):   Following: \(String(describing: account.followingCount))")
+//                Log("\(type(of: self)) - \(#function):   Status count: \(String(describing: account.statusesCount))")
+//                Log("\(type(of: self)) - \(#function):   Status count: \(String(describing: account.statuses?.count))")
 
                 NotificationCenter.default.post(name: stego.userUpdated, object: nil, userInfo: nil)
 
@@ -201,9 +209,11 @@ class Api {
             headers["Authorization"] = "Bearer " + accessToken
         }
 
-        let request = Alamofire.request(fullPath, method: method, parameters: parameters, encoding: encoding, headers: headers).validate().responseString { (responseString) in
-//            print("Got response: \(responseString)")
-        }.responseData { (response) in
+        let request = Alamofire.request(fullPath, method: method, parameters: parameters, encoding: encoding, headers: headers).validate()
+//            .responseJSON { (jsonData) in
+//                print("Got JSON: \(jsonData)")
+//            }
+            .responseData { (response) in
             
             do {
                 guard let data = response.data else {
@@ -226,6 +236,9 @@ class Api {
 
                 let result: T = try data.decoded(using: jsonDecoder)
                 
+//                if let array = result as? [Status] {
+//                    Log("\(type(of: self)) - \(#function): ARRAY COUNT: \(array.count)")
+//                }
                 try database.save()
                 
                 self.handleResponse(fullPath: fullPath, allowCancelCallback: allowCancelCallback, completion: completion, result: .success(result))

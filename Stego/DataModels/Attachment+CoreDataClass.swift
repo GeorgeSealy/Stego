@@ -37,6 +37,7 @@ public class Attachment: NSManagedObject, Codable {
         let container = try decoder.container(keyedBy: CodingKey.self)
         
         id = try container.decodeIfPresent(String.self, forKey: .id)
+        type = try container.decodeIfPresent(String.self, forKey: .type)
         url = try container.decodeIfPresent(URL.self, forKey: .url)
         remoteUrl = try container.decodeIfPresent(URL.self, forKey: .remoteUrl)
         previewUrl = try container.decodeIfPresent(URL.self, forKey: .previewUrl)

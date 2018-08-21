@@ -72,6 +72,8 @@ class TimelineTableViewController: UITableViewController {
             return 0
             
         }
+        
+        Log("\(type(of: self)) - \(#function): STATUS COUNT: \(statuses.count)")
         return statuses.count
     }
 
@@ -82,9 +84,12 @@ class TimelineTableViewController: UITableViewController {
 
         let status = fetchedResultsController.object(at: indexPath)
         
-        cell.userLabel.text = status.account?.displayName
-        cell.contentLabel.text = status.content
+//        Log("\(type(of: self)) - \(#function): \(indexPath.row) -> \(status.content)")
         
+        cell.userLabel.text = status.account?.displayName
+//        cell.contentLabel.text = status.content
+        cell.contentLabel.attributedText = status.attributedContent
+
         if let created = status.createdAt {
             cell.dateLabel.text = TimelineTableViewCell.dateFormatter.string(from: created as Date)
         } else {

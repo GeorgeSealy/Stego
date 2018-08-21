@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreData
+import SwiftSoup
 
 public extension CodingUserInfoKey {
     // Helper property to retrieve the context
@@ -44,6 +45,61 @@ public class Status: NSManagedObject, Codable {
         case tags
     }
     
+    func recurseDocument(_ element: Element, level: Int = 0) {
+        let indent = String(repeating: "  ", count: level)
+        
+        Log("\(type(of: self)) - \(#function): \(indent){")
+
+        Log("\(type(of: self)) - \(#function): \(indent)\(type(of: element)) class: \(try? element.className())")
+
+        for child in element.children() {
+            recurseDocument(child, level: level + 1)
+        }
+        
+        Log("\(type(of: self)) - \(#function): \(indent)}")
+    }
+    
+//    var internalAttributedContent: NSAttributedString?
+    var attributedContent: NSAttributedString {
+        
+        //        guard let result = internalAttributedContent else {
+        
+        let html = content ?? ""
+        let text: String
+        
+        //            let html: String = "<p>An <a href='http://example.com/'><b>example</b></a> link.</p>";
+        do {
+            let doc: Document = try SwiftSoup.parse(html)
+//            if let body = doc.body() {
+//                recurseDocument(body)
+//            }
+            //            let link: Element = try doc.select("a").first()!
+            //
+            text = try doc.body()!.text(); // "An example link"
+//            Log("\(type(of: self)) - \(#function): TEXT: \(text)")
+            //            let linkHref: String = try link.attr("href"); // "http://example.com/"
+            //            let linkText: String = try link.text(); // "example""
+            //
+            //            let linkOuterH: String = try link.outerHtml(); // "<a href="http://example.com"><b>example</b></a>"
+            //            let linkInnerH: String = try link.html(); // "<b>example</b>"
+        } catch Exception.Error(let errorType, let message) {
+            text = html
+            Log("\(type(of: self)) - \(#function): \(message)")
+        } catch let error {
+            text = html
+            Log("\(type(of: self)) - \(#function): error: \(error)")
+        }
+        
+        //            let result = initialContent.parseMastodonHtml()
+        let result = NSMutableAttributedString(string: text)
+        
+        //            internalAttributedContent = result
+        return result
+        //        }
+        //
+        //        return result
+    }
+    
     required convenience public init(from decoder: Decoder) throws {
         
         guard let databaseKey = CodingUserInfoKey.databaseKey,
@@ -59,16 +115,29 @@ public class Status: NSManagedObject, Codable {
         let container = try decoder.container(keyedBy: CodingKey.self)
         
         id = try container.decodeIfPresent(String.self, forKey: .id)
-        
+
+//        Log("\(type(of: self)) - \(#function): TIMESTAMP \(String(describing: try? container.decodeIfPresent(String.self, forKey: .createdAt)))")
+
         if
             let createdAtTimestamp = try container.decodeIfPresent(String.self, forKey: .createdAt),
-            let timestamp = TimeInterval(createdAtTimestamp) {
-            createdAt = NSDate(timeIntervalSince1970: timestamp)
+            let date = Api.dateFormatter.date(from: createdAtTimestamp) {
+            createdAt = date as NSDate
+        } else {
+            createdAt = NSDate(timeIntervalSince1970: 0)
+            Log("\(type(of: self)) - \(#function): BAD, BAD timestamp")
         }
         
         url = try container.decodeIfPresent(URL.self, forKey: .url)
         account = try? container.decode(Account.self, forKey: .account)
+        
+//        Log("\(type(of: self)) - \(#function): CONTENT: \(String(describing: try? container.decodeIfPresent(String.self, forKey: .content)))")
+
         content = try container.decodeIfPresent(String.self, forKey: .content)
+        
+        if content == nil {
+            Log("\(type(of: self)) - \(#function): BAD CONTENT: \(String(describing: try? container.decodeIfPresent(String.self, forKey: .content)))")
+            content = "BADLY PARSED CONTENT"
+        }
         
         pinned = try container.decodeIfPresent(Bool.self, forKey: .pinned) ?? false
         language = try container.decodeIfPresent(String.self, forKey: .language)
@@ -85,7 +154,8 @@ public class Status: NSManagedObject, Codable {
         inReplyToAccountId = try container.decodeIfPresent(String.self, forKey: .inReplyToAccountId)
         uri = try container.decodeIfPresent(URL.self, forKey: .uri)
         
-        reblog = try? container.decode(Status.self, forKey: .reblog)
+//        Log("\(type(of: self)) - \(#function): REBLOG: \(try? container.decode(String.self, forKey: .reblog))")
+//        reblog = try? container.decode(Status.self, forKey: .reblog)
 
         if let attachmentArray = try container.decodeIfPresent([Attachment].self, forKey: .mediaAttachments) {
             mediaAttachments = NSSet(array: attachmentArray)
@@ -121,6 +191,9 @@ public class Status: NSManagedObject, Codable {
 //
 //            dump("STATUS WITH \(things)")
 //        }
+        
+//        Log("\(type(of: self)) - \(#function): TEXT: \(self.attributedContent)")
+//        Log("\(type(of: self)) - \(#function): \(self)")
     }
     
     func dump(_ why: String) {
