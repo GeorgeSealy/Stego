@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AlamofireImage
 
 class TimelineTableViewCell: UITableViewCell {
 
@@ -32,6 +33,7 @@ class TimelineTableViewCell: UITableViewCell {
     @IBOutlet weak var userLabel: UILabel!
     @IBOutlet weak var contentLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var attachmentStackView: UIStackView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -44,4 +46,41 @@ class TimelineTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    func clearAttachments() {
+        
+        for view in attachmentStackView.arrangedSubviews {
+            
+            if let imageView = view as? UIImageView {
+                imageView.af_cancelImageRequest()
+            }
+            view.removeFromSuperview()
+        }
+    }
+    
+    func addImage(url: URL, aspect: CGFloat) {
+        
+        let imageView = UIImageView()
+        
+        imageView.af_setImage(withURL: url)
+        switch attachmentStackView.arrangedSubviews.count % 3 {
+        case 0:
+            imageView.backgroundColor = .red
+            
+        case 1:
+            imageView.backgroundColor = .green
+            
+        default:
+            imageView.backgroundColor = .blue
+        }
+        
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        attachmentStackView.addArrangedSubview(imageView)
+        
+        let heightConstraint = NSLayoutConstraint(item: imageView, attribute: .height, relatedBy: .equal, toItem: imageView, attribute: .width, multiplier: 1.0 / aspect, constant: 0)
+        heightConstraint.isActive = true
+    }
+    
+    override func prepareForReuse() {
+        clearAttachments()
+    }
 }

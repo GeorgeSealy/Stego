@@ -214,9 +214,9 @@ extension Api {
         }
         
         let request = Alamofire.request(fullPath, method: method, parameters: parameters, encoding: encoding, headers: headers).validate()
-            //            .responseJSON { (jsonData) in
-            //                print("Got JSON: \(jsonData)")
-            //            }
+            .responseJSON { (jsonData) in
+                print("Got JSON: \(jsonData)")
+            }
             .responseData { (response) in
                 
                 do {

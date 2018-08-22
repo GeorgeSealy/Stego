@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.9"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -26,14 +27,14 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="219.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6gs-QQ-flZ">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6gs-QQ-flZ">
                                             <rect key="frame" x="16" y="11" width="44" height="21"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                             <color key="textColor" name="ForegroundActive"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yPJ-O2-OJR">
-                                            <rect key="frame" x="16" y="91" width="343" height="118"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yPJ-O2-OJR">
+                                            <rect key="frame" x="16" y="36" width="343" height="118"/>
                                             <string key="text">Bacon ipsum dolor amet short loin short ribs flank meatloaf, ham hock tenderloin doner. Pork corned beef cow, landjaeger ribeye flank ham hock hamburger frankfurter tenderloin. Flank shank ground round swine rump. Brisket pork strip steak spare ribs ball tip.</string>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                             <color key="textColor" name="ForegroundActive"/>
@@ -45,21 +46,29 @@
                                             <color key="textColor" name="ForegroundActive"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="XRh-f7-x1y">
+                                            <rect key="frame" x="20" y="174" width="335" height="25.5"/>
+                                            <color key="backgroundColor" red="0.97329799110000004" green="1" blue="0.74129464290000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </stackView>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="yPJ-O2-OJR" firstAttribute="top" secondItem="6gs-QQ-flZ" secondAttribute="bottom" constant="4" id="0ax-MN-W4A"/>
+                                        <constraint firstAttribute="bottom" secondItem="XRh-f7-x1y" secondAttribute="bottom" constant="20" symbolic="YES" id="3mO-e6-3D0"/>
                                         <constraint firstItem="tbK-Qx-iLS" firstAttribute="firstBaseline" secondItem="6gs-QQ-flZ" secondAttribute="firstBaseline" id="9Mg-kG-w6x"/>
+                                        <constraint firstItem="XRh-f7-x1y" firstAttribute="top" secondItem="yPJ-O2-OJR" secondAttribute="bottom" constant="20" id="ADj-Cu-boW"/>
                                         <constraint firstItem="tbK-Qx-iLS" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6gs-QQ-flZ" secondAttribute="trailing" constant="8" symbolic="YES" id="CI1-yb-6Mm"/>
+                                        <constraint firstItem="XRh-f7-x1y" firstAttribute="leading" secondItem="5Nc-aZ-Adh" secondAttribute="leading" constant="20" symbolic="YES" id="Lbr-qf-yVG"/>
                                         <constraint firstItem="yPJ-O2-OJR" firstAttribute="leading" secondItem="6gs-QQ-flZ" secondAttribute="leading" id="SPT-rI-1Le"/>
                                         <constraint firstItem="6gs-QQ-flZ" firstAttribute="leading" secondItem="5Nc-aZ-Adh" secondAttribute="leadingMargin" id="XxA-7W-fGv"/>
                                         <constraint firstItem="6gs-QQ-flZ" firstAttribute="top" secondItem="5Nc-aZ-Adh" secondAttribute="topMargin" id="Zou-LW-MD2"/>
+                                        <constraint firstAttribute="trailing" secondItem="XRh-f7-x1y" secondAttribute="trailing" constant="20" symbolic="YES" id="equ-dR-IB9"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="yPJ-O2-OJR" secondAttribute="trailing" id="icI-qL-84x"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="yPJ-O2-OJR" secondAttribute="bottom" id="oBr-Nb-5l4"/>
                                         <constraint firstAttribute="trailing" secondItem="tbK-Qx-iLS" secondAttribute="trailing" constant="20" symbolic="YES" id="t3E-Sd-wwH"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" name="Background"/>
                                 <connections>
+                                    <outlet property="attachmentStackView" destination="XRh-f7-x1y" id="RzS-QH-gwZ"/>
                                     <outlet property="contentLabel" destination="yPJ-O2-OJR" id="aHe-ct-oEc"/>
                                     <outlet property="dateLabel" destination="tbK-Qx-iLS" id="o3T-Rv-gHA"/>
                                     <outlet property="userLabel" destination="6gs-QQ-flZ" id="6nx-uK-p07"/>

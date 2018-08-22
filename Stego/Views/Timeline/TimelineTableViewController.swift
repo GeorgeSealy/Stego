@@ -98,7 +98,30 @@ class TimelineTableViewController: UITableViewController {
         } else {
             cell.dateLabel.text = nil
         }
-        
+
+        if let attachments = status.mediaAttachments {
+            for attachment in attachments {
+                
+                guard let imageAttachment = attachment as? Attachment else { fatalError() }
+                
+                guard imageAttachment.attachmentType == .image else {
+                    Log("\(type(of: self)) - \(#function): Unhandled attachment type: \(imageAttachment.attachmentType)")
+                    continue
+                }
+                
+                if let url = imageAttachment.url {
+                    
+                    let aspect: CGFloat = CGFloat(imageAttachment.meta?.original?.aspect ?? 1.0)
+                    cell.addImage(url: url, aspect: aspect)
+                }
+            }
+        }
+//        cell.clearAttachments()
+//        
+//        cell.addImage(url: nil, aspect: 0.5)
+//        cell.addImage(url: nil, aspect: 1)
+//        cell.addImage(url: nil, aspect: 10)
+
         return cell
     }
 

@@ -2,7 +2,7 @@
 //  Attachment+CoreDataProperties.swift
 //  
 //
-//  Created by George Sealy on 21/08/18.
+//  Created by George Sealy on 22/08/18.
 //
 //
 
@@ -24,5 +24,6 @@ extension Attachment {
     @NSManaged public var type: String?
     @NSManaged public var url: URL?
     @NSManaged public var status: Status?
+    @NSManaged public var meta: AttachmentMeta?
 
 }

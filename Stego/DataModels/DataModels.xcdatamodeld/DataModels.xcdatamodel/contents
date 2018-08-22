@@ -33,12 +33,23 @@
         <attribute name="textUrl" optional="YES" attributeType="Transformable" customClassName="URL" syncable="YES"/>
         <attribute name="type" attributeType="String" syncable="YES"/>
         <attribute name="url" attributeType="Transformable" customClassName="URL" syncable="YES"/>
+        <relationship name="meta" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="AttachmentMeta" syncable="YES"/>
         <relationship name="status" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Status" inverseName="mediaAttachments" inverseEntity="Status" syncable="YES"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
                 <constraint value="id"/>
             </uniquenessConstraint>
         </uniquenessConstraints>
+    </entity>
+    <entity name="AttachmentMeta" representedClassName="AttachmentMeta" syncable="YES">
+        <relationship name="original" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="AttachmentMetaData" syncable="YES"/>
+        <relationship name="small" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="AttachmentMetaData" syncable="YES"/>
+    </entity>
+    <entity name="AttachmentMetaData" representedClassName="AttachmentMetaData" syncable="YES">
+        <attribute name="aspect" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="height" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="size" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="width" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
     </entity>
     <entity name="Emoji" representedClassName="Emoji" syncable="YES">
         <attribute name="shortCode" attributeType="String" syncable="YES"/>
@@ -99,10 +110,12 @@
     </entity>
     <elements>
         <element name="Account" positionX="-790.5703125" positionY="-355.05859375" width="128" height="315"/>
-        <element name="Attachment" positionX="-267.17578125" positionY="-8.68359375" width="128" height="165"/>
+        <element name="Attachment" positionX="-267.17578125" positionY="-8.68359375" width="128" height="180"/>
+        <element name="AttachmentMeta" positionX="-531" positionY="-45" width="128" height="75"/>
         <element name="Emoji" positionX="-264.69921875" positionY="-141.10546875" width="128" height="120"/>
         <element name="Mention" positionX="-268.94140625" positionY="169.02734375" width="128" height="120"/>
         <element name="Status" positionX="-543.40625" positionY="-175.2578125" width="128" height="30"/>
         <element name="Tag" positionX="-278.99609375" positionY="326.50390625" width="128" height="90"/>
+        <element name="AttachmentMetaData" positionX="-594" positionY="-207" width="128" height="105"/>
     </elements>
 </model>
