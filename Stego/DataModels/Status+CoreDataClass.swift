@@ -100,7 +100,12 @@ public class Status: NSManagedObject, Codable {
         //        return result
     }
     
+    static var initCount = 0
+    
     required convenience public init(from decoder: Decoder) throws {
+        
+        Status.initCount += 1
+        Log("Status - \(#function): Create count: \(Status.initCount)")
         
         guard let databaseKey = CodingUserInfoKey.databaseKey,
             let managedObjectContext = (decoder.userInfo[databaseKey] as? Database)?.context as? NSManagedObjectContext,
@@ -128,7 +133,7 @@ public class Status: NSManagedObject, Codable {
         }
         
         url = try container.decodeIfPresent(URL.self, forKey: .url)
-        account = try? container.decode(Account.self, forKey: .account)
+        account = try container.decodeIfPresent(Account.self, forKey: .account)
         
 //        Log("\(type(of: self)) - \(#function): CONTENT: \(String(describing: try? container.decodeIfPresent(String.self, forKey: .content)))")
 
@@ -154,8 +159,18 @@ public class Status: NSManagedObject, Codable {
         inReplyToAccountId = try container.decodeIfPresent(String.self, forKey: .inReplyToAccountId)
         uri = try container.decodeIfPresent(URL.self, forKey: .uri)
         
+        if let attemptedReblog = try? container.decodeIfPresent(Status.self, forKey: .reblog) {
+            Log("\(type(of: self)) - \(#function): REBLOGGED: \(attemptedReblog)")
+        } else {
+            Log("\(type(of: self)) - \(#function): No REBLOG")
+        }
 //        Log("\(type(of: self)) - \(#function): REBLOG: \(try? container.decode(String.self, forKey: .reblog))")
 //        reblog = try? container.decode(Status.self, forKey: .reblog)
+//
+//        if let r = reblog {
+//            Log("\(type(of: self)) - \(#function): REBLOG: \(r)")
+//            r.reblogParent = self
+//        }
 
         if let attachmentArray = try container.decodeIfPresent([Attachment].self, forKey: .mediaAttachments) {
             mediaAttachments = NSSet(array: attachmentArray)

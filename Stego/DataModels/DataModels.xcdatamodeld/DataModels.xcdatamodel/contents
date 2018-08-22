@@ -11,14 +11,14 @@
         <attribute name="followingCount" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="header" attributeType="Transformable" customClassName="URL" syncable="YES"/>
         <attribute name="headerStatic" attributeType="Transformable" customClassName="URL" syncable="YES"/>
-        <attribute name="id" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="locked" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="moved" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="note" attributeType="String" syncable="YES"/>
         <attribute name="statusesCount" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="url" attributeType="Transformable" customClassName="URL" syncable="YES"/>
         <attribute name="username" attributeType="String" syncable="YES"/>
-        <relationship name="statuses" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Status" inverseName="account" inverseEntity="Status" syncable="YES"/>
+        <relationship name="statuses" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Status" inverseName="account" inverseEntity="Status" syncable="YES"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
                 <constraint value="id"/>
@@ -63,27 +63,28 @@
         <attribute name="content" attributeType="String" syncable="YES"/>
         <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="favourited" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="favouritesCount" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="favouritesCount" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="id" attributeType="String" syncable="YES"/>
         <attribute name="inReplyToAccountId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="inReplyToId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isInHomeFeed" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="language" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="muted" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="pinned" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="reblogged" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="reblogsCount" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="repliesCount" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="sensitive" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="spoilerText" attributeType="String" syncable="YES"/>
-        <attribute name="uri" attributeType="Transformable" customClassName="URL" syncable="YES"/>
+        <attribute name="reblogsCount" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="repliesCount" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="sensitive" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="spoilerText" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="uri" optional="YES" attributeType="Transformable" customClassName="URL" syncable="YES"/>
         <attribute name="url" optional="YES" attributeType="Transformable" customClassName="URL" syncable="YES"/>
-        <attribute name="visibility" attributeType="String" syncable="YES"/>
+        <attribute name="visibility" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="account" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Account" inverseName="statuses" inverseEntity="Account" syncable="YES"/>
         <relationship name="emoji" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Emoji" inverseName="statuses" inverseEntity="Emoji" syncable="YES"/>
         <relationship name="mediaAttachments" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Attachment" inverseName="status" inverseEntity="Attachment" syncable="YES"/>
         <relationship name="mentions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Mention" inverseName="status" inverseEntity="Mention" syncable="YES"/>
-        <relationship name="reblog" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Status" inverseName="reblogs" inverseEntity="Status" syncable="YES"/>
-        <relationship name="reblogs" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Status" inverseName="reblog" inverseEntity="Status" syncable="YES"/>
+        <relationship name="reblog" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Status" inverseName="reblogParent" inverseEntity="Status" syncable="YES"/>
+        <relationship name="reblogParent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Status" inverseName="reblog" inverseEntity="Status" syncable="YES"/>
         <relationship name="tags" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tag" inverseName="statuses" inverseEntity="Tag" syncable="YES"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
@@ -101,7 +102,7 @@
         <element name="Attachment" positionX="-267.17578125" positionY="-8.68359375" width="128" height="165"/>
         <element name="Emoji" positionX="-264.69921875" positionY="-141.10546875" width="128" height="120"/>
         <element name="Mention" positionX="-268.94140625" positionY="169.02734375" width="128" height="120"/>
-        <element name="Status" positionX="-543.40625" positionY="-175.2578125" width="128" height="420"/>
+        <element name="Status" positionX="-543.40625" positionY="-175.2578125" width="128" height="30"/>
         <element name="Tag" positionX="-278.99609375" positionY="326.50390625" width="128" height="90"/>
     </elements>
 </model>

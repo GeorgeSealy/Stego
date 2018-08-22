@@ -42,5 +42,8 @@ enum Oauth: ApiEndpoint {
             return AccessModel.self
         }
     }
+    
+    func preSave(_ result: Decodable) {}
+
 }
 

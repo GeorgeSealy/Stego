@@ -24,11 +24,7 @@ class Api {
     
     static let basePath = "https://mastodon.social/"
     
-//    static var app: AppModel?
     static var accessCode: String?
-//    static var accessToken: String?
-    
-//    static let database = CoreDataDatabase(storageType: .fileBased)
     static let database = CoreDataDatabase(storageType: .memoryBased)
 
     static let dateFormatter: DateFormatter = {
@@ -41,7 +37,12 @@ class Api {
         
         return result
     }()
+}
 
+// MARK: - Register
+
+extension Api {
+    
     static func register() {
         
 //        guard let app = Api.app else {
@@ -180,12 +181,15 @@ class Api {
             }
         }
     }
-    
-    // MARK: - making Api calls
+}
+
+// MARK: - Call
+
+extension Api {
     
     @discardableResult
     static func call<T: Decodable>(_ endpoint: ApiEndpoint, allowCancelCallback: Bool = false, completion: @escaping (Result<T>) -> Void) -> ApiRequest? {
-
+        
         guard type(of: T.self) == type(of: endpoint.resultType) else {
             assertionFailure("Endpoint \(type(of: endpoint.resultType)) and closure \(type(of: T.self)) return types do not match")
             return nil
@@ -198,7 +202,7 @@ class Api {
         
         let parameters = route.parameters
         
-//        print("\(type(of: self)) - \(#function): Params: \(parameters)")
+        //        print("\(type(of: self)) - \(#function): Params: \(parameters)")
         let method = route.method
         let encoding: ParameterEncoding = ([Alamofire.HTTPMethod.head, Alamofire.HTTPMethod.get, Alamofire.HTTPMethod.delete].contains(method) ? URLEncoding.default  : JSONEncoding.default)
         
@@ -208,63 +212,62 @@ class Api {
         if let accessToken = LocalUser.getString(.accessToken) {
             headers["Authorization"] = "Bearer " + accessToken
         }
-
+        
         let request = Alamofire.request(fullPath, method: method, parameters: parameters, encoding: encoding, headers: headers).validate()
-//            .responseJSON { (jsonData) in
-//                print("Got JSON: \(jsonData)")
-//            }
+            //            .responseJSON { (jsonData) in
+            //                print("Got JSON: \(jsonData)")
+            //            }
             .responseData { (response) in
-            
-            do {
-                guard let data = response.data else {
-                    let userInfo: [String: Any] = [
-                        NSLocalizedDescriptionKey: "Sorry, there was an error deserializing the api response",
+                
+                do {
+                    guard let data = response.data else {
+                        let userInfo: [String: Any] = [
+                            NSLocalizedDescriptionKey: "Sorry, there was an error deserializing the api response",
+                            ]
+                        
+                        let error = NSError(domain: "ApiDomain", code: -1, userInfo: userInfo)
+                        
+                        self.handleResponse(fullPath: fullPath, allowCancelCallback: allowCancelCallback, completion: completion, result: .error(error as NSError))
+                        return
+                    }
+                    
+                    guard let databaseKey = CodingUserInfoKey.databaseKey else {
+                        fatalError("Failed to retrieve managed object context")
+                    }
+                    
+                    let jsonDecoder = JSONDecoder()
+                    jsonDecoder.userInfo[databaseKey] = database
+                    
+                    let result: T = try data.decoded(using: jsonDecoder)
+                    
+                    endpoint.preSave(result)
+                    
+                    try database.save()
+                    
+                    self.handleResponse(fullPath: fullPath, allowCancelCallback: allowCancelCallback, completion: completion, result: .success(result))
+                } catch let error {
+                    
+                    if
+                        let data = response.data,
+                        let apiError: ApiError = try? data.decoded() {
+                        
+                        print("Response data was: \(String(describing: String(data: data, encoding: .utf8)))")
+                        let userInfo: [String: Any] = [
+                            NSLocalizedDescriptionKey: "\(apiError.error): \(apiError.description)",
                         ]
+                        
+                        let error = NSError(domain: "ApiErrorDomain", code: -1, userInfo: userInfo)
+                        self.handleResponse(fullPath: fullPath, allowCancelCallback: allowCancelCallback, completion: completion, result: .error(error))
+                        
+                        return
+                    }
                     
-                    let error = NSError(domain: "ApiDomain", code: -1, userInfo: userInfo)
-                    
+                    Log("\(type(of: self)) - \(#function): ERROR: \(error)")
                     self.handleResponse(fullPath: fullPath, allowCancelCallback: allowCancelCallback, completion: completion, result: .error(error as NSError))
-                    return
                 }
-                
-                guard let databaseKey = CodingUserInfoKey.databaseKey else {
-                    fatalError("Failed to retrieve managed object context")
-                }
-                
-                let jsonDecoder = JSONDecoder()
-                jsonDecoder.userInfo[databaseKey] = database
-
-                let result: T = try data.decoded(using: jsonDecoder)
-                
-//                if let array = result as? [Status] {
-//                    Log("\(type(of: self)) - \(#function): ARRAY COUNT: \(array.count)")
-//                }
-                try database.save()
-                
-                self.handleResponse(fullPath: fullPath, allowCancelCallback: allowCancelCallback, completion: completion, result: .success(result))
-            } catch let error {
-                
-                if
-                    let data = response.data,
-                    let apiError: ApiError = try? data.decoded() {
-                
-                    print("Response data was: \(String(describing: String(data: data, encoding: .utf8)))")
-                    let userInfo: [String: Any] = [
-                        NSLocalizedDescriptionKey: "\(apiError.error): \(apiError.description)",
-                        ]
-                    
-                    let error = NSError(domain: "ApiErrorDomain", code: -1, userInfo: userInfo)
-                    self.handleResponse(fullPath: fullPath, allowCancelCallback: allowCancelCallback, completion: completion, result: .error(error))
-
-                    return
-                }
-
-                Log("\(type(of: self)) - \(#function): ERROR: \(error)")
-                self.handleResponse(fullPath: fullPath, allowCancelCallback: allowCancelCallback, completion: completion, result: .error(error as NSError))
-            }
         }
         
- 
+        
         return AfApiRequest(request: request)
     }
     
@@ -273,6 +276,4 @@ class Api {
         completion(result)
         
     }
-    
 }
-

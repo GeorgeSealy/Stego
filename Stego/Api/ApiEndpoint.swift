@@ -55,4 +55,6 @@ struct RouteInfo {
 protocol ApiEndpoint {
     var route: RouteInfo { get }
     var resultType: Decodable.Type { get }
+    
+    func preSave(_ result: Decodable)
 }

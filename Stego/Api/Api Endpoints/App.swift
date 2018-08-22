@@ -43,4 +43,7 @@ enum Apps: ApiEndpoint {
             return AppModel.self
         }
     }
+    
+    func preSave(_ result: Decodable) {}
+
 }

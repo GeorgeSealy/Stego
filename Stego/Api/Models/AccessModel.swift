@@ -54,7 +54,11 @@ struct AccessModel: Decodable {
         
         let tokenTypeString = try container.decode(String.self, forKey: .tokenType)
         
-        tokenType = TokenType(rawValue: tokenTypeString)!
+        if let token = TokenType(rawValue: tokenTypeString.lowercased()) {
+            tokenType = token
+        } else {
+            tokenType = .bearer
+        }
         
         var scopes: [ScopeType] = []
         

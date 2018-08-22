@@ -2,7 +2,7 @@
 //  Status+CoreDataProperties.swift
 //  
 //
-//  Created by George Sealy on 21/08/18.
+//  Created by George Sealy on 22/08/18.
 //
 //
 
@@ -34,13 +34,14 @@ extension Status {
     @NSManaged public var uri: URL?
     @NSManaged public var url: URL?
     @NSManaged public var visibility: String?
+    @NSManaged public var isInHomeFeed: Bool
     @NSManaged public var account: Account?
     @NSManaged public var emoji: NSSet?
     @NSManaged public var mediaAttachments: NSSet?
     @NSManaged public var mentions: NSSet?
     @NSManaged public var reblog: Status?
-    @NSManaged public var reblogs: NSSet?
     @NSManaged public var tags: NSSet?
+    @NSManaged public var reblogParent: Status?
 
 }
 
@@ -92,23 +93,6 @@ extension Status {
 
     @objc(removeMentions:)
     @NSManaged public func removeFromMentions(_ values: NSSet)
-
-}
-
-// MARK: Generated accessors for reblogs
-extension Status {
-
-    @objc(addReblogsObject:)
-    @NSManaged public func addToReblogs(_ value: Status)
-
-    @objc(removeReblogsObject:)
-    @NSManaged public func removeFromReblogs(_ value: Status)
-
-    @objc(addReblogs:)
-    @NSManaged public func addToReblogs(_ values: NSSet)
-
-    @objc(removeReblogs:)
-    @NSManaged public func removeFromReblogs(_ values: NSSet)
 
 }
 

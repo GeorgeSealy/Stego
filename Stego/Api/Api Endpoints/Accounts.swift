@@ -38,4 +38,6 @@ enum Accounts: ApiEndpoint {
             return Account.self
         }
     }
+    
+    func preSave(_ result: Decodable) {}
 }

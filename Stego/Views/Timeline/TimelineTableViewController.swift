@@ -10,12 +10,11 @@ import UIKit
 import CoreData
 class TimelineTableViewController: UITableViewController {
 
-//    private let persistentContainer = NSPersistentContainer(name: "DataModels")
-
     fileprivate lazy var fetchedResultsController: NSFetchedResultsController<Status> = {
 
         let fetchRequest: NSFetchRequest<Status> = Status.fetchRequest()
-        
+        fetchRequest.predicate = NSPredicate(format: "isInHomeFeed == true")
+            
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "createdAt", ascending: false)]
         
         guard let databaseContext = Api.database.context as? NSManagedObjectContext else {
@@ -50,6 +49,10 @@ class TimelineTableViewController: UITableViewController {
 
             case .success(let statuses):
                 Log("\(type(of: self)) - \(#function): Statuses: [\(statuses.count)]")
+                
+                for status in statuses {
+                    status.isInHomeFeed = true
+                }
 
             case .error(let error) :
                 Log("\(type(of: self)) - \(#function): Error: \(error)")
