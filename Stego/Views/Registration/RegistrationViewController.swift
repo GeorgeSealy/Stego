@@ -41,17 +41,17 @@ class RegistrationViewController: UIViewController {
         
         Log("\(type(of: self)) - \(#function): GOT LOGGED IN USER")
 
-        Api.database.load { (error) in
-
-            guard error == nil else {
-                fatalError("Unable to load database")
-            }
-            
+//        Api.database.load { (error) in
+//
+//            guard error == nil else {
+//                fatalError("Unable to load database")
+//            }
+        
             let storyboard = UIStoryboard.init(name: "Timeline", bundle: nil)
             let vc = storyboard.instantiateViewController(withIdentifier: "Timeline")
             
             self.navigationController?.pushViewController(vc, animated: true)
-        }
+//        }
         
         
     }

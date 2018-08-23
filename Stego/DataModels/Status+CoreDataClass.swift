@@ -108,7 +108,7 @@ public class Status: NSManagedObject, Codable {
         Log("Status - \(#function): Create count: \(Status.initCount)")
         
         guard let databaseKey = CodingUserInfoKey.databaseKey,
-            let managedObjectContext = (decoder.userInfo[databaseKey] as? Database)?.context as? NSManagedObjectContext,
+            let managedObjectContext = decoder.userInfo[databaseKey] as? NSManagedObjectContext,
             let entity = NSEntityDescription.entity(forEntityName: "Status", in: managedObjectContext) else {
 
                 fatalError("No managed object context")

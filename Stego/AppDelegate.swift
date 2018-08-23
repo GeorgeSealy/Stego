@@ -20,11 +20,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window = UIWindow.init(frame: UIScreen.main.bounds)
 
-        let storyboard = UIStoryboard.init(name: "Registration", bundle: nil)
-//        if let rootVC = storyboard.instantiateInitialViewController() {
-        let rootVC = storyboard.instantiateViewController(withIdentifier: "Registration")
+        let rootViewController = RootViewController(nibName: "RootViewController", bundle: nil)
+
+//        let storyboard = UIStoryboard.init(name: "Registration", bundle: nil)
+////        if let rootVC = storyboard.instantiateInitialViewController() {
+//        let rootVC = storyboard.instantiateViewController(withIdentifier: "Registration")
         
-        navigationController.setViewControllers([rootVC], animated: false)
+        navigationController.setViewControllers([rootViewController], animated: false)
 //        }
         
         window?.rootViewController = navigationController

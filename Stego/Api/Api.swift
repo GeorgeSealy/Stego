@@ -25,7 +25,9 @@ class Api {
     static let basePath = "https://mastodon.social/"
     
     static var accessCode: String?
-    static let database = CoreDataDatabase(storageType: .memoryBased)
+    static var coreDataManager: CoreDataManager?
+    
+//    static let database = CoreDataDatabase(storageType: .memoryBased)
 //    static let database = CoreDataDatabase(storageType: .fileBased)
 
     static let dateFormatter: DateFormatter = {
@@ -233,17 +235,23 @@ extension Api {
                     }
                     
                     guard let databaseKey = CodingUserInfoKey.databaseKey else {
+                        fatalError("Failed to retrieve key value")
+                    }
+                    
+                    guard let managedObjectContext = coreDataManager?.workerManagedObjectContext() else {
                         fatalError("Failed to retrieve managed object context")
                     }
                     
                     let jsonDecoder = JSONDecoder()
-                    jsonDecoder.userInfo[databaseKey] = database
+                    jsonDecoder.userInfo[databaseKey] = managedObjectContext
                     
                     let result: T = try data.decoded(using: jsonDecoder)
                     
                     endpoint.preSave(result)
                     
-                    try database.save()
+                    try managedObjectContext.save()
+//                    coreDataManager?.saveChanges()
+//                    try database.save()
                     
                     self.handleResponse(fullPath: fullPath, allowCancelCallback: allowCancelCallback, completion: completion, result: .success(result))
                 } catch let error {

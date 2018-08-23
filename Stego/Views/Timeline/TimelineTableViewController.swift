@@ -13,17 +13,16 @@ class TimelineTableViewController: UITableViewController {
     fileprivate lazy var fetchedResultsController: NSFetchedResultsController<Status> = {
 
         let fetchRequest: NSFetchRequest<Status> = Status.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "isInHomeFeed == true")
+//        fetchRequest.predicate = NSPredicate(format: "isInHomeFeed == true")
 //        fetchRequest.fetchBatchSize = 20
         
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "createdAt", ascending: false)]
         
-        guard let databaseContext = Api.database.context as? NSManagedObjectContext else {
+        guard let databaseContext = Api.coreDataManager?.mainManagedObjectContext else {
             fatalError("No context")
         }
         
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: databaseContext, sectionNameKeyPath: nil, cacheName: nil)
-        
         fetchedResultsController.delegate = self
         
         return fetchedResultsController
@@ -69,6 +68,7 @@ class TimelineTableViewController: UITableViewController {
             }
         }
 
+        tableView.reloadData()
 //        updateView()
         
     }
@@ -93,11 +93,11 @@ class TimelineTableViewController: UITableViewController {
             
             do {
                 let fetchRequest: NSFetchRequest<Status> = Status.fetchRequest()
-                
-                guard let databaseContext = Api.database.context as? NSManagedObjectContext else {
+
+                guard let databaseContext = Api.coreDataManager?.mainManagedObjectContext else {
                     fatalError("No context")
                 }
-                
+
                 let results = try databaseContext.fetch(fetchRequest)
 
                 Log("\(type(of: self)) - \(#function): database has: \(results.count)")
@@ -105,6 +105,7 @@ class TimelineTableViewController: UITableViewController {
                 Log("\(type(of: self)) - \(#function): FETCH ERROR: \(error)")
             }
             self.refreshControl?.endRefreshing()
+            self.tableView.reloadData()
         }
 
     }
@@ -174,42 +175,42 @@ class TimelineTableViewController: UITableViewController {
 
 extension TimelineTableViewController: NSFetchedResultsControllerDelegate {
     
-//    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-//        // TODO: (George) Be more efficient!
-//        Log("\(type(of: self)) - \(#function): ")
-//        tableView.reloadData()
-//    }
-    
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-        Log("TimelineTableViewController - \(#function): ")
-        switch type {
-        case .insert:
-            guard let safeIndexPath = newIndexPath else {
-                assertionFailure("No index path")
-                break
-            }
-            
-            self.tableView.insertRows(at: [safeIndexPath], with: .automatic)
-            
-        case .delete:
-            guard let safeIndexPath = indexPath else {
-                assertionFailure("No index path")
-                break
-            }
-            
-            self.tableView.deleteRows(at: [safeIndexPath], with: .automatic)
-        default:
-            break
-        }
-    }
-    
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        // TODO: (George) Be more efficient!
         Log("\(type(of: self)) - \(#function): ")
-        self.tableView.endUpdates()
+        tableView.reloadData()
     }
     
-    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        Log("\(type(of: self)) - \(#function): ")
-        tableView.beginUpdates()
-    }
+//    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+//        Log("TimelineTableViewController - \(#function): ")
+//        switch type {
+//        case .insert:
+//            guard let safeIndexPath = newIndexPath else {
+//                assertionFailure("No index path")
+//                break
+//            }
+//
+//            self.tableView.insertRows(at: [safeIndexPath], with: .automatic)
+//
+//        case .delete:
+//            guard let safeIndexPath = indexPath else {
+//                assertionFailure("No index path")
+//                break
+//            }
+//
+//            self.tableView.deleteRows(at: [safeIndexPath], with: .automatic)
+//        default:
+//            break
+//        }
+//    }
+//
+//    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+//        Log("\(type(of: self)) - \(#function): ")
+//        self.tableView.endUpdates()
+//    }
+//
+//    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+//        Log("\(type(of: self)) - \(#function): ")
+//        tableView.beginUpdates()
+//    }
 }

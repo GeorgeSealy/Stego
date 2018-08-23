@@ -38,7 +38,7 @@ public class Attachment: NSManagedObject, Codable {
     required convenience public init(from decoder: Decoder) throws {
         
         guard let databaseKey = CodingUserInfoKey.databaseKey,
-            let managedObjectContext = (decoder.userInfo[databaseKey] as? Database)?.context as? NSManagedObjectContext,
+            let managedObjectContext = decoder.userInfo[databaseKey] as? NSManagedObjectContext,
             let entity = NSEntityDescription.entity(forEntityName: "Attachment", in: managedObjectContext) else {
 
                 fatalError("No managed object context")
