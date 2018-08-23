@@ -28,7 +28,9 @@ class CoreDataManager {
     fileprivate(set) lazy var mainManagedObjectContext: NSManagedObjectContext = {
         let managedObjectContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
         managedObjectContext.parent = self.privateManagedObjectContext
-        managedObjectContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
+
+        setStandardContextOptions(managedObjectContext)
+
 
         return managedObjectContext
     }()
@@ -36,7 +38,7 @@ class CoreDataManager {
     fileprivate lazy var privateManagedObjectContext: NSManagedObjectContext = {
         let managedObjectContext = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
         managedObjectContext.persistentStoreCoordinator = self.persistentStoreCoordinator
-        managedObjectContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
+        setStandardContextOptions(managedObjectContext)
 
         return managedObjectContext
     }()
@@ -104,12 +106,21 @@ class CoreDataManager {
     func workerManagedObjectContext() -> NSManagedObjectContext {
         let managedObjectContext = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
         managedObjectContext.parent = mainManagedObjectContext
-        managedObjectContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
 
+        setStandardContextOptions(managedObjectContext)
+        
         return managedObjectContext
     }
     
     // MARK: - Private Helper Methods
+    
+    fileprivate func setStandardContextOptions(_ managedObjectContext: NSManagedObjectContext) {
+        managedObjectContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
+        managedObjectContext.stalenessInterval = 0
+        managedObjectContext.automaticallyMergesChangesFromParent = true
+        
+        //        managedObjectContext.mergePolicy = NSErrorMergePolicy
+    }
     
     fileprivate func setupCoreDataStack() {
         let _ = mainManagedObjectContext.persistentStoreCoordinator

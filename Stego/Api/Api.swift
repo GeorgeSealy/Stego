@@ -222,57 +222,59 @@ extension Api {
 //            }
             .responseData { (response) in
                 
-                do {
-                    guard let data = response.data else {
-                        let userInfo: [String: Any] = [
-                            NSLocalizedDescriptionKey: "Sorry, there was an error deserializing the api response",
-                            ]
-                        
-                        let error = NSError(domain: "ApiDomain", code: -1, userInfo: userInfo)
-                        
-                        self.handleResponse(fullPath: fullPath, allowCancelCallback: allowCancelCallback, completion: completion, result: .error(error as NSError))
-                        return
-                    }
-                    
-                    guard let databaseKey = CodingUserInfoKey.databaseKey else {
-                        fatalError("Failed to retrieve key value")
-                    }
-                    
-                    guard let managedObjectContext = coreDataManager?.workerManagedObjectContext() else {
-                        fatalError("Failed to retrieve managed object context")
-                    }
-                    
-                    let jsonDecoder = JSONDecoder()
-                    jsonDecoder.userInfo[databaseKey] = managedObjectContext
-                    
-                    let result: T = try data.decoded(using: jsonDecoder)
-                    
-                    endpoint.preSave(result)
-                    
-                    try managedObjectContext.save()
-//                    coreDataManager?.saveChanges()
-//                    try database.save()
-                    
-                    self.handleResponse(fullPath: fullPath, allowCancelCallback: allowCancelCallback, completion: completion, result: .success(result))
-                } catch let error {
-                    
-                    if
-                        let data = response.data,
-                        let apiError: ApiError = try? data.decoded() {
-                        
-                        print("Response data was: \(String(describing: String(data: data, encoding: .utf8)))")
-                        let userInfo: [String: Any] = [
-                            NSLocalizedDescriptionKey: "\(apiError.error): \(apiError.description)",
+                guard let data = response.data else {
+                    let userInfo: [String: Any] = [
+                        NSLocalizedDescriptionKey: "Sorry, there was an error deserializing the api response",
                         ]
-                        
-                        let error = NSError(domain: "ApiErrorDomain", code: -1, userInfo: userInfo)
-                        self.handleResponse(fullPath: fullPath, allowCancelCallback: allowCancelCallback, completion: completion, result: .error(error))
-                        
-                        return
-                    }
                     
-                    Log("\(type(of: self)) - \(#function): ERROR: \(error)")
+                    let error = NSError(domain: "ApiDomain", code: -1, userInfo: userInfo)
+                    
                     self.handleResponse(fullPath: fullPath, allowCancelCallback: allowCancelCallback, completion: completion, result: .error(error as NSError))
+                    return
+                }
+                
+                guard let databaseKey = CodingUserInfoKey.databaseKey else {
+                    fatalError("Failed to retrieve key value")
+                }
+                
+                guard let managedObjectContext = coreDataManager?.workerManagedObjectContext() else {
+                    fatalError("Failed to retrieve managed object context")
+                }
+                
+                managedObjectContext.perform {
+                    do {
+                        let jsonDecoder = JSONDecoder()
+                        jsonDecoder.userInfo[databaseKey] = managedObjectContext
+                        
+                        let result: T = try data.decoded(using: jsonDecoder)
+                        
+                        endpoint.preSave(result)
+                        
+                        try managedObjectContext.save()
+                        //                    coreDataManager?.saveChanges()
+                        //                    try database.save()
+                        
+                        self.handleResponse(fullPath: fullPath, allowCancelCallback: allowCancelCallback, completion: completion, result: .success(result))
+                    } catch let error {
+                        
+                        if
+                            let data = response.data,
+                            let apiError: ApiError = try? data.decoded() {
+                            
+                            print("Response data was: \(String(describing: String(data: data, encoding: .utf8)))")
+                            let userInfo: [String: Any] = [
+                                NSLocalizedDescriptionKey: "\(apiError.error): \(apiError.description)",
+                            ]
+                            
+                            let error = NSError(domain: "ApiErrorDomain", code: -1, userInfo: userInfo)
+                            self.handleResponse(fullPath: fullPath, allowCancelCallback: allowCancelCallback, completion: completion, result: .error(error))
+                            
+                            return
+                        }
+                        
+                        Log("\(type(of: self)) - \(#function): ERROR: \(error)")
+                        self.handleResponse(fullPath: fullPath, allowCancelCallback: allowCancelCallback, completion: completion, result: .error(error as NSError))
+                    }
                 }
         }
         
@@ -282,7 +284,9 @@ extension Api {
     
     private static func handleResponse<T>(fullPath: String, allowCancelCallback: Bool = false, completion: @escaping (Result<T>) -> Void, result: Result<T>) {
         
-        completion(result)
+        DispatchQueue.main.async {
+            completion(result)
+        }
         
     }
 }

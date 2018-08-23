@@ -34,6 +34,9 @@ class RootViewController: UIViewController {
         let rootVC = storyboard.instantiateViewController(withIdentifier: "Registration")
 
         navigationController?.pushViewController(rootVC, animated: true)
+
+//        let testVC = TestViewController(nibName: "TestViewController", bundle: nil)
+//        navigationController?.pushViewController(testVC, animated: true)
     }
 
 }

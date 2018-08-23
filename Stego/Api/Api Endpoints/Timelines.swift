@@ -29,7 +29,7 @@ enum Timelines: ApiEndpoint {
 //            limit     Maximum number of statuses on the requested timeline to get (Default 20, Max 40)     yes
             
             let params: [String: Any] = [
-                "limit": "10"
+                "limit": "3"
             ]
             
             result = RouteInfo(method: .get, path: "\(basePath)/home", parameters: params)
@@ -57,7 +57,7 @@ enum Timelines: ApiEndpoint {
             }
             
             for status in statuses {
-//                status.isInHomeFeed = true
+                status.isInHomeFeed = true
             }
         }
 

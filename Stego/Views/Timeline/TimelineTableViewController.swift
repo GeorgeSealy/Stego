@@ -58,9 +58,9 @@ class TimelineTableViewController: UITableViewController {
             case .success(let statuses):
                 Log("\(type(of: self)) - \(#function): Statuses: [\(statuses.count)]")
                 
-                for status in statuses {
-                    status.isInHomeFeed = true
-                }
+//                for status in statuses {
+//                    status.isInHomeFeed = true
+//                }
 
             case .error(let error) :
                 Log("\(type(of: self)) - \(#function): Error: \(error)")
@@ -68,7 +68,7 @@ class TimelineTableViewController: UITableViewController {
             }
         }
 
-        tableView.reloadData()
+//        tableView.reloadData()
 //        updateView()
         
     }
@@ -82,9 +82,9 @@ class TimelineTableViewController: UITableViewController {
             case .success(let statuses):
                 Log("\(type(of: self)) - \(#function): Statuses: [\(statuses.count)]")
                 
-                for status in statuses {
-                    status.isInHomeFeed = true
-                }
+//                for status in statuses {
+//                    status.isInHomeFeed = true
+//                }
                 
             case .error(let error) :
                 Log("\(type(of: self)) - \(#function): Error: \(error)")
@@ -104,8 +104,14 @@ class TimelineTableViewController: UITableViewController {
             } catch let error {
                 Log("\(type(of: self)) - \(#function): FETCH ERROR: \(error)")
             }
-            self.refreshControl?.endRefreshing()
-            self.tableView.reloadData()
+            
+            Log("\(type(of: self)) - \(#function): Got changes")
+            Api.coreDataManager?.saveChanges()
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0, execute: {
+                Log("\(type(of: self)) - \(#function): 'Saved' changes")
+                self.refreshControl?.endRefreshing()
+//                self.tableView.reloadData()
+//            })
         }
 
     }

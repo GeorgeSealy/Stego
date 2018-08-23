@@ -58,6 +58,11 @@
 		5E7DBD22212E47D500D02A35 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7DBD21212E47D500D02A35 /* CoreDataManager.swift */; };
 		5E7DBD26212E492E00D02A35 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7DBD24212E492E00D02A35 /* RootViewController.swift */; };
 		5E7DBD27212E492E00D02A35 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E7DBD25212E492E00D02A35 /* RootViewController.xib */; };
+		5E7DBD2B212E54F300D02A35 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7DBD29212E54F300D02A35 /* TestViewController.swift */; };
+		5E7DBD2C212E54F300D02A35 /* TestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E7DBD2A212E54F300D02A35 /* TestViewController.xib */; };
+		5E7DBD2F212E56A200D02A35 /* TestModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5E7DBD2D212E56A200D02A35 /* TestModel.xcdatamodeld */; };
+		5E7DBD32212E570800D02A35 /* TestEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7DBD30212E570700D02A35 /* TestEntity+CoreDataClass.swift */; };
+		5E7DBD33212E570800D02A35 /* TestEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7DBD31212E570800D02A35 /* TestEntity+CoreDataProperties.swift */; };
 		5E93CD9121222ECE002F3D0E /* ApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E93CD9021222ECE002F3D0E /* ApiError.swift */; };
 		5E93CD93212233A5002F3D0E /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E93CD92212233A5002F3D0E /* Log.swift */; };
 		5E93CD95212233EC002F3D0E /* Assert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E93CD94212233EC002F3D0E /* Assert.swift */; };
@@ -165,6 +170,11 @@
 		5E7DBD21212E47D500D02A35 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		5E7DBD24212E492E00D02A35 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		5E7DBD25212E492E00D02A35 /* RootViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RootViewController.xib; sourceTree = "<group>"; };
+		5E7DBD29212E54F300D02A35 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
+		5E7DBD2A212E54F300D02A35 /* TestViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestViewController.xib; sourceTree = "<group>"; };
+		5E7DBD2E212E56A200D02A35 /* TestModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TestModel.xcdatamodel; sourceTree = "<group>"; };
+		5E7DBD30212E570700D02A35 /* TestEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "TestEntity+CoreDataClass.swift"; path = "/Users/george/Work/Stego/Stego/Views/Test/TestEntity+CoreDataClass.swift"; sourceTree = "<absolute>"; };
+		5E7DBD31212E570800D02A35 /* TestEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "TestEntity+CoreDataProperties.swift"; path = "/Users/george/Work/Stego/Stego/Views/Test/TestEntity+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
 		5E93CD9021222ECE002F3D0E /* ApiError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiError.swift; sourceTree = "<group>"; };
 		5E93CD92212233A5002F3D0E /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		5E93CD94212233EC002F3D0E /* Assert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assert.swift; sourceTree = "<group>"; };
@@ -347,6 +357,18 @@
 			path = Root;
 			sourceTree = "<group>";
 		};
+		5E7DBD28212E54D500D02A35 /* Test */ = {
+			isa = PBXGroup;
+			children = (
+				5E7DBD29212E54F300D02A35 /* TestViewController.swift */,
+				5E7DBD2A212E54F300D02A35 /* TestViewController.xib */,
+				5E7DBD2D212E56A200D02A35 /* TestModel.xcdatamodeld */,
+				5E7DBD30212E570700D02A35 /* TestEntity+CoreDataClass.swift */,
+				5E7DBD31212E570800D02A35 /* TestEntity+CoreDataProperties.swift */,
+			);
+			path = Test;
+			sourceTree = "<group>";
+		};
 		5E93CD9B21223538002F3D0E /* Model Tests */ = {
 			isa = PBXGroup;
 			children = (
@@ -432,6 +454,7 @@
 		5EEB8DF821251B66009070DE /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				5E7DBD28212E54D500D02A35 /* Test */,
 				5E7DBD23212E48CB00D02A35 /* Root */,
 				5E0BC61921251BBD00BE1AD2 /* Timeline */,
 				5EEB8DF1212517AC009070DE /* Registration */,
@@ -574,6 +597,7 @@
 				5E0BC61B21251BD300BE1AD2 /* Timeline.storyboard in Resources */,
 				5E7DBD27212E492E00D02A35 /* RootViewController.xib in Resources */,
 				5EEB8DF3212517EC009070DE /* Registration.storyboard in Resources */,
+				5E7DBD2C212E54F300D02A35 /* TestViewController.xib in Resources */,
 				5E64DE8D2120F81500CFADAC /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -702,12 +726,16 @@
 				5E64DEBF21210CAB00CFADAC /* Result.swift in Sources */,
 				5EEB8DD3212397E1009070DE /* ApiEndpoint.swift in Sources */,
 				5E93CDAA212295D3002F3D0E /* AppModel.swift in Sources */,
+				5E7DBD33212E570800D02A35 /* TestEntity+CoreDataProperties.swift in Sources */,
 				5E64DEBA21210C1800CFADAC /* Decodable.swift in Sources */,
 				5E1566D6212B7BFA0086E427 /* Emoji+CoreDataClass.swift in Sources */,
 				5E1566CE212B6FEA0086E427 /* Attachment+CoreDataProperties.swift in Sources */,
+				5E7DBD2F212E56A200D02A35 /* TestModel.xcdatamodeld in Sources */,
+				5E7DBD2B212E54F300D02A35 /* TestViewController.swift in Sources */,
 				5E1566D8212B7BFA0086E427 /* Mention+CoreDataClass.swift in Sources */,
 				5E93CD9121222ECE002F3D0E /* ApiError.swift in Sources */,
 				5E1566C5212A73280086E427 /* LocalUser.swift in Sources */,
+				5E7DBD32212E570800D02A35 /* TestEntity+CoreDataClass.swift in Sources */,
 				5EEB8DF521251835009070DE /* RegistrationViewController.swift in Sources */,
 				5E64DEC72121354100CFADAC /* Oauth.swift in Sources */,
 				5E1566DE212B7BFA0086E427 /* Tag+CoreDataProperties.swift in Sources */,
@@ -1089,6 +1117,16 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
+		5E7DBD2D212E56A200D02A35 /* TestModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				5E7DBD2E212E56A200D02A35 /* TestModel.xcdatamodel */,
+			);
+			currentVersion = 5E7DBD2E212E56A200D02A35 /* TestModel.xcdatamodel */;
+			path = TestModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
 		5EA0A1652126607900C04C1E /* DataModels.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (

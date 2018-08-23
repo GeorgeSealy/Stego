@@ -45,61 +45,6 @@ public class Status: NSManagedObject, Codable {
         case tags
     }
     
-    func recurseDocument(_ element: Element, level: Int = 0) {
-        let indent = String(repeating: "  ", count: level)
-        
-        Log("\(type(of: self)) - \(#function): \(indent){")
-
-        Log("\(type(of: self)) - \(#function): \(indent)\(type(of: element)) class: \(try? element.className())")
-
-        for child in element.children() {
-            recurseDocument(child, level: level + 1)
-        }
-        
-        Log("\(type(of: self)) - \(#function): \(indent)}")
-    }
-    
-//    var internalAttributedContent: NSAttributedString?
-    var attributedContent: NSAttributedString {
-        
-        //        guard let result = internalAttributedContent else {
-        
-        let html = content ?? ""
-        let text: String
-        
-        //            let html: String = "<p>An <a href='http://example.com/'><b>example</b></a> link.</p>";
-        do {
-            let doc: Document = try SwiftSoup.parse(html)
-//            if let body = doc.body() {
-//                recurseDocument(body)
-//            }
-            //            let link: Element = try doc.select("a").first()!
-            //
-            text = try doc.body()!.text(); // "An example link"
-//            Log("\(type(of: self)) - \(#function): TEXT: \(text)")
-            //            let linkHref: String = try link.attr("href"); // "http://example.com/"
-            //            let linkText: String = try link.text(); // "example""
-            //
-            //            let linkOuterH: String = try link.outerHtml(); // "<a href="http://example.com"><b>example</b></a>"
-            //            let linkInnerH: String = try link.html(); // "<b>example</b>"
-        } catch Exception.Error(let errorType, let message) {
-            text = html
-            Log("\(type(of: self)) - \(#function): \(message)")
-        } catch let error {
-            text = html
-            Log("\(type(of: self)) - \(#function): error: \(error)")
-        }
-        
-        //            let result = initialContent.parseMastodonHtml()
-        let result = NSMutableAttributedString(string: text)
-        
-        //            internalAttributedContent = result
-        return result
-        //        }
-        //
-        //        return result
-    }
-    
     static var initCount = 0
     
     required convenience public init(from decoder: Decoder) throws {
@@ -107,6 +52,10 @@ public class Status: NSManagedObject, Codable {
         Status.initCount += 1
         Log("Status - \(#function): Create count: \(Status.initCount)")
         
+//        let container = try decoder.container(keyedBy: CodingKey.self)
+//
+//        let id = try container.decodeIfPresent(String.self, forKey: .id)
+
         guard let databaseKey = CodingUserInfoKey.databaseKey,
             let managedObjectContext = decoder.userInfo[databaseKey] as? NSManagedObjectContext,
             let entity = NSEntityDescription.entity(forEntityName: "Status", in: managedObjectContext) else {
@@ -117,11 +66,26 @@ public class Status: NSManagedObject, Codable {
         
         self.init(entity: entity, insertInto: managedObjectContext)
 
-        
         let container = try decoder.container(keyedBy: CodingKey.self)
         
-        id = try container.decodeIfPresent(String.self, forKey: .id)
+        let id = try container.decodeIfPresent(String.self, forKey: .id)
 
+//        let fetchRequest: NSFetchRequest<Status> = Status.fetchRequest()
+//        fetchRequest.predicate = NSPredicate(format: "id == \"\(id ?? "")\"")
+//
+//        do {
+//            let results = try managedObjectContext.fetch(fetchRequest)
+//
+//            for result in results {
+//                Log("Status - \(#function): DELETING EXISTING OBJECT")
+//                managedObjectContext.delete(result)
+//            }
+//        } catch let error {
+//            Log("Status - \(#function): UNIQUENESS FETCH ERROR: \(error)")
+//            
+//        }
+
+        self.id = id
 //        Log("\(type(of: self)) - \(#function): TIMESTAMP \(String(describing: try? container.decodeIfPresent(String.self, forKey: .createdAt)))")
 
         if
@@ -193,4 +157,59 @@ public class Status: NSManagedObject, Codable {
     }
 
 //    application     Application from which the status was posted     yes
+    
+    func recurseDocument(_ element: Element, level: Int = 0) {
+        let indent = String(repeating: "  ", count: level)
+        
+        Log("\(type(of: self)) - \(#function): \(indent){")
+        
+        Log("\(type(of: self)) - \(#function): \(indent)\(type(of: element)) class: \(try? element.className())")
+        
+        for child in element.children() {
+            recurseDocument(child, level: level + 1)
+        }
+        
+        Log("\(type(of: self)) - \(#function): \(indent)}")
+    }
+    
+    //    var internalAttributedContent: NSAttributedString?
+    var attributedContent: NSAttributedString {
+        
+        //        guard let result = internalAttributedContent else {
+        
+        let html = content ?? ""
+        let text: String
+        
+        //            let html: String = "<p>An <a href='http://example.com/'><b>example</b></a> link.</p>";
+        do {
+            let doc: Document = try SwiftSoup.parse(html)
+            //            if let body = doc.body() {
+            //                recurseDocument(body)
+            //            }
+            //            let link: Element = try doc.select("a").first()!
+            //
+            text = try doc.body()!.text(); // "An example link"
+            //            Log("\(type(of: self)) - \(#function): TEXT: \(text)")
+            //            let linkHref: String = try link.attr("href"); // "http://example.com/"
+            //            let linkText: String = try link.text(); // "example""
+            //
+            //            let linkOuterH: String = try link.outerHtml(); // "<a href="http://example.com"><b>example</b></a>"
+            //            let linkInnerH: String = try link.html(); // "<b>example</b>"
+        } catch Exception.Error(let errorType, let message) {
+            text = html
+            Log("\(type(of: self)) - \(#function): \(message)")
+        } catch let error {
+            text = html
+            Log("\(type(of: self)) - \(#function): error: \(error)")
+        }
+        
+        //            let result = initialContent.parseMastodonHtml()
+        let result = NSMutableAttributedString(string: text)
+        
+        //            internalAttributedContent = result
+        return result
+        //        }
+        //
+        //        return result
+    }
 }
