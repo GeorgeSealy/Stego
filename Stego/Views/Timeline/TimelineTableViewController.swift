@@ -14,7 +14,8 @@ class TimelineTableViewController: UITableViewController {
 
         let fetchRequest: NSFetchRequest<Status> = Status.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "isInHomeFeed == true")
-            
+//        fetchRequest.fetchBatchSize = 20
+        
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "createdAt", ascending: false)]
         
         guard let databaseContext = Api.database.context as? NSManagedObjectContext else {
@@ -30,6 +31,14 @@ class TimelineTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        let refreshControl = UIRefreshControl()
+        
+        refreshControl.addTarget(self, action: #selector(handleRefresh), for: UIControlEvents.valueChanged)
+        
+        refreshControl.tintColor = UIColor.red
+
+        self.refreshControl = refreshControl
 
         do {
             try self.fetchedResultsController.performFetch()
@@ -64,6 +73,42 @@ class TimelineTableViewController: UITableViewController {
         
     }
 
+    @objc func handleRefresh() {
+        Log("\(type(of: self)) - \(#function): GOT HERE")
+        
+        Api.call(Timelines.home) { (result: Result<[Status]>) in
+            switch result {
+                
+            case .success(let statuses):
+                Log("\(type(of: self)) - \(#function): Statuses: [\(statuses.count)]")
+                
+                for status in statuses {
+                    status.isInHomeFeed = true
+                }
+                
+            case .error(let error) :
+                Log("\(type(of: self)) - \(#function): Error: \(error)")
+                
+            }
+            
+            do {
+                let fetchRequest: NSFetchRequest<Status> = Status.fetchRequest()
+                
+                guard let databaseContext = Api.database.context as? NSManagedObjectContext else {
+                    fatalError("No context")
+                }
+                
+                let results = try databaseContext.fetch(fetchRequest)
+
+                Log("\(type(of: self)) - \(#function): database has: \(results.count)")
+            } catch let error {
+                Log("\(type(of: self)) - \(#function): FETCH ERROR: \(error)")
+            }
+            self.refreshControl?.endRefreshing()
+        }
+
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -129,8 +174,42 @@ class TimelineTableViewController: UITableViewController {
 
 extension TimelineTableViewController: NSFetchedResultsControllerDelegate {
     
+//    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+//        // TODO: (George) Be more efficient!
+//        Log("\(type(of: self)) - \(#function): ")
+//        tableView.reloadData()
+//    }
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        Log("TimelineTableViewController - \(#function): ")
+        switch type {
+        case .insert:
+            guard let safeIndexPath = newIndexPath else {
+                assertionFailure("No index path")
+                break
+            }
+            
+            self.tableView.insertRows(at: [safeIndexPath], with: .automatic)
+            
+        case .delete:
+            guard let safeIndexPath = indexPath else {
+                assertionFailure("No index path")
+                break
+            }
+            
+            self.tableView.deleteRows(at: [safeIndexPath], with: .automatic)
+        default:
+            break
+        }
+    }
+    
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        // TODO: (George) Be more efficient!
-        tableView.reloadData()
+        Log("\(type(of: self)) - \(#function): ")
+        self.tableView.endUpdates()
+    }
+    
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        Log("\(type(of: self)) - \(#function): ")
+        tableView.beginUpdates()
     }
 }

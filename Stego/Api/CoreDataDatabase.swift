@@ -14,20 +14,6 @@ class CoreDataDatabase: Database {
     var context: Any?
 
     private let persistentContainer = NSPersistentContainer(name: "DataModels")
-
-    //    func createEntity<T: Codable & NSManagedObject>(entityName: String) throws -> T {
-    //
-    //        guard
-    //            let managedObjectContext = self.context,
-    //            let entity = NSEntityDescription.entity(forEntityName: entityName, in: managedObjectContext) else {
-    //
-    //                fatalError("No managed object context")
-    //
-    //        }
-    //
-    //        return T.init(entity: entity, insertInto: managedObjectContext)
-    //
-    //    }
     
     func load(_ completion: @escaping (_: Error?) -> Void) {
         

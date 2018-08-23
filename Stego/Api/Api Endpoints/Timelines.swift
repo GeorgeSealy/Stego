@@ -57,7 +57,7 @@ enum Timelines: ApiEndpoint {
             }
             
             for status in statuses {
-                status.isInHomeFeed = true
+//                status.isInHomeFeed = true
             }
         }
 

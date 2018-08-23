@@ -110,13 +110,14 @@ public class Status: NSManagedObject, Codable {
         guard let databaseKey = CodingUserInfoKey.databaseKey,
             let managedObjectContext = (decoder.userInfo[databaseKey] as? Database)?.context as? NSManagedObjectContext,
             let entity = NSEntityDescription.entity(forEntityName: "Status", in: managedObjectContext) else {
-                
+
                 fatalError("No managed object context")
                 
         }
         
         self.init(entity: entity, insertInto: managedObjectContext)
 
+        
         let container = try decoder.container(keyedBy: CodingKey.self)
         
         id = try container.decodeIfPresent(String.self, forKey: .id)
@@ -160,7 +161,8 @@ public class Status: NSManagedObject, Codable {
         uri = try container.decodeIfPresent(URL.self, forKey: .uri)
         
         if let attemptedReblog = try? container.decodeIfPresent(Status.self, forKey: .reblog) {
-            Log("\(type(of: self)) - \(#function): REBLOGGED: \(attemptedReblog)")
+            Log("\(type(of: self)) - \(#function): REBLOGGED: \(String(describing: attemptedReblog))")
+            reblog = attemptedReblog
         } else {
             Log("\(type(of: self)) - \(#function): No REBLOG")
         }
@@ -187,86 +189,7 @@ public class Status: NSManagedObject, Codable {
         if let tagsArray = try container.decodeIfPresent([Tag].self, forKey: .tags) {
             tags = NSSet(array: tagsArray)
         }
-        
-//        let hasAttachments = (mediaAttachments?.count ?? 0) > 0
-//        let hasMentions = (mentions?.count ?? 0) > 0
-//        let hasEmoji = (emoji?.count ?? 0) > 0
-//        let hasTags = (tags?.count ?? 0) > 0
-//        let hasReblog = reblog != nil
-        
-//        if hasAttachments || hasMentions || hasEmoji || hasTags || hasReblog {
-//
-//            var things = ""
-//
-//            things += hasAttachments ? "Attachments: " : ""
-//            things += hasMentions ? "Mentions: " : ""
-//            things += hasEmoji ? "Emoji: " : ""
-//            things += hasTags ? "Tags: " : ""
-//            things += hasReblog ? "Reblog: " : ""
-//
-//            dump("STATUS WITH \(things)")
-//        }
-        
-//        Log("\(type(of: self)) - \(#function): TEXT: \(self.attributedContent)")
-//        Log("\(type(of: self)) - \(#function): \(self)")
-    }
-    
-    func dump(_ why: String) {
-        Log("\(type(of: self)) - \(#function): \(why) ")
-        Log("\(type(of: self)) - \(#function):   From: \(account?.displayName ?? "UNKNOWN")")
-        Log("\(type(of: self)) - \(#function):   Content: \(content ?? "NO CONTENT")")
-        
-        Log("\(type(of: self)) - \(#function):   Reblog:")
-        
-        if let r = reblog {
-            Log("\(type(of: self)) - \(#function):     From: \(r.account?.displayName ?? "UNKNOWN")")
-            Log("\(type(of: self)) - \(#function):     Content: \(r.content ?? "NO CONTENT")")
-        }
 
-        Log("\(type(of: self)) - \(#function):   Attachments:")
-        
-        if let attachments = mediaAttachments {
-            for attachment in attachments {
-                
-                guard let a = attachment as? Attachment else { continue }
-                
-                Log("\(type(of: self)) - \(#function):     type: \(a.type ?? "NO TYPE")")
-                Log("\(type(of: self)) - \(#function):     url: \(String(describing: a.url))")
-            }
-        }
-        
-        Log("\(type(of: self)) - \(#function):   Mentions:")
-        
-        if let mentions = mentions {
-            for mention in mentions {
-                
-                guard let m = mention as? Mention else { continue }
-                
-                Log("\(type(of: self)) - \(#function):     user: \(m.username ?? "NO USER")")
-            }
-        }
-        
-        Log("\(type(of: self)) - \(#function):   Emoji:")
-        
-        if let emoji = emoji {
-            for singleEmoji in emoji {
-                
-                guard let e = singleEmoji as? Emoji else { continue }
-                
-                Log("\(type(of: self)) - \(#function):     code: \(e.shortCode ?? "NO SHORT CODE")")
-            }
-        }
-        
-        Log("\(type(of: self)) - \(#function):   Tags:")
-        
-        if let tags = tags {
-            for tag in tags {
-                
-                guard let t = tag as? Tag else { continue }
-                
-                Log("\(type(of: self)) - \(#function):     tag: \(t.name ?? "NO NAME")")
-            }
-        }
     }
 
 //    application     Application from which the status was posted     yes

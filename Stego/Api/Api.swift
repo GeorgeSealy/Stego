@@ -26,6 +26,7 @@ class Api {
     
     static var accessCode: String?
     static let database = CoreDataDatabase(storageType: .memoryBased)
+//    static let database = CoreDataDatabase(storageType: .fileBased)
 
     static let dateFormatter: DateFormatter = {
         let result = DateFormatter()
@@ -214,9 +215,9 @@ extension Api {
         }
         
         let request = Alamofire.request(fullPath, method: method, parameters: parameters, encoding: encoding, headers: headers).validate()
-            .responseJSON { (jsonData) in
-                print("Got JSON: \(jsonData)")
-            }
+//            .responseJSON { (jsonData) in
+//                print("Got JSON: \(jsonData)")
+//            }
             .responseData { (response) in
                 
                 do {
