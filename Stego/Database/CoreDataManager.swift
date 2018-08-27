@@ -115,11 +115,10 @@ class CoreDataManager {
     // MARK: - Private Helper Methods
     
     fileprivate func setStandardContextOptions(_ managedObjectContext: NSManagedObjectContext) {
+        
         managedObjectContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
         managedObjectContext.stalenessInterval = 0
         managedObjectContext.automaticallyMergesChangesFromParent = true
-        
-        //        managedObjectContext.mergePolicy = NSErrorMergePolicy
     }
     
     fileprivate func setupCoreDataStack() {
@@ -135,12 +134,11 @@ class CoreDataManager {
     fileprivate func addPersistentStore() {
         guard let persistentStoreCoordinator = persistentStoreCoordinator else { fatalError("Unable to Initialize Persistent Store Coordinator") }
         
-        let persistentStoreURL = self.persistentStoreURL
-        
         do {
             let options = [ NSMigratePersistentStoresAutomaticallyOption : true, NSInferMappingModelAutomaticallyOption : true ]
 
             try persistentStoreCoordinator.addPersistentStore(ofType: NSInMemoryStoreType, configurationName: nil, at: nil, options: options)
+//            let persistentStoreURL = self.persistentStoreURL
 //            try persistentStoreCoordinator.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: persistentStoreURL, options: options)
 
         } catch {

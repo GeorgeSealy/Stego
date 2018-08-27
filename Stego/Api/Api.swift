@@ -254,7 +254,10 @@ extension Api {
                         //                    coreDataManager?.saveChanges()
                         //                    try database.save()
                         
+                        Api.coreDataManager?.saveChanges()
+
                         self.handleResponse(fullPath: fullPath, allowCancelCallback: allowCancelCallback, completion: completion, result: .success(result))
+                        
                     } catch let error {
                         
                         if
